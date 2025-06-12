@@ -1,10 +1,10 @@
 #pragma once
-#include "Usuario.h"
+#include "usuario.h"
 
-class Lector : public Usuario {
+class Bibliotecario : public Usuario {
 private:
 public:
-	Lector(string nombre, string contrasenia) : Usuario(nombre, contrasenia) {}
+	Bibliotecario(string nombre, string contrasenia) : Usuario(nombre, contrasenia) {}
 
 	void menuBibliotecario() {
 		cout << "Opciones de Bibliotecario:" << endl;
@@ -13,6 +13,4 @@ public:
 		cout << "Denegar prestamo" << endl;
 		cout << "0. Salir: " << endl;
 	}
-
-	
-};
+}; 

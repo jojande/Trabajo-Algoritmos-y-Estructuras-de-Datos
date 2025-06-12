@@ -1,7 +1,5 @@
 #include <iostream>
 #include <conio.h>
-#include <Windows.h>
-#include <memory>
 #include "Usuario.h"
 #include "administrador.h"
 #include "opciones.h"
@@ -23,13 +21,13 @@ int main() {
 
         switch (opcion) {
         case '1':
-            registrarUsuario();
+            //registrarUsuario();
             break;
         case '2':
-            iniciarSesionUsuario("Lector");
+           // iniciarSesionUsuario("Lector");
             break;
         case '3':
-            iniciarSesionUsuario("Administrador");
+            //iniciarSesionUsuario("Administrador");
             break;
         case '0':
             cout << "Saliendo del programa...\n";

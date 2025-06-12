@@ -133,10 +133,12 @@
   <ItemGroup>
     <ClInclude Include="administrador.h" />
     <ClInclude Include="archivos.h" />
+    <ClInclude Include="bibliotecario.h" />
     <ClInclude Include="lector.h" />
     <ClInclude Include="libro.h" />
     <ClInclude Include="EstructurasDatos.h" />
     <ClInclude Include="opciones.h" />
+    <ClInclude Include="Prestamos.h" />
     <ClInclude Include="revista.h" />
     <ClInclude Include="RecursoBibliografico.h" />
     <ClInclude Include="tesis.h" />

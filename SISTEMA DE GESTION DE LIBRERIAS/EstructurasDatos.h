@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
-#include <functional>
 #include "opciones.h"
-using namespace std;
 
 template <typename T>
 struct Nodo {
@@ -31,6 +29,17 @@ public:
         }
     }
 
+    bool buscarporID(const string& idBuscado) {
+        Nodo<T>* actual = cabeza;
+        while (actual != nullptr) {
+            if (actual->dato.getId() == idBuscado) {
+                return &actual->dato;
+            }
+            actual = actual->siguiente;
+        }
+        return nullptr;
+    }
+
     void insertarAlFinal(const T& dato) {
         Nodo<T>* nuevo = new Nodo<T>(dato);
         if (!cabeza) {
@@ -44,16 +53,6 @@ public:
         }
     }
 
-    bool existeID(const string& idBuscado) const {
-        Nodo<T>* actual = cabeza;
-        while (actual != nullptr) {
-            if (actual->dato.getId() == idBuscado) {
-                return true;
-            }
-            actual = actual->siguiente;
-        }
-        return false;
-    }
 
     bool eliminarPorID(const string& idBuscado) {
         Nodo<T>* actual = cabeza;
@@ -89,16 +88,6 @@ public:
         return false;
     }
 
-    T* buscar(function<bool(const T&)> criterio) {
-        Nodo<T>* temp = cabeza;
-        while (temp) {
-            if (criterio(temp->dato))
-                return &temp->dato;
-            temp = temp->siguiente;
-        }
-        return nullptr;
-    }
-
     void mostrarTodo() const {
         Nodo<T>* temp = cabeza;
         while (temp) {
@@ -106,22 +95,6 @@ public:
             cout << "------------------------\n";
             temp = temp->siguiente;
         }
-    }
-
-    void ordenar(function<bool(const T&, const T&)> comparador) {
-        if (!cabeza || !cabeza->siguiente) return;
-        bool cambiado;
-        do {
-            cambiado = false;
-            Nodo<T>* actual = cabeza;
-            while (actual->siguiente) {
-                if (comparador(actual->siguiente->dato, actual->dato)) {
-                    swap(actual->dato, actual->siguiente->dato);
-                    cambiado = true;
-                }
-                actual = actual->siguiente;
-            }
-        } while (cambiado);
     }
 
     int tamano() const {
@@ -134,12 +107,72 @@ public:
         return cont;
     }
 
-    void recorrer(function<void(const T&)> accion) const {
-        Nodo<T>* temp = cabeza;
-        while (temp) {
-            accion(temp->dato);
-            temp = temp->siguiente;
+};
+
+template<typename T>
+class Cola { // Cola simple
+private:
+    Nodo<T>* frente; // Apunta al primer elemento
+    Nodo<T>* final;  // Apunta al último elemento
+
+public:
+    // Constructor
+    Cola() : frente(nullptr), final(nullptr) {}
+
+    // Destructor
+    ~Cola() {
+        while (!estaVacia()) {
+            desencolar();
         }
     }
 
+    // Verifica si la cola está vacía
+    bool estaVacia() const {
+        return frente == nullptr;
+    }
+
+    // Encolar (añadir al final)
+    void encolar(const T& valor) {
+        Nodo<T>* nuevo = new Nodo<T>(valor);
+        if (estaVacia()) {
+            frente = final = nuevo;
+        }
+        else {
+            final->siguiente = nuevo;
+            final = nuevo;
+        }
+    }
+
+    // Desencolar (quitar del frente)
+    void desencolar() {
+        if (estaVacia()) {
+            cout << "La cola está vacía. No se puede desencolar." << endl;
+            return;
+        }
+        Nodo<T>* temp = frente;
+        frente = frente->siguiente;
+        delete temp;
+        if (frente == nullptr) {
+            final = nullptr;
+        }
+    }
+
+    // Obtener el elemento del frente
+    T verFrente() const {
+        if (estaVacia()) {
+            throw runtime_error("Cola vacía: no se puede acceder al frente.");
+        }
+        return frente->dato;
+    }
+
+    // Mostrar todos los elementos
+    void mostrar() const {
+        Nodo<T>* actual = frente;
+        cout << "Cola: ";
+        while (actual != nullptr) {
+            cout << actual->dato << " ";
+            actual = actual->siguiente;
+        }
+        cout << endl;
+    }
 };
