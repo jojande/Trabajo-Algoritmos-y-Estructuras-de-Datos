@@ -1,0 +1,6 @@
+Lector|IDUS1|Pato|Lucas
+Administrador|IDAD1|pepe|pepeloco
+Administrador|IDAD2|lucho|lucho2
+Administrador|IDAD3|Jose|jose25
+Administrador|IDAD4|Juan|Perez
+Administrador|IDAD5|l|e
