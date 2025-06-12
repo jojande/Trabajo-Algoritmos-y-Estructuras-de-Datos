@@ -6,10 +6,15 @@
 #include "revista.h"
 #include "archivos.h"
 #include "administrador.h"
+#include "bibliotecario.h"
+#include "lector.h"
 
 ListaSimple<libro> listaLibros;
 ListaSimple<tesis> listaTesis;
 ListaSimple<revista> listaRevistas;
+ListaSimple<Administrador> listaAdmins;
+ListaSimple<Lector> listaLectores;
+ListaSimple<Bibliotecario> listaBibliotecarios;
 
 string generarID(const string& tipo, int contador) {
     string prefijo;
