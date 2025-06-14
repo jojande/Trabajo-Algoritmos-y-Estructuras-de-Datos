@@ -1,16 +1,15 @@
 #pragma once
 #include <iostream>
-#include "opciones.h"
+#include <string> 
+using namespace std;
 
 template <typename T>
 struct Nodo {
     T dato;
     Nodo<T>* siguiente;
 
-    Nodo(T dato) {
-        this->dato = dato;
-        this->siguiente = nullptr;
-    }
+    Nodo(const T& dato) : dato(dato), siguiente(nullptr) {}
+
 };
 
 template <typename T>
@@ -29,6 +28,10 @@ public:
         }
     }
 
+    Nodo<T>* getCabeza() {
+        return cabeza;
+    }
+
     bool buscarporID(const string& idBuscado) {
         Nodo<T>* actual = cabeza;
         while (actual != nullptr) {
@@ -39,6 +42,18 @@ public:
         }
         return nullptr;
     }
+
+    T* hallarID(const string& idBuscado) {
+        Nodo<T>* actual = cabeza;
+        while (actual != nullptr) {
+            if (actual->dato.getId() == idBuscado) {
+                return &(actual->dato);  // Devuelves la dirección del objeto
+            }
+            actual = actual->siguiente;
+        }
+        return nullptr;  // No encontrado
+    }
+
 
     void insertarAlFinal(const T& dato) {
         Nodo<T>* nuevo = new Nodo<T>(dato);
@@ -110,29 +125,26 @@ public:
 };
 
 template<typename T>
-class Cola { // Cola simple
+class Cola { 
 private:
-    Nodo<T>* frente; // Apunta al primer elemento
-    Nodo<T>* final;  // Apunta al último elemento
+    Nodo<T>* frente; // primer elemento
+    Nodo<T>* final;  // ultimo elemento
 
 public:
-    // Constructor
+    
     Cola() : frente(nullptr), final(nullptr) {}
 
-    // Destructor
     ~Cola() {
         while (!estaVacia()) {
             desencolar();
         }
     }
 
-    // Verifica si la cola está vacía
     bool estaVacia() const {
         return frente == nullptr;
     }
 
-    // Encolar (añadir al final)
-    void encolar(const T& valor) {
+    void encolar(const T& valor) { // añadir al final
         Nodo<T>* nuevo = new Nodo<T>(valor);
         if (estaVacia()) {
             frente = final = nuevo;
@@ -143,8 +155,7 @@ public:
         }
     }
 
-    // Desencolar (quitar del frente)
-    void desencolar() {
+    void desencolar() { //quitar elemento del frente
         if (estaVacia()) {
             cout << "La cola está vacía. No se puede desencolar." << endl;
             return;
@@ -157,7 +168,7 @@ public:
         }
     }
 
-    // Obtener el elemento del frente
+    // obtener el elemento del frente
     T verFrente() const {
         if (estaVacia()) {
             throw runtime_error("Cola vacía: no se puede acceder al frente.");
@@ -165,7 +176,7 @@ public:
         return frente->dato;
     }
 
-    // Mostrar todos los elementos
+    // mostrar todos los elementos
     void mostrar() const {
         Nodo<T>* actual = frente;
         cout << "Cola: ";
@@ -175,4 +186,24 @@ public:
         }
         cout << endl;
     }
+
+	void mostrarTodo() const {
+		Nodo<T>* temp = frente;
+		while (temp) {
+			temp->dato.detallesPrestamo();
+			cout << "------------------------\n";
+			temp = temp->siguiente;
+		}
+	}
+
+    int tamanio() {
+		int cont = 0;
+		Nodo<T>* temp = frente;
+		while (temp) {
+			cont++;
+			temp = temp->siguiente;
+		}
+		return cont;
+    }
+
 };

@@ -2,29 +2,33 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "RecursoBibliografico.h"
 using namespace std;
 
 class Usuario {
-private:
+protected:
     string id;
     string nombre;
     string contrasenia;
 
 public:
-    Usuario(string nombre, string contrasenia) {
+    Usuario(const string id, const string nombre, const string contrasenia) {
         this->nombre = nombre;
         this->contrasenia = contrasenia;
-        this->id = "";
+        this->id = id;
     }
 
     ~Usuario() {}
 
     void setNombre(string n) { nombre = n; }
     void setContrasenia(string c) { contrasenia = c; }
-    string getNombre() { return nombre; }
-    string getContrasenia() { return contrasenia; }
-    string getId() { return id; }
+    string getNombre() const { return nombre; }
+    string getContrasenia() const { return contrasenia; }
+    string getId() const { return id; }
 
+    void mostrar(){
+		cout << "ID: " << id << endl;
+		cout << "Nombre: " << nombre << endl;
+		cout << "Contrasenia: " << contrasenia << endl;
+    }
 
 };

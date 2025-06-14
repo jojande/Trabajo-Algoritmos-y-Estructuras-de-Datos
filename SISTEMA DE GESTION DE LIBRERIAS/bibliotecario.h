@@ -4,7 +4,7 @@
 class Bibliotecario : public Usuario {
 private:
 public:
-	Bibliotecario(string nombre, string contrasenia) : Usuario(nombre, contrasenia) {}
+	Bibliotecario(const string id, const string nombre, const string contrasenia) : Usuario(id, nombre, contrasenia) {}
 
 	void menuBibliotecario() {
 		cout << "Opciones de Bibliotecario:" << endl;

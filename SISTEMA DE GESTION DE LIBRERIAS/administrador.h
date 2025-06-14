@@ -4,7 +4,7 @@
 class Administrador : public Usuario {
 private:
 public:
-	Administrador(string nombre, string contrasenia) : Usuario(nombre, contrasenia) {}
+	Administrador(const string id, const string nombre, const string contrasenia) : Usuario(id, nombre, contrasenia) {}
 	
 	void menuAdministrador() {
 		cout << "Opciones de administrador:" << endl;
