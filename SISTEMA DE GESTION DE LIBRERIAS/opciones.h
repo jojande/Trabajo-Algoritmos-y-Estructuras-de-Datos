@@ -237,7 +237,7 @@ void registrarPrestamo() {
     colaPrestamos.encolar(nuevoPrestamo);
     guardarPrestamo(nuevoPrestamo);
 
-    cout << "Préstamo registrado correctamente con ID: " << id << "\n";
+    cout << "Prestamo registrado correctamente con ID: " << id << "\n";
 }
 
 
