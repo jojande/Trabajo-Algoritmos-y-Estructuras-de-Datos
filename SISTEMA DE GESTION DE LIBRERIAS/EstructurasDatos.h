@@ -155,6 +155,18 @@ public:
         }
     }
 
+    Nodo<T>* hallarID(const string& idBuscado) {
+        Nodo<T>* actual = frente;
+        while (actual != nullptr) {
+            if (actual->dato.getId() == idBuscado) {
+                return actual;  // Devuelve el nodo encontrado
+            }
+            actual = actual->siguiente;
+        }
+        return nullptr;  // No encontrado
+    }
+
+
     void desencolar() { //quitar elemento del frente
         if (estaVacia()) {
             cout << "La cola está vacía. No se puede desencolar." << endl;
@@ -169,11 +181,8 @@ public:
     }
 
     // obtener el elemento del frente
-    T verFrente() const {
-        if (estaVacia()) {
-            throw runtime_error("Cola vacía: no se puede acceder al frente.");
-        }
-        return frente->dato;
+    Nodo<T>* getFrente() {
+        return frente;
     }
 
     // mostrar todos los elementos

@@ -40,5 +40,8 @@ public:
 	RecursoBibliografico* getRecurso() const { return recurso; }
 	string getEstado() const { return estado; }
 
+	void setEstado(const string& nuevoEstado) {
+		estado = nuevoEstado;
+	}
 			
 };

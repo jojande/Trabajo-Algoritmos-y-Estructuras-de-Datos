@@ -51,6 +51,9 @@ int main() {
         case '3':
             iniciarSesionAdministrador();
             break;
+        case '4':
+            iniciarSesionBibliotecario();
+            break;
         case '0':
             cout << "Saliendo del programa...\n";
             break;
