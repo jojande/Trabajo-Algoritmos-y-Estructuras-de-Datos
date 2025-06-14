@@ -1,0 +1,2 @@
+IDLI02|C++|Djin|28|5|Computacion|Microsoft
+IDLI03|Java|Notch|20|4|Minecraft|Rubius

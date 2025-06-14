@@ -17,10 +17,6 @@ public:
 		this->pais = "";
 	}
 
-	string getId() const {
-		return id;
-	}
-
 	string getUniversidad() const { return universidad; }
 	string getPais() const { return pais; }
 	

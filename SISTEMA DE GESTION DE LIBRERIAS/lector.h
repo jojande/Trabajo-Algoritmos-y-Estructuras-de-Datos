@@ -4,13 +4,13 @@
 class Lector : public Usuario {
 private:
 public:
-	Lector(string nombre, string contrasenia) : Usuario(nombre, contrasenia) {}
+	Lector(const string id, const string nombre, const string contrasenia) : Usuario( id, nombre, contrasenia) {}
 
-	void menuBibliotecario() {
-		cout << "Opciones de Bibliotecario:" << endl;
-		cout << "Mostrar prestamos solicitados" << endl;
-		cout << "Confirmar prestamo" << endl;
-		cout << "Denegar prestamo" << endl;
+	void menuLector() {
+		cout << "Opciones de Usuario:" << endl;
+		cout << "1. Buscar Recurso Bibliografico" << endl;
+		cout << "2. Solicitar Prestamo" << endl;
+		cout << "3. Ver Historial de Prestamos" << endl;
 		cout << "0. Salir: " << endl;
 	}
 
