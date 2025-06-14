@@ -237,7 +237,7 @@ void registrarPrestamo() {
     colaPrestamos.encolar(nuevoPrestamo);
     guardarPrestamo(nuevoPrestamo);
 
-    cout << "Préstamo registrado correctamente con ID: " << id << "\n";
+    cout << "Prestamo registrado correctamente con ID: " << id << "\n";
 }
 
 
@@ -752,6 +752,61 @@ void mostrarPrestamos() {
 	}
 }
 
+void mostrarPrestamosPorLector(const string& idLector) {
+	cout << "\nPrestamos del lector con ID " << idLector << ":\n";
+	if (colaPrestamos.estaVacia()) {
+		cout << "No hay prestamos registrados.\n";
+		return;
+	}
+	Nodo<Prestamo>* actual = colaPrestamos.getFrente();
+	bool encontrado = false;
+	while (actual != nullptr) {
+		if (actual->dato.getSolicitante()->getId() == idLector) {
+			encontrado = true;
+
+            actual->dato.detallesPrestamo();
+            
+		}
+		actual = actual->siguiente;
+	}
+	if (!encontrado) {
+		cout << "No se encontraron prestamos para el lector con ID " << idLector << ".\n";
+	}
+}
+
+void administrarPrestamos() {
+    cout << "\nAdministrar prestamos:\n";
+    if (colaPrestamos.estaVacia()) {
+        cout << "No hay prestamos registrados.\n";
+        return;
+    }
+    colaPrestamos.mostrarTodo();
+    string idPrestamo;
+    cout << "Ingrese el ID del prestamo a administrar: ";
+    cin >> idPrestamo;
+    Nodo<Prestamo>* prestamo = colaPrestamos.hallarID(idPrestamo);
+    if (!prestamo) {
+        cout << "Prestamo no encontrado.\n";
+        return;
+    }
+    cout << "Detalles del prestamo:\n";
+	prestamo->dato.detallesPrestamo();
+    int opcion;
+    cout << "Seleccione una opcion:\n";
+    cout << "1. Confirmar prestamo\n";
+    cout << "2. Denegar prestamo\n";
+    cout << "0. Salir\n";
+    cin >> opcion;
+    if (opcion == 1) {
+        prestamo->dato.setEstado("Confirmado");
+        cout << "Prestamo confirmado.\n";
+    }
+    else if (opcion == 2) {
+        prestamo->dato.setEstado("Denegado");
+        cout << "Prestamo denegado.\n";
+    }
+}
+
 void pausar() {
     cout << "\nPresione cualquier tecla para continuar...";
     _getch();
@@ -842,7 +897,7 @@ void Ejecutar_menuLector(const string& id, const string& nombre, const string& c
             registrarPrestamo();
             break;
         case 3:
-            mostrarPrestamos();
+            mostrarPrestamosPorLector(lector.getId());
             break;
         case 0:
             cout << "Saliendo...\n";
@@ -866,12 +921,10 @@ void Ejectuar_menuBibliotecario(const string& id, const string& nombre, const st
         cin.ignore();
         switch (opcionBIBLIOTECARIO) {
         case 1:
-            // Mostrar prestamos solicitados
-            cout << "Funcionalidad no implementada.\n";
+            mostrarPrestamos();
             break;
         case 2:
-            // Confirmar prestamo
-            cout << "Funcionalidad no implementada.\n";
+            administrarPrestamos();
             break;
         case 3:
             // Denegar prestamo
