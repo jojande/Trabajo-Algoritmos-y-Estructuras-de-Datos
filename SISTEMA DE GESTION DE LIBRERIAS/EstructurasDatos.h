@@ -122,6 +122,40 @@ public:
         return cont;
     }
 
+    int extraerNumeroID(const string& id) {
+        string numero = "";
+        for (char c : id) {
+            if (isdigit(c)) numero += c;
+        }
+        return numero.empty() ? 0 : stoi(numero);
+    }
+
+    // Obtener un dato en una posición específica
+    T getPorIndice(int index) {
+        Nodo<T>* actual = cabeza;
+        int i = 0;
+        while (actual != nullptr) {
+            if (i == index)
+                return actual->dato;
+            actual = actual->siguiente;
+            i++;
+        }
+    }
+
+    // Modificar el dato en una posición específica
+    void setPorIndice(int index, const T& nuevoDato) {
+        Nodo<T>* actual = cabeza;
+        int i = 0;
+        while (actual != nullptr) {
+            if (i == index) {
+                actual->dato = nuevoDato;
+                return;
+            }
+            actual = actual->siguiente;
+            i++;
+        }
+    }
+
 };
 
 template<typename T>

@@ -12,6 +12,7 @@ public:
 		cout << "2. Mostrar Recurso Bibliografico: " << endl;
 		cout << "3. Eliminar Recurso Bibliografico: " << endl;
 		cout << "4. Modificar Recurso Bibliografico: " << endl;
+		cout << "5. Ordenar Recurso Bibliografico por Valoracion" << endl;
 		cout << "0. Salir: " << endl;
 	}
 };
