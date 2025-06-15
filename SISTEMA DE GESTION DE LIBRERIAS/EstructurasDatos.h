@@ -130,6 +130,7 @@ public:
         return numero.empty() ? 0 : stoi(numero);
     }
 
+
     // Obtener un dato en una posición específica
     T getPorIndice(int index) {
         Nodo<T>* actual = cabeza;

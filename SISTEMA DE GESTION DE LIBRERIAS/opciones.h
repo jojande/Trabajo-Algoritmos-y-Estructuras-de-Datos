@@ -812,6 +812,73 @@ void pausar() {
     _getch();
 }
 
+int extraerAnio(const string& fecha) {
+    return stoi(fecha);
+}
+
+template <typename T>
+int particionPorValoracion(ListaSimple<T>& lista, int p, int r) {
+    int pivote = lista.getPorIndice(r).getValoracion();
+    int i = p - 1;
+
+    for (int j = p; j < r; ++j) {
+        if (lista.getPorIndice(j).getValoracion() <= pivote) {
+            i++;
+            T tempI = lista.getPorIndice(i);
+            T tempJ = lista.getPorIndice(j);
+            lista.setPorIndice(i, tempJ);
+            lista.setPorIndice(j, tempI);
+        }
+    }
+
+    T tempI = lista.getPorIndice(i + 1);
+    T tempR = lista.getPorIndice(r);
+    lista.setPorIndice(i + 1, tempR);
+    lista.setPorIndice(r, tempI);
+
+    return i + 1;
+}
+
+template <typename T>
+void quickSortPorValoracion(ListaSimple<T>& lista, int p, int r) {
+    if (p < r) {
+        int q = particionPorValoracion(lista, p, r);
+        quickSortPorValoracion(lista, p, q - 1);
+        quickSortPorValoracion(lista, q + 1, r);
+    }
+}
+
+template <typename T>
+int particionPorAnio(ListaSimple<T>& lista, int p, int r) {
+    int anioPivote = extraerAnio(lista.getPorIndice(r).getFecha());
+    int i = p - 1;
+
+    for (int j = p; j < r; ++j) {
+        if (extraerAnio(lista.getPorIndice(j).getFecha()) <= anioPivote) {
+            i++;
+            T tempI = lista.getPorIndice(i);
+            T tempJ = lista.getPorIndice(j);
+            lista.setPorIndice(i, tempJ);
+            lista.setPorIndice(j, tempI);
+        }
+    }
+
+    T tempI = lista.getPorIndice(i + 1);
+    T tempR = lista.getPorIndice(r);
+    lista.setPorIndice(i + 1, tempR);
+    lista.setPorIndice(r, tempI);
+
+    return i + 1;
+}
+
+template <typename T>
+void quickSortPorAnio(ListaSimple<T>& lista, int p, int r) {
+    if (p < r) {
+        int q = particionPorAnio(lista, p, r);
+        quickSortPorAnio(lista, p, q - 1);
+        quickSortPorAnio(lista, q + 1, r);
+    }
+}
 
 
 template <typename T>
@@ -856,6 +923,8 @@ void OrdenamientoMergeporValoracionRecursoBibliografico(ListaSimple<T>& lista, i
     }
 }
 
+
+
 void gestionarRecursos(const string& tipo, int opcion) {
     if (opcion == 1) {
         if (tipo == "libro") registrarLibro();
@@ -887,13 +956,43 @@ void gestionarRecursos(const string& tipo, int opcion) {
             mostrarLibros();
         }
         else if (tipo == "revista") {
-            OrdenamientoMergeporValoracionRecursoBibliografico(listaRevistas, 0, listaLibros.tamano() - 1);
+            OrdenamientoMergeporValoracionRecursoBibliografico(listaRevistas, 0, listaRevistas.tamano() - 1);
             mostrarLibros();
         }
         else if (tipo == "tesis") {
-            OrdenamientoMergeporValoracionRecursoBibliografico(listaTesis, 0, listaLibros.tamano() - 1);
+            OrdenamientoMergeporValoracionRecursoBibliografico(listaTesis, 0, listaTesis.tamano() - 1);
             mostrarLibros();
         }   
+        else cout << "Tipo de recurso no valido.\n";
+    }
+    else if (opcion == 6) {
+        if (tipo == "libro") {
+            quickSortPorValoracion(listaLibros, 0, listaLibros.tamano() - 1);
+            mostrarLibros();
+        }
+        else if (tipo == "revista") {
+            quickSortPorValoracion(listaRevistas, 0, listaRevistas.tamano() - 1);
+            mostrarLibros();
+        }
+        else if (tipo == "tesis") {
+            quickSortPorValoracion(listaTesis, 0, listaTesis.tamano() - 1);
+            mostrarLibros();
+        }
+        else cout << "Tipo de recurso no valido.\n";
+    }
+    else if (opcion == 7) {
+        if (tipo == "libro") {
+            quickSortPorAnio(listaLibros, 0, listaLibros.tamano() - 1);
+            mostrarLibros();
+        }
+        else if (tipo == "revista") {
+            quickSortPorAnio(listaRevistas, 0, listaRevistas.tamano() - 1);
+            mostrarLibros();
+        }
+        else if (tipo == "tesis") {
+            quickSortPorAnio(listaTesis, 0, listaTesis.tamano() - 1);
+            mostrarLibros();
+        }
         else cout << "Tipo de recurso no valido.\n";
     }
     pausar();
@@ -912,7 +1011,7 @@ void Ejectuar_menuAdministrador(const string& id, const string& nombre, const st
         cin >> opcionADMIN;
         cin.ignore();
 
-        if (opcionADMIN >= 1 && opcionADMIN <= 5) {
+        if (opcionADMIN >= 1 && opcionADMIN <= 7) {
             cout << "Ingrese tipo de recurso (libro|revista|tesis): ";
             cin >> tipo;
             cin.ignore();
