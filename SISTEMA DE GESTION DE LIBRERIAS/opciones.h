@@ -7,7 +7,7 @@
 #include "tesis.h"
 #include "revista.h"
 #include "archivos.h"
-
+#include <conio.h>
 ListaSimple<libro> listaLibros;
 ListaSimple<tesis> listaTesis;
 ListaSimple<revista> listaRevistas;
@@ -812,6 +812,50 @@ void pausar() {
     _getch();
 }
 
+
+
+template <typename T>
+void merge(ListaSimple<T>& lista, int izq, int mid, int der) {
+    int n1 = mid - izq + 1;
+    int n2 = der - mid;
+
+    T* L = new T[n1];
+    T* R = new T[n2];
+
+    for (int i = 0; i < n1; ++i)
+        L[i] = lista.getPorIndice(izq + i);
+    for (int j = 0; j < n2; ++j)
+        R[j] = lista.getPorIndice(mid + 1 + j);
+
+    int i = 0, j = 0, k = izq;
+    while (i < n1 && j < n2) {
+        if (L[i].getValoracion() <= R[j].getValoracion()) {
+            lista.setPorIndice(k++, L[i++]);
+        }
+        else {
+            lista.setPorIndice(k++, R[j++]);
+        }
+    }
+
+    while (i < n1)
+        lista.setPorIndice(k++, L[i++]);
+    while (j < n2)
+        lista.setPorIndice(k++, R[j++]);
+
+    delete[] L;
+    delete[] R;
+}
+
+template <typename T>
+void OrdenamientoMergeporValoracionRecursoBibliografico(ListaSimple<T>& lista, int izq, int der) {
+    if (izq < der) {
+        int mid = (izq + der) / 2;
+        OrdenamientoMergeporValoracionRecursoBibliografico(lista, izq, mid);
+        OrdenamientoMergeporValoracionRecursoBibliografico(lista, mid + 1, der);
+        merge(lista, izq, mid, der);
+    }
+}
+
 void gestionarRecursos(const string& tipo, int opcion) {
     if (opcion == 1) {
         if (tipo == "libro") registrarLibro();
@@ -837,6 +881,21 @@ void gestionarRecursos(const string& tipo, int opcion) {
         else if (tipo == "tesis") modificarTesis();
         else cout << "Tipo de recurso no valido.\n";
     }
+    else if (opcion == 5) {
+        if (tipo == "libro") {
+            OrdenamientoMergeporValoracionRecursoBibliografico(listaLibros,0,listaLibros.tamano()-1);
+            mostrarLibros();
+        }
+        else if (tipo == "revista") {
+            OrdenamientoMergeporValoracionRecursoBibliografico(listaRevistas, 0, listaLibros.tamano() - 1);
+            mostrarLibros();
+        }
+        else if (tipo == "tesis") {
+            OrdenamientoMergeporValoracionRecursoBibliografico(listaTesis, 0, listaLibros.tamano() - 1);
+            mostrarLibros();
+        }   
+        else cout << "Tipo de recurso no valido.\n";
+    }
     pausar();
 }
 
@@ -853,7 +912,7 @@ void Ejectuar_menuAdministrador(const string& id, const string& nombre, const st
         cin >> opcionADMIN;
         cin.ignore();
 
-        if (opcionADMIN >= 1 && opcionADMIN <= 4) {
+        if (opcionADMIN >= 1 && opcionADMIN <= 5) {
             cout << "Ingrese tipo de recurso (libro|revista|tesis): ";
             cin >> tipo;
             cin.ignore();
@@ -863,6 +922,7 @@ void Ejectuar_menuAdministrador(const string& id, const string& nombre, const st
 
     } while (opcionADMIN != 0);
 }
+
 
 void Ejecutar_menuLector(const string& id, const string& nombre, const string& contrasenia) {
     Lector lector(id, nombre, contrasenia);
