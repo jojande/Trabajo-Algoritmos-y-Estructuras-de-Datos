@@ -12,6 +12,13 @@ public:
 		this->clasificacion = clasificacion;
 	}
 
+	revista(const string& id, const string& titulo, const string& autor, const string& fecha, int valoracion, const string& ISSN, const string& clasificacion, int stock)
+		: RecursoBibliografico(id, titulo, autor, fecha, valoracion) {
+		this->ISSN = ISSN;
+		this->clasificacion = clasificacion;
+	}
+
+
 	revista() : RecursoBibliografico() {
 		this->ISSN = "";
 		this->clasificacion = "";
@@ -38,6 +45,16 @@ public:
 		cout << "=====================" << endl;
 	}
 
-	
+	void mostrarprestamo() const override {
+		cout << "=== REVISTA ===" << endl;
+		cout << "ID: " << id << endl;
+		cout << "Titulo: " << titulo << endl;
+		cout << "Autor: " << autor << endl;
+		cout << "Fecha: " << fecha << endl;
+		cout << "Valoracion: " << valoracion << "/5" << endl;
+		cout << "ISSN: " << ISSN << endl;
+		cout << "Clasificacion: " << clasificacion << endl;
+		cout << "=====================" << endl;
+	}
 
 };

@@ -6,6 +6,8 @@ using namespace std;
 
 
 int main() {
+    HashTable<Prestamo> tablaOrdenada;
+
     cargarLibros("archivos_txt/libros.txt");
     cargarRevistas("archivos_txt/revistas.txt");
     cargarTesis("archivos_txt/tesis.txt");
@@ -13,6 +15,7 @@ int main() {
 	cargarBibliotecario("archivos_txt/bibliotecarios.txt");
 	cargarAdministrador("archivos_txt/admins.txt");
 	cargarPrestamo("archivos_txt/prestamos.txt");
+    cargarTablaPrestamosConfirmados("archivos_txt/prestamostablahash.txt", tablaOrdenada);
     char opcion;
     do {
         system("cls");

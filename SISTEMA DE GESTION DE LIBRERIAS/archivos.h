@@ -60,12 +60,28 @@ void guardarBibliotecario(const Bibliotecario& bibliotecario) {
 
 void guardarPrestamo(const Prestamo& prestamo) {
     stringstream ss;
-    ss << prestamo.getId() << "|" << prestamo.getFecha() << "|" << prestamo.getSolicitante()->getId() << "|"
-        << prestamo.getRecurso()->getId() << "|" << prestamo.getEstado();
-	escribirLineaEnArchivo("archivos_txt/prestamos.txt", ss.str());
+    ss << prestamo.getId() << "|" << prestamo.getFecha() << "|" << prestamo.getSolicitante()->getId() << "|" << prestamo.getSolicitante()->getNombre() << "|"
+        << prestamo.getRecurso()->getId() << "|" << prestamo.getRecurso()->getTitulo() << "|" << prestamo.getEstado();
+    escribirLineaEnArchivo("archivos_txt/prestamos.txt", ss.str());
 }
 
+void guardarPrestamosConfirmadosDesdeHashTable(HashTable<Prestamo>& tabla) {
+    stringstream ss;
+    for (int i = 0; i < 50; i++) {
+        Nodo<Prestamo>* actual = tabla.getCubeta(i);
+        while (actual != nullptr) {
+            if (actual->dato.getEstado() == "Confirmado") {
+                ss << actual->dato.getId() << "|"
+                    << actual->dato.getFecha() << "|"
+                    << actual->dato.getSolicitante()->getId() << "|"
+                    << actual->dato.getSolicitante()->getNombre() << "|"
+                    << actual->dato.getRecurso()->getId() << "|"
+                    << actual->dato.getRecurso()->getTitulo() << "|"
+                    << actual->dato.getEstado() << "\n";
+            }
+            actual = actual->siguiente;
+        }
+    }
+    escribirLineaEnArchivo("archivos_txt/prestamostablahash.txt", ss.str());
 
-
-
-
+}

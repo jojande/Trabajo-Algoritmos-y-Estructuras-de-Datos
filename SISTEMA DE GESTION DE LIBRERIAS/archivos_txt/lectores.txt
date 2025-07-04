@@ -1,4 +1,2 @@
-
-IDLE01|Jose|2503
+IDLE01|Jose|123
 IDLE02|Diaz|0000
-IDLE03|Valeria|Sparkie

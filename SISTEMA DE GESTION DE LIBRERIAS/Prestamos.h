@@ -1,11 +1,11 @@
 #pragma once
-#include <memory>
 #include "EstructurasDatos.h"
 #include "RecursoBibliografico.h"
 #include "lector.h"
 #include "libro.h"
 #include "tesis.h"
 #include "revista.h"
+#include "Fecha.h"
 
 class Prestamo {
 private:
@@ -14,6 +14,7 @@ private:
 	RecursoBibliografico* recurso; // Puede ser libro, revista o tesis
 	string fecha;
 	string estado;
+	Fecha fechaVencimiento;
 
 public:
 
@@ -23,15 +24,20 @@ public:
 		this->solicitante = solicitante;
 		this->recurso = recurso;
 		this->estado = estado;
+		int dias = 5 + rand() % 10;
+		this->fechaVencimiento = Fecha(fecha); 
+		this->fechaVencimiento.sumarDias(dias);   
 	}
 
 	void detallesPrestamo() {
 		cout << "ID prestamo: " << id << "\n";
 		cout << "Solicitado por: " << solicitante->getId() << "\n";
-		cout << "Fecha: " << fecha << "\n";
+		cout << "Nombre: " << solicitante->getNombre() << "\n";
+		cout << "Fecha de prestamo: " << fecha << "\n";
+		cout << "Fecha de vencimiento: " << fechaVencimiento.toString() << "\n";
 		cout << "Estado: " << estado << "\n";
 		cout << "----Detalles----\n";
-		recurso->mostrar();
+		recurso->mostrarprestamo();
 	}
 
 	string getId() const { return id; }
@@ -39,9 +45,12 @@ public:
 	Lector* getSolicitante() const { return solicitante; }
 	RecursoBibliografico* getRecurso() const { return recurso; }
 	string getEstado() const { return estado; }
+	Fecha getFechaVencimiento() const { return fechaVencimiento; }
 
 	void setEstado(const string& nuevoEstado) {
 		estado = nuevoEstado;
 	}
-			
+	void setFechaVencimiento(const Fecha& nuevaFecha) {
+		fechaVencimiento = nuevaFecha;
+	}
 };
