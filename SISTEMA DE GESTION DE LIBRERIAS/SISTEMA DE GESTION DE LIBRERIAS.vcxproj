@@ -134,6 +134,8 @@
     <ClInclude Include="administrador.h" />
     <ClInclude Include="archivos.h" />
     <ClInclude Include="bibliotecario.h" />
+    <ClInclude Include="ControlVencimientos.h" />
+    <ClInclude Include="Fecha.h" />
     <ClInclude Include="lector.h" />
     <ClInclude Include="libro.h" />
     <ClInclude Include="EstructurasDatos.h" />

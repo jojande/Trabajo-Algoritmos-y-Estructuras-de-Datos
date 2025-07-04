@@ -12,6 +12,13 @@ public:
 		this->editorial = editorial;
 	}
 
+	libro(const string& id, const string& titulo, const string& autor, const string& fecha, int valoracion, const string& genero, const string& editorial, int stock)
+		: RecursoBibliografico(id, titulo, autor, fecha, valoracion) {
+		this->genero = genero;
+		this->editorial = editorial;
+	}
+
+
 	libro() : RecursoBibliografico() {
 		this->genero = "";
 		this->editorial = "";
@@ -35,8 +42,20 @@ public:
 		cout << "Valoracion: " << valoracion << "/5 estrellas" << endl;
 		cout << "Genero: " << genero << endl;
 		cout << "Editorial: " << editorial << endl;
+		cout << "Stock: " << stock << endl;
 		cout << "=====================" << endl;
 	}
 
+	void mostrarprestamo() const override {
+		cout << "Stock: " << stock << endl;
+		cout << "ID: " << id << endl;
+		cout << "Titulo: " << titulo << endl;
+		cout << "Autor: " << autor << endl;
+		cout << "Fecha: " << fecha << endl;
+		cout << "Valoracion: " << valoracion << "/5 estrellas" << endl;
+		cout << "Genero: " << genero << endl;
+		cout << "Editorial: " << editorial << endl;
+		cout << "=====================" << endl;
+	}
 	
 };

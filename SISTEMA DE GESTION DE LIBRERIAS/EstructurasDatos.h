@@ -251,3 +251,125 @@ public:
     }
 
 };
+
+template <typename T>
+class HashTable {
+private:
+    static const int tamanio = 50;  
+    ListaSimple<T> tabla[tamanio];
+
+    int funcionHash(const string& clave) {
+        int suma = 0;
+        for (char c : clave) {
+            suma += c;
+        }
+        return suma % tamanio;
+    }
+
+public:
+    void insertar(const T& elemento) {
+        int index = funcionHash(elemento.getId());
+        tabla[index].insertarAlFinal(elemento);
+    }
+
+    T* buscar(const string& id) {
+        int index = funcionHash(id);
+        return tabla[index].hallarID(id);
+    }
+
+    bool eliminar(const string& id) {
+        int index = funcionHash(id);
+        return tabla[index].eliminarPorID(id);
+    }
+    ListaSimple<T>* getTabla() {
+        return tabla;  
+    }
+
+    void insertarEnCubeta(const T& elemento, int cubetaIndex) {
+        if (cubetaIndex >= 0 && cubetaIndex < tamanio) {
+            tabla[cubetaIndex].insertarAlFinal(elemento);
+        }
+    }
+
+    Nodo<T>* getCubeta(int index) {
+        if (index >= 0 && index < tamanio)
+            return tabla[index].getCabeza();
+        return nullptr;
+    }
+
+    void mostrar() {
+        for (int i = 0; i < tamanio; ++i) {
+            cout << "[" << i << "]: ";
+            Nodo<T>* actual = tabla[i].getCabeza();
+            while (actual != nullptr) {
+                cout << "(" << actual->dato.getId() << ", " << actual->dato.getSolicitante()->getNombre() << ") ";
+                actual = actual->siguiente;
+            }
+            cout << "\n";
+        }
+    }
+};
+
+template <typename T>
+class NodoArbol {
+public:
+    T dato;
+    NodoArbol* izq;
+    NodoArbol* der;
+
+    NodoArbol(T _dato) : dato(_dato), izq(nullptr), der(nullptr) {}
+};
+
+template <typename T>
+class ArbolBinario {
+private:
+    NodoArbol<T>* raiz;
+
+public:
+    ArbolBinario() : raiz(nullptr) {}
+    ~ArbolBinario() { liberarMemoria(raiz); }
+
+
+
+    void insertar(NodoArbol<T>*& nodo, const T& nuevo) {
+        if (nodo == nullptr) {
+            nodo = new NodoArbol<T>(nuevo);
+        }
+        else if (nuevo.getFechaVencimiento() < nodo->dato.getFechaVencimiento()) {
+            insertar(nodo->izq, nuevo);
+        }
+        else {
+            insertar(nodo->der, nuevo);
+        }
+    }
+    
+    NodoArbol<T>* getRaiz() const {
+        return raiz;
+    }
+
+    void inOrden(NodoArbol<T>* nodo) {
+        if (nodo != nullptr) {
+            inOrden(nodo->izq);
+            cout << nodo->dato.getResumen() << endl;
+            inOrden(nodo->der);
+        }
+    }
+
+    void liberarMemoria(NodoArbol<T>* nodo) {
+        if (nodo) {
+            liberarMemoria(nodo->izq);
+            liberarMemoria(nodo->der);
+            delete nodo;
+        }
+    }
+
+
+    void insertar(const T& nuevo) {
+        insertar(raiz, nuevo);
+    }
+
+    void mostrarInOrden() {
+        cout << "Préstamos ordenados por fecha de vencimiento:\n";
+        inOrden(raiz);
+    }
+};

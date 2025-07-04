@@ -7,6 +7,7 @@
 #include "tesis.h"
 #include "revista.h"
 #include "archivos.h"
+#include "ControlVencimientos.h"
 #include <conio.h>
 ListaSimple<libro> listaLibros;
 ListaSimple<tesis> listaTesis;
@@ -16,35 +17,43 @@ ListaSimple<Lector> listaLectores;
 ListaSimple<Bibliotecario> listaBibliotecarios;
 
 Cola<Prestamo> colaPrestamos;
+HashTable<Prestamo> tablaOrdenada;
 
-int obtenerUltimoID(const string& archivoNombre, const string& prefijo) {
+ControlVencimientos heap;
+
+int obtenerIDDisponible(const string& archivoNombre, const string& prefijo) {
     ifstream archivo(archivoNombre);
     if (!archivo.is_open()) {
         cout << "No se pudo abrir el archivo: " << archivoNombre << endl;
-        return 0;
+        return 1; // Empezar desde 1 si el archivo no existe
     }
 
+    bool usados[100] = { false }; // IDLI01 a IDLI99 (hasta 99 recursos)
     string linea;
-    int maxID = 0;
 
     while (getline(archivo, linea)) {
         if (linea.substr(0, prefijo.size()) == prefijo) {
             string numStr = linea.substr(prefijo.size(), 2);
             try {
                 int num = stoi(numStr);
-                if (num > maxID) {
-                    maxID = num;
-                }
+                if (num >= 1 && num <= 99)
+                    usados[num] = true;
             }
             catch (...) {
-                // Ignorar errores por si hay líneas mal formateadas
+
             }
         }
     }
-
     archivo.close();
-    return maxID;
+
+    for (int i = 1; i <= 99; ++i) {
+        if (!usados[i])
+            return i;
+    }
+
+    return 100;
 }
+
 
 
 string generarID(const string& tipo, int contador) {
@@ -97,15 +106,16 @@ int leerEntero(const string& mensaje) {
 }
 
 void registrarLibro() {
-    int ultimoID = obtenerUltimoID("archivos_txt/libros.txt", "IDLI");
-    string id = generarID("libro", ultimoID + 1);
+    int disponibleID = obtenerIDDisponible("archivos_txt/libros.txt", "IDLI");
+    string id = generarID("libro", disponibleID);
     string titulo = leerCadena("Titulo: ");
     string autor = leerCadena("Autor: ");
     string fecha = leerCadena("Fecha: ");
     int valoracion = leerEntero("Valoracion: ");
     string genero = leerCadena("Genero: ");
     string editorial = leerCadena("Editorial: ");
-    libro nuevo(id, titulo, autor, fecha, valoracion, genero, editorial);
+    int stock = leerEntero("Stock: ");
+    libro nuevo(id, titulo, autor, fecha, valoracion, genero, editorial, stock);
     listaLibros.insertarAlFinal(nuevo);
     guardarLibro(nuevo);
 
@@ -113,15 +123,17 @@ void registrarLibro() {
 }
 
 void registrarRevista() {
-    int ultimoID = obtenerUltimoID("archivos_txt/revistas.txt", "IDRE");
-    string id = generarID("libro", ultimoID + 1);
+    int disponibleID = obtenerIDDisponible("archivos_txt/revistas.txt", "IDRE");
+    string id = generarID("libro", disponibleID);
     string titulo = leerCadena("Titulo: ");
     string autor = leerCadena("Autor: ");
     string fecha = leerCadena("Fecha: ");
     int valoracion = leerEntero("Valoracion: ");
     string ISSN = leerCadena("ISSN: ");
     string clasificacion = leerCadena("Clasificacion: ");
-    revista nuevo(id, titulo, autor, fecha, valoracion, ISSN, clasificacion);
+    int stock = leerEntero("Stock: ");
+
+    revista nuevo(id, titulo, autor, fecha, valoracion, ISSN, clasificacion,stock);
     listaRevistas.insertarAlFinal(nuevo);
     guardarRevista(nuevo);
 
@@ -129,15 +141,17 @@ void registrarRevista() {
 }
 
 void registrarTesis() {
-    int ultimoID = obtenerUltimoID("archivos_txt/tesis.txt", "IDTE");
-    string id = generarID("libro", ultimoID + 1);
+    int disponibleID = obtenerIDDisponible("archivos_txt/tesis.txt", "IDTE");
+    string id = generarID("libro", disponibleID);
     string titulo = leerCadena("Titulo: ");
     string autor = leerCadena("Autor: ");
     string fecha = leerCadena("Fecha: ");
     int valoracion = leerEntero("Valoracion: ");
     string universidad = leerCadena("Universidad: ");
     string pais = leerCadena("Pais: ");
-    tesis nuevo(id, titulo, autor, fecha, valoracion, universidad, pais);
+    int stock = leerEntero("Stock: ");
+
+    tesis nuevo(id, titulo, autor, fecha, valoracion, universidad, pais, stock);
     listaTesis.insertarAlFinal(nuevo);
     guardarTesis(nuevo);
 
@@ -254,6 +268,8 @@ void cargarLibros(const string& nombreArchivo) {
         size_t pos4 = linea.find('|', pos3 + 1);
         size_t pos5 = linea.find('|', pos4 + 1);
         size_t pos6 = linea.find('|', pos5 + 1);
+        size_t pos7 = linea.find('|', pos6 + 1);
+
 
         try {
             string id = linea.substr(0, pos1);
@@ -262,7 +278,8 @@ void cargarLibros(const string& nombreArchivo) {
             string fecha = linea.substr(pos3 + 1, pos4 - pos3 - 1);
             int valoracion = stoi(linea.substr(pos4 + 1, pos5 - pos4 - 1));
             string genero = linea.substr(pos5 + 1, pos6 - pos5 - 1);
-            string editorial = linea.substr(pos6 + 1);
+            string editorial = linea.substr(pos6 + 1, pos7 - pos6 - 1);
+            int stock = stoi(linea.substr(pos7 + 1));
 
             libro nuevo;
             nuevo.setId(id);
@@ -272,6 +289,7 @@ void cargarLibros(const string& nombreArchivo) {
             nuevo.setValoracion(valoracion);
             nuevo.setGenero(genero);
             nuevo.setEditorial(editorial);
+            nuevo.setStock(stock);
 
             listaLibros.insertarAlFinal(nuevo);
         }
@@ -294,6 +312,8 @@ void cargarRevistas(const string& nombreArchivo) {
         size_t pos4 = linea.find('|', pos3 + 1);
         size_t pos5 = linea.find('|', pos4 + 1);
         size_t pos6 = linea.find('|', pos5 + 1);
+        size_t pos7 = linea.find('|', pos6 + 1);
+
 		try {
 			string id = linea.substr(0, pos1);
 			string titulo = linea.substr(pos1 + 1, pos2 - pos1 - 1);
@@ -301,7 +321,9 @@ void cargarRevistas(const string& nombreArchivo) {
 			string fecha = linea.substr(pos3 + 1, pos4 - pos3 - 1);
 			int valoracion = stoi(linea.substr(pos4 + 1, pos5 - pos4 - 1));
 			string ISSN = linea.substr(pos5 + 1, pos6 - pos5 - 1);
-			string clasificacion = linea.substr(pos6 + 1);
+			string clasificacion = linea.substr(pos6 + 1,pos7 - pos6 -1);
+            int stock = stoi(linea.substr(pos7 + 1));
+
 			revista nuevo;
 			nuevo.setId(id);
 			nuevo.setTitulo(titulo);
@@ -310,6 +332,8 @@ void cargarRevistas(const string& nombreArchivo) {
 			nuevo.setValoracion(valoracion);
 			nuevo.setISSN(ISSN);
 			nuevo.setClasificacion(clasificacion);
+            nuevo.setStock(stock);
+
 			listaRevistas.insertarAlFinal(nuevo);
 		}
 		catch (const exception& e) {
@@ -329,6 +353,8 @@ void cargarTesis(const string& nombreArchivo) {
         size_t pos4 = linea.find('|', pos3 + 1);
         size_t pos5 = linea.find('|', pos4 + 1);
         size_t pos6 = linea.find('|', pos5 + 1);
+        size_t pos7 = linea.find('|', pos6 + 1);
+
         try {
             string id = linea.substr(0, pos1);
             string titulo = linea.substr(pos1 + 1, pos2 - pos1 - 1);
@@ -336,7 +362,9 @@ void cargarTesis(const string& nombreArchivo) {
             string fecha = linea.substr(pos3 + 1, pos4 - pos3 - 1);
             int valoracion = stoi(linea.substr(pos4 + 1, pos5 - pos4 - 1));
             string universidad = linea.substr(pos5 + 1, pos6 - pos5 - 1);
-            string pais = linea.substr(pos6 + 1);
+            string pais = linea.substr(pos6 + 1,pos7 - pos6 -1);
+            int stock = stoi(linea.substr(pos7 + 1));
+
             tesis nuevo;
             nuevo.setId(id);
             nuevo.setTitulo(titulo);
@@ -345,6 +373,8 @@ void cargarTesis(const string& nombreArchivo) {
             nuevo.setValoracion(valoracion);
             nuevo.setUniversidad(universidad);
             nuevo.setPais(pais);
+            nuevo.setStock(stock);
+
             listaTesis.insertarAlFinal(nuevo);
         }
         catch (const exception& e) {
@@ -418,41 +448,66 @@ void cargarAdministrador(const string& nombreArchivo) {
 }
 
 void cargarPrestamo(const string& nombreArchivo) {
-	ifstream archivo(nombreArchivo);
+    ifstream archivo(nombreArchivo);
     string linea;
+
     while (getline(archivo, linea)) {
-		if (linea.empty()) continue;
-		size_t pos1 = linea.find('|');
-		size_t pos2 = linea.find('|', pos1 + 1);
-		size_t pos3 = linea.find('|', pos2 + 1);
-		size_t pos4 = linea.find('|', pos3 + 1);
-		try {
-			string id = linea.substr(0, pos1);
-			string fecha = linea.substr(pos1 + 1, pos2 - pos1 - 1);
-			string idLector = linea.substr(pos2 + 1, pos3 - pos2 - 1);
-			string idRecurso = linea.substr(pos3 + 1, pos4 - pos3 - 1);
-			string estado = linea.substr(pos4 + 1);
-			Lector* solicitante = listaLectores.hallarID(idLector);
-			RecursoBibliografico* recurso = nullptr;
-			if (idRecurso.substr(0, 4) == "IDLI") {
-				recurso = listaLibros.hallarID(idRecurso);
-			}
-			else if (idRecurso.substr(0, 4) == "IDRE") {
-				recurso = listaRevistas.hallarID(idRecurso);
-			}
-			else if (idRecurso.substr(0, 4) == "IDTE") {
-				recurso = listaTesis.hallarID(idRecurso);
-			}
-			if (solicitante && recurso) {
-				Prestamo nuevoPrestamo(id, fecha, solicitante, recurso, estado);
-				colaPrestamos.encolar(nuevoPrestamo);
-			}
-		}
-		catch (const exception& e) {
-			cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
-		}
-	}
-	archivo.close();
+        if (linea.empty()) continue;
+
+        try {
+            // Buscar las posiciones de los 6 separadores '|'
+            size_t p1 = linea.find('|');
+            size_t p2 = linea.find('|', p1 + 1);
+            size_t p3 = linea.find('|', p2 + 1);
+            size_t p4 = linea.find('|', p3 + 1);
+            size_t p5 = linea.find('|', p4 + 1);
+            size_t p6 = linea.find('|', p5 + 1);
+
+            if (p6 == string::npos) {
+                cerr << "Línea mal formateada:\n" << linea << endl;
+                continue;
+            }
+
+            string id = linea.substr(0, p1);
+            string fecha = linea.substr(p1 + 1, p2 - p1 - 1);
+            string idLector = linea.substr(p2 + 1, p3 - p2 - 1);
+            string nombreLector = linea.substr(p3 + 1, p4 - p3 - 1); // opcional
+            string idRecurso = linea.substr(p4 + 1, p5 - p4 - 1);
+            string tituloRecurso = linea.substr(p5 + 1, p6 - p5 - 1); // opcional
+            string estado = linea.substr(p6 + 1); // hasta fin de línea
+
+            Lector* solicitante = listaLectores.hallarID(idLector);
+            RecursoBibliografico* recurso = nullptr;
+
+            if (idRecurso.substr(0, 4) == "IDLI") {
+                recurso = listaLibros.hallarID(idRecurso);
+            }
+            else if (idRecurso.substr(0, 4) == "IDRE") {
+                recurso = listaRevistas.hallarID(idRecurso);
+            }
+            else if (idRecurso.substr(0, 4) == "IDTE") {
+                recurso = listaTesis.hallarID(idRecurso);
+            }
+
+            if (solicitante && recurso) {
+                Prestamo nuevoPrestamo(id, fecha, solicitante, recurso, estado);
+                colaPrestamos.encolar(nuevoPrestamo);
+
+                // Si el préstamo está pendiente, reducimos el stock
+                if (estado == "Pendiente") {
+                    recurso->setStock(recurso->getStock() - 1);
+                }
+            }
+            else {
+                cerr << "No se encontró lector o recurso en la línea:\n" << linea << endl;
+            }
+        }
+        catch (const exception& e) {
+            cerr << "Error procesando la línea:\n" << linea << "\n" << e.what() << endl;
+        }
+    }
+
+    archivo.close();
 }
 
 void eliminarLibro() {
@@ -474,7 +529,7 @@ void eliminarLibro() {
         while (actual != nullptr) {
             libro lib = actual->dato;
             archivo << lib.getId() << "|" << lib.getTitulo() << "|" << lib.getAutor() << "|" << lib.getFecha() << "|"
-                << lib.getValoracion() << "|" << lib.getGenero() << "|" << lib.getEditorial() << endl;
+                << lib.getValoracion() << "|" << lib.getGenero() << "|" << lib.getEditorial() << "|" << lib.getStock() << endl;
             actual = actual->siguiente;
         }
 
@@ -487,6 +542,51 @@ void eliminarLibro() {
     }
 
 }
+void cargarTablaPrestamosConfirmados(const string& nombreArchivo, HashTable<Prestamo>& tablaOrdenada) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        return;
+    }
+
+    string linea;
+    while (getline(archivo, linea)) {
+        if (linea.empty()) continue;
+
+        stringstream ss(linea);
+        string id, fecha, idLector, nombreLector, idRecurso, tituloRecurso, estado;
+
+        getline(ss, id, '|');
+        getline(ss, fecha, '|');
+        getline(ss, idLector, '|');
+        getline(ss, nombreLector, '|');
+        getline(ss, idRecurso, '|');
+        getline(ss, tituloRecurso, '|');
+        getline(ss, estado, '|');
+
+        if (estado != "Confirmado") continue;
+
+        Lector* lector = listaLectores.hallarID(idLector);
+        if (!lector) continue;
+
+        RecursoBibliografico* recurso = nullptr;
+        if (idRecurso.find("IDLI") == 0)
+            recurso = listaLibros.hallarID(idRecurso);
+        else if (idRecurso.find("IDRE") == 0)
+            recurso = listaRevistas.hallarID(idRecurso);
+        else if (idRecurso.find("IDTE") == 0)
+            recurso = listaTesis.hallarID(idRecurso);
+
+        if (!recurso) continue;
+
+        Prestamo p(id, fecha, lector, recurso, estado);
+        tablaOrdenada.insertar(p);
+    }
+
+    archivo.close();
+}
+
+
 
 void eliminarRevista() {
     string id;
@@ -506,7 +606,7 @@ void eliminarRevista() {
         while (actual != nullptr) {
             revista lib = actual->dato;
             archivo << lib.getId() << "|" << lib.getTitulo() << "|" << lib.getAutor() << "|" << lib.getFecha() << "|"
-                << lib.getValoracion() << "|" << lib.getISSN() << "|" << lib.getClasificacion() << endl;
+                << lib.getValoracion() << "|" << lib.getISSN() << "|" << lib.getClasificacion() << "|" << lib.getStock() << endl;
             actual = actual->siguiente;
         }
 
@@ -537,7 +637,7 @@ void eliminarTesis() {
         while (actual != nullptr) {
             tesis lib = actual->dato;
             archivo << lib.getId() << "|" << lib.getTitulo() << "|" << lib.getAutor() << "|" << lib.getFecha() << "|"
-                << lib.getValoracion() << "|" << lib.getUniversidad() << "|" << lib.getPais() << endl;
+                << lib.getValoracion() << "|" << lib.getUniversidad() << "|" << lib.getPais() << "|" << lib.getStock() << endl;
             actual = actual->siguiente;
         }
 
@@ -780,32 +880,48 @@ void administrarPrestamos() {
         cout << "No hay prestamos registrados.\n";
         return;
     }
+
     colaPrestamos.mostrarTodo();
+
     string idPrestamo;
     cout << "Ingrese el ID del prestamo a administrar: ";
     cin >> idPrestamo;
+
     Nodo<Prestamo>* prestamo = colaPrestamos.hallarID(idPrestamo);
     if (!prestamo) {
         cout << "Prestamo no encontrado.\n";
         return;
     }
+
     cout << "Detalles del prestamo:\n";
-	prestamo->dato.detallesPrestamo();
+    prestamo->dato.detallesPrestamo();
+
     int opcion;
     cout << "Seleccione una opcion:\n";
     cout << "1. Confirmar prestamo\n";
     cout << "2. Denegar prestamo\n";
     cout << "0. Salir\n";
     cin >> opcion;
+
     if (opcion == 1) {
-        prestamo->dato.setEstado("Confirmado");
-        cout << "Prestamo confirmado.\n";
+        RecursoBibliografico* recurso = prestamo->dato.getRecurso();
+        int stockActual = recurso->getStock();
+
+        if (stockActual > 0) {
+            recurso->setStock(stockActual - 1);
+            prestamo->dato.setEstado("Confirmado");
+            cout << "Prestamo confirmado. Nuevo stock: " << recurso->getStock() << "\n";
+        }
+        else {
+            cout << "No se puede confirmar el préstamo. Stock agotado.\n";
+        }
     }
     else if (opcion == 2) {
         prestamo->dato.setEstado("Denegado");
         cout << "Prestamo denegado.\n";
     }
 }
+
 
 void pausar() {
     cout << "\nPresione cualquier tecla para continuar...";
@@ -818,31 +934,33 @@ int extraerAnio(const string& fecha) {
 
 template <typename T>
 int particionPorValoracion(ListaSimple<T>& lista, int p, int r) {
-    int pivote = lista.getPorIndice(r).getValoracion();
-    int i = p - 1;
+    int pivote = lista.getPorIndice(r).getValoracion(); // Costo: n (getPorIndice) + 1 (.getValoracion) + 1 (asignación) = n + 2
+    int i = p - 1; // 2
 
-    for (int j = p; j < r; ++j) {
-        if (lista.getPorIndice(j).getValoracion() <= pivote) {
-            i++;
-            T tempI = lista.getPorIndice(i);
-            T tempJ = lista.getPorIndice(j);
-            lista.setPorIndice(i, tempJ);
-            lista.setPorIndice(j, tempI);
+    for (int j = p; j < r; ++j) { // ? 1 + (r - p)(1 + INTERNA + 2)
+        if (lista.getPorIndice(j).getValoracion() <= pivote) { // ? n + 1 (valoracion) + 1 (comparación)
+            i++; // 1
+            T tempI = lista.getPorIndice(i); //n
+            T tempJ = lista.getPorIndice(j); //n
+            lista.setPorIndice(i, tempJ); //n
+            lista.setPorIndice(j, tempI); //n
         }
     }
 
-    T tempI = lista.getPorIndice(i + 1);
-    T tempR = lista.getPorIndice(r);
-    lista.setPorIndice(i + 1, tempR);
-    lista.setPorIndice(r, tempI);
+    T tempI = lista.getPorIndice(i + 1); //n
+    T tempR = lista.getPorIndice(r); //n
+    lista.setPorIndice(i + 1, tempR); //n 
+    lista.setPorIndice(r, tempI); //n 
 
     return i + 1;
+    //  n + 4 + 6n*n + 3n + 4n = 6n*n + 8n + 4
+    // O(n^2)
 }
 
 template <typename T>
 void quickSortPorValoracion(ListaSimple<T>& lista, int p, int r) {
     if (p < r) {
-        int q = particionPorValoracion(lista, p, r);
+        int q = particionPorValoracion(lista, p, r);  // O(n*n)
         quickSortPorValoracion(lista, p, q - 1);
         quickSortPorValoracion(lista, q + 1, r);
     }
@@ -850,32 +968,34 @@ void quickSortPorValoracion(ListaSimple<T>& lista, int p, int r) {
 
 template <typename T>
 int particionPorAnio(ListaSimple<T>& lista, int p, int r) {
-    int anioPivote = extraerAnio(lista.getPorIndice(r).getFecha());
-    int i = p - 1;
+    int anioPivote = extraerAnio(lista.getPorIndice(r).getFecha()); // Costo: n (getPorIndice) + 1 (.getFecha) + 1 (asignación) = n + 2
+    int i = p - 1; // 2
 
-    for (int j = p; j < r; ++j) {
-        if (extraerAnio(lista.getPorIndice(j).getFecha()) <= anioPivote) {
-            i++;
-            T tempI = lista.getPorIndice(i);
-            T tempJ = lista.getPorIndice(j);
-            lista.setPorIndice(i, tempJ);
-            lista.setPorIndice(j, tempI);
+    for (int j = p; j < r; ++j) { // ? 1 + (r - p)(1 + INTERNA + 2)
+        if (extraerAnio(lista.getPorIndice(j).getFecha()) <= anioPivote) { // ? n + 1 (Fecha) + 1 (comparación)
+            i++; // 1
+            T tempI = lista.getPorIndice(i);  //n
+            T tempJ = lista.getPorIndice(j); //n
+            lista.setPorIndice(i, tempJ);  //n
+            lista.setPorIndice(j, tempI);  //n
         }
     }
 
-    T tempI = lista.getPorIndice(i + 1);
-    T tempR = lista.getPorIndice(r);
-    lista.setPorIndice(i + 1, tempR);
-    lista.setPorIndice(r, tempI);
+    T tempI = lista.getPorIndice(i + 1);  //n
+    T tempR = lista.getPorIndice(r);  //n
+    lista.setPorIndice(i + 1, tempR);  //n
+    lista.setPorIndice(r, tempI);  //n
 
     return i + 1;
+    //  n + 4 + 6n*n + 3n + 4n = 6n*n + 8n + 4
+    // O(n^2)
 }
 
 template <typename T>
 void quickSortPorAnio(ListaSimple<T>& lista, int p, int r) {
-    if (p < r) {
-        int q = particionPorAnio(lista, p, r);
-        quickSortPorAnio(lista, p, q - 1);
+    if (p < r) { // 1 comparación ? 1
+        int q = particionPorAnio(lista, p, r); // 1 asignación + llamada a función ? O(n*n) si getPorIndice = O(n)
+        quickSortPorAnio(lista, p, q - 1); 
         quickSortPorAnio(lista, q + 1, r);
     }
 }
@@ -883,45 +1003,48 @@ void quickSortPorAnio(ListaSimple<T>& lista, int p, int r) {
 
 template <typename T>
 void merge(ListaSimple<T>& lista, int izq, int mid, int der) {
-    int n1 = mid - izq + 1;
-    int n2 = der - mid;
+    int n1 = mid - izq + 1; // 2
+    int n2 = der - mid;  // 2
 
-    T* L = new T[n1];
-    T* R = new T[n2];
+    T* L = new T[n1]; // 1
+    T* R = new T[n2]; // 1
 
-    for (int i = 0; i < n1; ++i)
-        L[i] = lista.getPorIndice(izq + i);
-    for (int j = 0; j < n2; ++j)
-        R[j] = lista.getPorIndice(mid + 1 + j);
+    for (int i = 0; i < n1; ++i) // 1 + n1(1 + INTERNA + 2)
+        L[i] = lista.getPorIndice(izq + i);  // 1 +O(n) acceso + 1  = n + 2
+    for (int j = 0; j < n2; ++j)   // 1 + n2(1 + INTERNA + 2)
+        R[j] = lista.getPorIndice(mid + 1 + j);  // 2  + O(n) + 1  = n + 3
 
-    int i = 0, j = 0, k = izq;
-    while (i < n1 && j < n2) {
-        if (L[i].getValoracion() <= R[j].getValoracion()) {
-            lista.setPorIndice(k++, L[i++]);
+    int i = 0, j = 0, k = izq; // 3
+    while (i < n1 && j < n2) { // 2
+        if (L[i].getValoracion() <= R[j].getValoracion()) { // 2 accesos + 2 llamadas + 1 comparación = 5
+            lista.setPorIndice(k++, L[i++]); //  O(n) acceso + 2 incrementos = n + 2
         }
         else {
-            lista.setPorIndice(k++, R[j++]);
+            lista.setPorIndice(k++, R[j++]); // O(n) acceso + 2 incrementos = n + 2
         }
     }
 
-    while (i < n1)
-        lista.setPorIndice(k++, L[i++]);
-    while (j < n2)
-        lista.setPorIndice(k++, R[j++]);
+    while (i < n1) // n
+        lista.setPorIndice(k++, L[i++]); //  O(n) + 2 incrementos = n + 2
+    while (j < n2) // n
+        lista.setPorIndice(k++, R[j++]); // O(n) + 2 incrementos = n + 2
 
-    delete[] L;
-    delete[] R;
+    delete[] L; // 1
+    delete[] R; // 1
+
 }
 
 template <typename T>
 void OrdenamientoMergeporValoracionRecursoBibliografico(ListaSimple<T>& lista, int izq, int der) {
-    if (izq < der) {
-        int mid = (izq + der) / 2;
+    if (izq < der) { // 1 comparación ? 1
+        int mid = (izq + der) / 2;  // 2 sumas + 1 división + 1 asignación = 4
         OrdenamientoMergeporValoracionRecursoBibliografico(lista, izq, mid);
         OrdenamientoMergeporValoracionRecursoBibliografico(lista, mid + 1, der);
-        merge(lista, izq, mid, der);
+        merge(lista, izq, mid, der); // llamada a merge ? O(n²)
     }
 }
+
+
 
 
 
@@ -998,6 +1121,59 @@ void gestionarRecursos(const string& tipo, int opcion) {
     pausar();
 }
 
+void insertarEnHashOrdenadoRec(NodoArbol<Prestamo>* nodo, HashTable<Prestamo>& tabla, int& indice, string& ultimaFecha) {
+    if (nodo != nullptr) {
+        insertarEnHashOrdenadoRec(nodo->izq, tabla, indice, ultimaFecha);
+
+        if (nodo->dato.getEstado() == "Confirmado") {
+            string fechaActual = nodo->dato.getFecha();  // formato: "04/07/2025"
+
+            if (fechaActual != ultimaFecha) {
+                ultimaFecha = fechaActual;
+                indice++;  // cambia de cubeta SOLO si cambia la fecha
+            }
+
+            tabla.insertarEnCubeta(nodo->dato, indice);
+        }
+
+        insertarEnHashOrdenadoRec(nodo->der, tabla, indice, ultimaFecha);
+    }
+}
+
+void insertarEnHashOrdenado(ArbolBinario<Prestamo>& arbol, HashTable<Prestamo>& tabla) {
+    int indice = -1;  
+    string ultimaFecha = "";
+    insertarEnHashOrdenadoRec(arbol.getRaiz(), tabla, indice, ultimaFecha);
+}
+
+
+void generarTablaVencimientos(Cola<Prestamo>& cola, HashTable<Prestamo>& tablaOrdenada) {
+    ArbolBinario<Prestamo> arbol;
+
+    // Insertar todos los préstamos del frente de la cola al árbol
+    Nodo<Prestamo>* actual = cola.getFrente();
+    while (actual != nullptr) {
+        arbol.insertar(actual->dato);
+        actual = actual->siguiente;
+    }
+
+    // Luego insertar en la hash table según orden del árbol
+    insertarEnHashOrdenado(arbol, tablaOrdenada);
+}
+
+void verTablaVencimientos(Cola<Prestamo>& colaPrestamos) {
+    HashTable<Prestamo> tablaOrdenada;
+    generarTablaVencimientos(colaPrestamos, tablaOrdenada);
+
+    cout << "\n==== Tabla de vencimientos ordenada ====\n";
+    tablaOrdenada.mostrar();  // Debes tener definida esta función
+
+    // Guardar solo préstamos confirmados
+    guardarPrestamosConfirmadosDesdeHashTable(tablaOrdenada);
+}
+
+
+
 void Ejectuar_menuAdministrador(const string& id, const string& nombre, const string& contrasenia) {
     Administrador admin(id, nombre, contrasenia);
     int opcionADMIN;
@@ -1020,6 +1196,28 @@ void Ejectuar_menuAdministrador(const string& id, const string& nombre, const st
         gestionarRecursos(tipo, opcionADMIN);
 
     } while (opcionADMIN != 0);
+}
+
+
+void mostrarProximoVencimiento(Cola<Prestamo>& cola) {
+    ControlVencimientos heap;
+    Nodo<Prestamo>* actual = cola.getFrente();
+    while (actual != nullptr) {
+        if (actual->dato.getEstado() == "Confirmado")
+            heap.agregarPrestamo(&actual->dato);
+        actual = actual->siguiente;
+    }
+
+    Prestamo* p = heap.obtenerMasUrgente();
+    if (p) {
+        cout << "Próximo prestamo por vencer:\n";
+        cout << "ID: " << p->getId() << ", Lector: " << p->getSolicitante()->getNombre()
+            << ", Titulo: " << p->getRecurso()->getTitulo()
+            << ", Fecha de vencimiento: " << p->getFechaVencimiento().toString() << endl;
+    }
+    else {
+        cout << "No hay prestamos confirmados.\n";
+    }
 }
 
 
@@ -1052,9 +1250,9 @@ void Ejecutar_menuLector(const string& id, const string& nombre, const string& c
 				cout << "Tipo de recurso no valido.\n";
 			}
             break;
-        case 2:
-            registrarPrestamo();
-            break;
+            case 2:
+                registrarPrestamo();
+                break;
         case 3:
             mostrarPrestamosPorLector(lector.getId());
             break;
@@ -1088,6 +1286,15 @@ void Ejectuar_menuBibliotecario(const string& id, const string& nombre, const st
         case 3:
             // Denegar prestamo
             cout << "Funcionalidad no implementada.\n";
+            break;
+        case 4:
+            verTablaVencimientos(colaPrestamos);
+            break;
+        case 5:
+            mostrarProximoVencimiento(colaPrestamos);
+            break;
+        case 6:
+            // metodo de ordenamiento Proximos en vencer 
             break;
         case 0:
             cout << "Saliendo...\n";

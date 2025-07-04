@@ -1,3 +1,2 @@
-IDPR01|14/06/2025|IDLE01|IDLI02|Pendiente
-IDPR02|14/06/2025|IDLE01|IDLI03|Pendiente
-IDPR03|14/16/2025|IDLE03|IDLI04|Pendiente
+IDPR01|04/07/2025|IDLE01|Jose|IDLI04|La ladrona de libros|Confirmado
+IDPR02|04/07/2025|IDLE02|Lucas|IDLI04|La ladrona de libros|Confirmado
