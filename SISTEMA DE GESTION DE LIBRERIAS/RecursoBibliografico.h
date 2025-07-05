@@ -23,7 +23,7 @@ public:
 		this->stock = 0;
 	}
 
-	RecursoBibliografico(const string& id, const string& titulo, const string& autor, const string& fecha, float valoracion, int stock) {
+	RecursoBibliografico(const string& id, const string& titulo, const string& autor, const string& fecha, int valoracion, int stock) {
 		this->id = id;
 		this->titulo = titulo;
 		this->autor = autor;
@@ -63,6 +63,10 @@ public:
 	void setStock(int stock) { this->stock = stock; }
 
 
-	
+	void incrementarStock() { stock++; }
+	void decrementarStock() {
+		if (stock > 0) stock--;
+	}
+
 	
 };

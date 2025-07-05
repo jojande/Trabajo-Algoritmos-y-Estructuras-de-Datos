@@ -1,0 +1,6 @@
+IDMU01|IDPR01|Laura Méndez|Álgebra Lineal|8.50|15/07/2025
+IDMU02|IDPR02|Carlos Díaz|Programación en C++|12.00|18/07/2025
+IDMU03|IDPR03|Ana Torres|Fundamentos de Física|5.25|14/07/2025
+IDMU04|IDPR04|Luis Paredes|Historia del Perú|10.75|20/07/2025
+IDMU05|IDPR05|María Salas|Análisis Matemático|7.30|13/07/2025
+IDMU06|IDPR06|Rafael Romero|Estructuras de Datos|9.00|16/07/2025

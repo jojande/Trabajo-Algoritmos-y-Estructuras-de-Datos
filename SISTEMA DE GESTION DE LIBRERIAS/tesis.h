@@ -38,6 +38,7 @@ public:
 		cout << "Valoracion: " << valoracion << "/5" << endl;
 		cout << "Universidad: " << universidad << endl;
 		cout << "Pais: " << pais << endl;
+		cout << "Stock: " << stock << endl;
 		cout << "=====================" << endl;
 	}
 

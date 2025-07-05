@@ -139,6 +139,7 @@
     <ClInclude Include="lector.h" />
     <ClInclude Include="libro.h" />
     <ClInclude Include="EstructurasDatos.h" />
+    <ClInclude Include="Multa.h" />
     <ClInclude Include="opciones.h" />
     <ClInclude Include="Prestamos.h" />
     <ClInclude Include="revista.h" />

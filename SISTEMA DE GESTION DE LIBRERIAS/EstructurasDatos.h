@@ -215,8 +215,7 @@ public:
         }
     }
 
-    // obtener el elemento del frente
-    Nodo<T>* getFrente() {
+    Nodo<T>* getFrente() const {
         return frente;
     }
 
@@ -299,13 +298,19 @@ public:
 
     void mostrar() {
         for (int i = 0; i < tamanio; ++i) {
-            cout << "[" << i << "]: ";
             Nodo<T>* actual = tabla[i].getCabeza();
-            while (actual != nullptr) {
-                cout << "(" << actual->dato.getId() << ", " << actual->dato.getSolicitante()->getNombre() << ") ";
-                actual = actual->siguiente;
+            if (actual) {
+                cout << "[" << i << "]: ";
+                while (actual != nullptr) {
+                    cout << "("
+                        << actual->dato.getId() << ", "
+                        << actual->dato.getSolicitante()->getNombre() << ", "
+                        << actual->dato.getFechaVencimiento().toString()
+                        << ") ";
+                    actual = actual->siguiente;
+                }
+                cout << "\n";
             }
-            cout << "\n";
         }
     }
 };
@@ -331,18 +336,20 @@ public:
 
 
 
-    void insertar(NodoArbol<T>*& nodo, const T& nuevo) {
+    void insertarRecursivo(NodoArbol<T>*& nodo, const T& nuevo) {
         if (nodo == nullptr) {
             nodo = new NodoArbol<T>(nuevo);
         }
-        else if (nuevo.getFechaVencimiento() < nodo->dato.getFechaVencimiento()) {
-            insertar(nodo->izq, nuevo);
+        else if (nuevo < nodo->dato) {
+            insertarRecursivo(nodo->izq, nuevo);
         }
         else {
-            insertar(nodo->der, nuevo);
+            insertarRecursivo(nodo->der, nuevo);
         }
     }
-    
+
+   
+
     NodoArbol<T>* getRaiz() const {
         return raiz;
     }
@@ -365,11 +372,11 @@ public:
 
 
     void insertar(const T& nuevo) {
-        insertar(raiz, nuevo);
+        insertarRecursivo(raiz, nuevo);
     }
 
     void mostrarInOrden() {
-        cout << "Préstamos ordenados por fecha de vencimiento:\n";
+        cout << "Elementos ordenados:\n";
         inOrden(raiz);
     }
 };

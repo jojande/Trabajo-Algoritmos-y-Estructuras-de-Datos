@@ -1,3 +1,3 @@
-IDLI02|C++|Djin|28|5|Computacion|Microsoft|5
-IDLI03|Java|Notch|20|4|Minecraft|Rubius|3
+IDLI02|Python|Djin|28|4|Computacion|Microsoft|10
+IDLI03|Java|Notch|20|4|Minecraft|Rubius|2
 IDLI04|La ladrona de libros|Marcus Zusak|2005|4|Drama|Picador Alfred A. KNOPF|6

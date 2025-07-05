@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "EstructurasDatos.h"
 #include "lector.h"
 #include "bibliotecario.h"
@@ -18,6 +18,7 @@ ListaSimple<Bibliotecario> listaBibliotecarios;
 
 Cola<Prestamo> colaPrestamos;
 HashTable<Prestamo> tablaOrdenada;
+ArbolBinario<Multa> arbolMultasSimuladas;
 
 ControlVencimientos heap;
 
@@ -80,7 +81,10 @@ string generarID(const string& tipo, int contador) {
 	else if (tipo == "prestamo") {
 		prefijo = "IDPR";
 	}
-	
+    else if (tipo == "multa") {
+        prefijo = "IDMU";
+    }
+
     string sufijo = (contador < 10 ? "0" : "") + to_string(contador);
 
     return prefijo + sufijo;
@@ -98,7 +102,7 @@ int leerEntero(const string& mensaje) {
     int valor;
     cout << mensaje;
     while (!(cin >> valor)) {
-        cout << "Entrada inválida. Intente de nuevo: ";
+        cout << "Entrada invÃ¡lida. Intente de nuevo: ";
         cin.clear();
         cin.ignore(1000, '\n');
     }
@@ -115,12 +119,14 @@ void registrarLibro() {
     string genero = leerCadena("Genero: ");
     string editorial = leerCadena("Editorial: ");
     int stock = leerEntero("Stock: ");
+
     libro nuevo(id, titulo, autor, fecha, valoracion, genero, editorial, stock);
     listaLibros.insertarAlFinal(nuevo);
-    guardarLibro(nuevo);
+    guardarLibrosEnArchivo(listaLibros); 
 
     cout << "Libro registrado.\n";
 }
+
 
 void registrarRevista() {
     int disponibleID = obtenerIDDisponible("archivos_txt/revistas.txt", "IDRE");
@@ -135,10 +141,11 @@ void registrarRevista() {
 
     revista nuevo(id, titulo, autor, fecha, valoracion, ISSN, clasificacion,stock);
     listaRevistas.insertarAlFinal(nuevo);
-    guardarRevista(nuevo);
+    guardarRevistasEnArchivo(listaRevistas);
 
     cout << "Revista registrada.\n";
 }
+
 
 void registrarTesis() {
     int disponibleID = obtenerIDDisponible("archivos_txt/tesis.txt", "IDTE");
@@ -153,7 +160,7 @@ void registrarTesis() {
 
     tesis nuevo(id, titulo, autor, fecha, valoracion, universidad, pais, stock);
     listaTesis.insertarAlFinal(nuevo);
-    guardarTesis(nuevo);
+    guardarTesisEnArchivo(listaTesis);
 
     cout << "Tesis registrada.\n";
 }
@@ -237,7 +244,7 @@ void registrarPrestamo() {
         break;
     }
     default:
-        cout << "Opción inválida.\n";
+        cout << "OpciÃ³n invÃ¡lida.\n";
         return;
     }
 
@@ -294,7 +301,7 @@ void cargarLibros(const string& nombreArchivo) {
             listaLibros.insertarAlFinal(nuevo);
         }
         catch (const exception& e) {
-            cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+            cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
         }
     }
 
@@ -337,7 +344,7 @@ void cargarRevistas(const string& nombreArchivo) {
 			listaRevistas.insertarAlFinal(nuevo);
 		}
 		catch (const exception& e) {
-			cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+			cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
 		}
 	}
 	archivo.close();
@@ -378,7 +385,7 @@ void cargarTesis(const string& nombreArchivo) {
             listaTesis.insertarAlFinal(nuevo);
         }
         catch (const exception& e) {
-            cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+            cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
         }
     }
     archivo.close();
@@ -399,7 +406,7 @@ void cargarLector(const string& nombreArchivo) {
             listaLectores.insertarAlFinal(nuevo);
         }
         catch (const exception& e) {
-            cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+            cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
         }
     }
     archivo.close();
@@ -420,7 +427,7 @@ void cargarBibliotecario(const string& nombreArchivo) {
 			listaBibliotecarios.insertarAlFinal(nuevo);
 		}
 		catch (const exception& e) {
-			cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+			cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
 		}
 	}
 	archivo.close();
@@ -441,7 +448,7 @@ void cargarAdministrador(const string& nombreArchivo) {
 			listaAdmins.insertarAlFinal(nuevo);
 		}
 		catch (const exception& e) {
-			cerr << "Error en la línea:\n" << linea << "\n" << e.what() << endl;
+			cerr << "Error en la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
 		}
 	}
 	archivo.close();
@@ -462,9 +469,11 @@ void cargarPrestamo(const string& nombreArchivo) {
             size_t p4 = linea.find('|', p3 + 1);
             size_t p5 = linea.find('|', p4 + 1);
             size_t p6 = linea.find('|', p5 + 1);
+            size_t p7 = linea.find('|', p6 + 1);
+
 
             if (p6 == string::npos) {
-                cerr << "Línea mal formateada:\n" << linea << endl;
+                cerr << "LÃ­nea mal formateada:\n" << linea << endl;
                 continue;
             }
 
@@ -474,8 +483,9 @@ void cargarPrestamo(const string& nombreArchivo) {
             string nombreLector = linea.substr(p3 + 1, p4 - p3 - 1); // opcional
             string idRecurso = linea.substr(p4 + 1, p5 - p4 - 1);
             string tituloRecurso = linea.substr(p5 + 1, p6 - p5 - 1); // opcional
-            string estado = linea.substr(p6 + 1); // hasta fin de línea
-
+            string fechaVencimiento = linea.substr(p6 + 1, p7 - p6 - 1); // hasta fin de lÃ­nea
+            string estado = linea.substr(p7 + 1); // hasta fin de lÃ­nea
+             
             Lector* solicitante = listaLectores.hallarID(idLector);
             RecursoBibliografico* recurso = nullptr;
 
@@ -493,17 +503,17 @@ void cargarPrestamo(const string& nombreArchivo) {
                 Prestamo nuevoPrestamo(id, fecha, solicitante, recurso, estado);
                 colaPrestamos.encolar(nuevoPrestamo);
 
-                // Si el préstamo está pendiente, reducimos el stock
+                // Si el prÃ©stamo estÃ¡ pendiente, reducimos el stock
                 if (estado == "Pendiente") {
                     recurso->setStock(recurso->getStock() - 1);
                 }
             }
             else {
-                cerr << "No se encontró lector o recurso en la línea:\n" << linea << endl;
+                cerr << "No se encontrÃ³ lector o recurso en la lÃ­nea:\n" << linea << endl;
             }
         }
         catch (const exception& e) {
-            cerr << "Error procesando la línea:\n" << linea << "\n" << e.what() << endl;
+            cerr << "Error procesando la lÃ­nea:\n" << linea << "\n" << e.what() << endl;
         }
     }
 
@@ -586,6 +596,44 @@ void cargarTablaPrestamosConfirmados(const string& nombreArchivo, HashTable<Pres
     archivo.close();
 }
 
+void cargarmultas(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo de multas.\n";
+        return;
+    }
+
+    string linea;
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string idMulta, idPrestamo, nombreLector, tituloRecurso, montoStr, fechaVenc;
+
+        getline(ss, idMulta, '|');
+        getline(ss, idPrestamo, '|');
+        getline(ss, nombreLector, '|');
+        getline(ss, tituloRecurso, '|');
+        getline(ss, montoStr, '|');
+        getline(ss, fechaVenc, '\n');
+
+        double monto = stod(montoStr);
+
+        Nodo<Prestamo>* nodoPrestamo = colaPrestamos.hallarID(idPrestamo);
+        if (nodoPrestamo == nullptr) {
+            cout << "No se encontrÃ³ el prÃ©stamo con ID " << idPrestamo << " para la multa " << idMulta << "\n";
+            continue;
+        }
+
+        Prestamo* ptrPrestamo = &(nodoPrestamo->dato);
+        Multa nuevaMulta(idMulta, ptrPrestamo);
+        nuevaMulta.setMonto(monto);
+
+        arbolMultasSimuladas.insertar(nuevaMulta);  // usa el global
+    }
+
+    archivo.close();
+    cout << "Multas cargadas correctamente.\n";
+}
+
 
 
 void eliminarRevista() {
@@ -663,7 +711,7 @@ void elimnarLector() {
     }
 }
 
-void elimnarBibliotecario() {
+void eliminarBibliotecario() {
     string id;
     cout << "Ingrese ID del Bibliotecario a eliminar: ";
     cin >> id;
@@ -676,7 +724,7 @@ void elimnarBibliotecario() {
     }
 }
 
-void elimnarAdmin() {
+void eliminarAdmin() {
     string id;
     cout << "Ingrese ID del Administrador a eliminar: ";
     cin >> id;
@@ -694,47 +742,69 @@ void modificarLibro() {
     cout << "Ingrese ID del libro a modificar: ";
     cin >> id;
 
-    
-    string titulo = leerCadena("Nuevo titulo: ");
-    string autor = leerCadena("Nuevo autor: ");
-    string fecha = leerCadena("Nueva fecha: ");
-    int valoracion = leerEntero("Nueva valoracion: ");
-    string genero = leerCadena("Nuevo genero: ");
-    string editorial = leerCadena("Nueva editorial: ");
+    libro* libroEncontrado = listaLibros.hallarID(id);
 
-    libro nuevosDatos(id, titulo, autor, fecha, valoracion, genero, editorial);
+    if (libroEncontrado) {
+        cout << "\nIngrese los nuevos datos del libro:\n";
 
-    if (listaLibros.modificarPorID(id, nuevosDatos)) {
+        string titulo = leerCadena("Nuevo titulo: ");
+        string autor = leerCadena("Nuevo autor: ");
+        string fecha = leerCadena("Nueva fecha: ");
+        int valoracion = leerEntero("Nueva valoracion: ");
+        string genero = leerCadena("Nuevo genero: ");
+        string editorial = leerCadena("Nueva editorial: ");
+        int stock = leerEntero("Nuevo stock: ");
+
+        libroEncontrado->setTitulo(titulo);
+        libroEncontrado->setAutor(autor);
+        libroEncontrado->setFecha(fecha);
+        libroEncontrado->setValoracion(valoracion);
+        libroEncontrado->setGenero(genero);
+        libroEncontrado->setEditorial(editorial);
+        libroEncontrado->setStock(stock);  
+
+        guardarLibrosEnArchivo(listaLibros); 
         cout << "Libro modificado correctamente.\n";
-        guardarLibro(nuevosDatos);  
     }
     else {
         cout << "Libro no encontrado.\n";
     }
 }
 
+
 void modificarRevista() {
     string id;
     cout << "Ingrese ID de la revista a modificar: ";
     cin >> id;
 
-    
-    string titulo = leerCadena("Nuevo titulo: ");
-    string autor = leerCadena("Nuevo autor: ");
-    string fecha = leerCadena("Nueva fecha: ");
-    int valoracion = leerEntero("Nueva valoracion: ");
-    string ISSN = leerCadena("Nuevo ISSN: ");
-    string clasificacion = leerCadena("Nueva clasificacion: ");
+    revista* revistaEncontrado = listaRevistas.hallarID(id);
 
-    revista nuevosDatos(id, titulo, autor, fecha, valoracion, ISSN, clasificacion);
+    if (revistaEncontrado) {
+        cout << "\nIngrese los nuevos datos de la revista:\n";
 
-    if (listaRevistas.modificarPorID(id, nuevosDatos)) {
+        string titulo = leerCadena("Nuevo titulo: ");
+        string autor = leerCadena("Nuevo autor: ");
+        string fecha = leerCadena("Nueva fecha: ");
+        int valoracion = leerEntero("Nueva valoracion: ");
+        string ISSN = leerCadena("Nuevo ISSN: ");
+        string clasificacion = leerCadena("Nueva clasificacion: ");
+        int stock = leerEntero("Nuevo stock: ");
+
+        revistaEncontrado->setTitulo(titulo);
+        revistaEncontrado->setAutor(autor);
+        revistaEncontrado->setFecha(fecha);
+        revistaEncontrado->setValoracion(valoracion);
+        revistaEncontrado->setISSN(ISSN);
+        revistaEncontrado->setClasificacion(clasificacion);
+        revistaEncontrado->setStock(stock);
+
+        guardarRevistasEnArchivo(listaRevistas);
         cout << "Revista modificado correctamente.\n";
-        guardarRevista(nuevosDatos);  
     }
     else {
         cout << "Revista no encontrado.\n";
     }
+
 }
 
 void modificarTesis() {
@@ -748,17 +818,27 @@ void modificarTesis() {
     int valoracion = leerEntero("Nueva valoracion: ");
     string universidad = leerCadena("Nueva Universidad: ");
     string pais = leerCadena("Nuevo pais: ");
+    int stock = leerEntero("Nuevo stock: ");
 
-    tesis nuevosDatos(id, titulo, autor, fecha, valoracion, universidad, pais);
+    tesis* tesisEncontrada = listaTesis.hallarID(id);
 
-    if (listaTesis.modificarPorID(id, nuevosDatos)) {
-        cout << "Tesis modificado correctamente.\n";
-        guardarTesis(nuevosDatos);  
+    if (tesisEncontrada) {
+        tesisEncontrada->setTitulo(titulo);
+        tesisEncontrada->setAutor(autor);
+        tesisEncontrada->setFecha(fecha);
+        tesisEncontrada->setValoracion(valoracion);
+        tesisEncontrada->setUniversidad(universidad);
+        tesisEncontrada->setPais(pais);
+        tesisEncontrada->setStock(stock);
+
+        guardarTesisEnArchivo(listaTesis);  
+        cout << "Tesis modificada correctamente.\n";
     }
     else {
-        cout << "Tesis no encontrado.\n";
+        cout << "Tesis no encontrada.\n";
     }
 }
+
 
 void modificarAdmin() {
     string id;
@@ -852,6 +932,21 @@ void mostrarPrestamos() {
 	}
 }
 
+
+void dibujarArbol(NodoArbol<Multa>* nodo, string prefijo = "", bool esIzquierdo = true) {
+
+
+    if (nodo == nullptr) return;
+
+    cout << prefijo;
+    cout << (esIzquierdo ? "|-- " : "\\-- ");
+    cout << " S/." << nodo->dato.getMonto() << " (" << nodo->dato.getIdMulta() << ")" << endl;
+
+    dibujarArbol(nodo->izq, prefijo + (esIzquierdo ? "|   " : "    "), true);
+    dibujarArbol(nodo->der, prefijo + (esIzquierdo ? "|   " : "    "), false);
+}
+
+
 void mostrarPrestamosPorLector(const string& idLector) {
 	cout << "\nPrestamos del lector con ID " << idLector << ":\n";
 	if (colaPrestamos.estaVacia()) {
@@ -873,6 +968,74 @@ void mostrarPrestamosPorLector(const string& idLector) {
 		cout << "No se encontraron prestamos para el lector con ID " << idLector << ".\n";
 	}
 }
+
+
+void insertarEnHashOrdenadoRecFechaPrestamo(NodoArbol<Prestamo>* nodo, HashTable<Prestamo>& tabla, int& indice, string& ultimaFecha) {
+    if (nodo != nullptr) {
+        insertarEnHashOrdenadoRecFechaPrestamo(nodo->izq, tabla, indice, ultimaFecha);
+
+        if (nodo->dato.getEstado() == "Confirmado") {
+            string fechaActual = nodo->dato.getFecha();  // ðŸ”¹ Fecha de prÃ©stamo
+
+            if (fechaActual != ultimaFecha) {
+                ultimaFecha = fechaActual;
+                indice++;
+            }
+
+            tabla.insertarEnCubeta(nodo->dato, indice);
+        }
+
+        insertarEnHashOrdenadoRecFechaPrestamo(nodo->der, tabla, indice, ultimaFecha);
+    }
+}
+
+
+void insertarEnHashOrdenadoRecFechaVencimiento(NodoArbol<Prestamo>* nodo, HashTable<Prestamo>& tabla, int& indice, string& ultimaFecha) {
+    if (nodo != nullptr) {
+        insertarEnHashOrdenadoRecFechaVencimiento(nodo->izq, tabla, indice, ultimaFecha);
+
+        if (nodo->dato.getEstado() == "Confirmado") {
+            string fechaActual = nodo->dato.getFechaVencimiento().toString();  // ðŸ”¹ Fecha de vencimiento
+
+            if (fechaActual != ultimaFecha) {
+                ultimaFecha = fechaActual;
+                indice++;
+            }
+
+            tabla.insertarEnCubeta(nodo->dato, indice);
+        }
+
+        insertarEnHashOrdenadoRecFechaVencimiento(nodo->der, tabla, indice, ultimaFecha);
+    }
+}
+void generarTablaPorFechaVencimiento(Cola<Prestamo>& cola, HashTable<Prestamo>& tablaOrdenada) {
+    ArbolBinario<Prestamo> arbol;
+
+    Nodo<Prestamo>* actual = cola.getFrente();
+    while (actual != nullptr) {
+        arbol.insertar(actual->dato);  // Usa sobrecarga < con getFechaVencimiento()
+        actual = actual->siguiente;
+    }
+
+    int indice = -1;
+    string ultimaFecha = "";
+    insertarEnHashOrdenadoRecFechaVencimiento(arbol.getRaiz(), tablaOrdenada, indice, ultimaFecha);
+}
+
+void generarTablaPorFechaPrestamo(Cola<Prestamo>& cola, HashTable<Prestamo>& tablaOrdenada) {
+    ArbolBinario<Prestamo> arbol;
+
+    Nodo<Prestamo>* actual = cola.getFrente();
+    while (actual != nullptr) {
+        arbol.insertar(actual->dato);  // Usa < basado en fecha de prÃ©stamo
+        actual = actual->siguiente;
+    }
+
+    int indice = -1;
+    string ultimaFecha = "";
+    insertarEnHashOrdenadoRecFechaPrestamo(arbol.getRaiz(), tablaOrdenada, indice, ultimaFecha);
+}
+
 
 void administrarPrestamos() {
     cout << "\nAdministrar prestamos:\n";
@@ -907,22 +1070,78 @@ void administrarPrestamos() {
         RecursoBibliografico* recurso = prestamo->dato.getRecurso();
         int stockActual = recurso->getStock();
 
+      
         if (stockActual > 0) {
             recurso->setStock(stockActual - 1);
             prestamo->dato.setEstado("Confirmado");
             cout << "Prestamo confirmado. Nuevo stock: " << recurso->getStock() << "\n";
+
+            string idRecurso = recurso->getId();
+            string prefijo = idRecurso.substr(0, 4);
+
+            if (prefijo == "IDLI") {
+                guardarLibrosEnArchivo(listaLibros);
+            }
+            else if (prefijo == "IDRE") {
+               guardarRevistasEnArchivo(listaRevistas);
+            }
+            else if (prefijo == "IDTE") {
+                guardarTesisEnArchivo(listaTesis);
+            }
+
+            // AquÃ­ genera tabla y guarda
+            HashTable<Prestamo> tablaConfirmados;
+            generarTablaPorFechaPrestamo(colaPrestamos, tablaConfirmados);
+            guardarPrestamosConfirmadosDesdeHashTable(tablaConfirmados);
+
+            // Generar multa simulada
+            string idMulta = generarID("multa", rand() % 100 + 1);
+            Multa multaSimulada(idMulta, &(prestamo->dato)); 
+
+            arbolMultasSimuladas.insertar(multaSimulada);
+
+            // Guardar todo el Ã¡rbol de multas en el archivo
+            guardarMultasEnArchivo(arbolMultasSimuladas);
+
+
         }
         else {
-            cout << "No se puede confirmar el préstamo. Stock agotado.\n";
+            cout << "No se puede confirmar el prÃ©stamo. Stock agotado.\n";
         }
     }
     else if (opcion == 2) {
         prestamo->dato.setEstado("Denegado");
+        guardarTodosLosPrestamosEnArchivo(colaPrestamos); 
         cout << "Prestamo denegado.\n";
     }
+
 }
 
+void mostrarProximoVencimiento(Cola<Prestamo>& cola) {
+    ControlVencimientos heap;
 
+    Nodo<Prestamo>* actual = cola.getFrente();
+    while (actual != nullptr) {
+        if (actual->dato.getEstado() == "Confirmado") {
+            heap.agregarPrestamo(&actual->dato);
+        }
+        actual = actual->siguiente;
+    }
+
+    Prestamo* p = heap.obtenerMasUrgente();
+    if (p) {
+        cout << "PrÃ³ximo prÃ©stamo por vencer:\n";
+        cout << "ID: " << p->getId()
+            << ", Solicitante: " << p->getSolicitante()->getNombre()
+            << ", TÃ­tulo: " << p->getRecurso()->getTitulo()
+            << ", Fecha de vencimiento: " << p->getFechaVencimiento().toString()
+            << ", Estado: " << p->getEstado()
+            << endl;
+    }
+    else {
+        cout << "No hay prÃ©stamos confirmados.\n";
+    }
+}
 void pausar() {
     cout << "\nPresione cualquier tecla para continuar...";
     _getch();
@@ -934,11 +1153,11 @@ int extraerAnio(const string& fecha) {
 
 template <typename T>
 int particionPorValoracion(ListaSimple<T>& lista, int p, int r) {
-    int pivote = lista.getPorIndice(r).getValoracion(); // Costo: n (getPorIndice) + 1 (.getValoracion) + 1 (asignación) = n + 2
+    int pivote = lista.getPorIndice(r).getValoracion(); // Costo: n (getPorIndice) + 1 (.getValoracion) + 1 (asignaciÃ³n) = n + 2
     int i = p - 1; // 2
 
     for (int j = p; j < r; ++j) { // ? 1 + (r - p)(1 + INTERNA + 2)
-        if (lista.getPorIndice(j).getValoracion() <= pivote) { // ? n + 1 (valoracion) + 1 (comparación)
+        if (lista.getPorIndice(j).getValoracion() <= pivote) { // ? n + 1 (valoracion) + 1 (comparaciÃ³n)
             i++; // 1
             T tempI = lista.getPorIndice(i); //n
             T tempJ = lista.getPorIndice(j); //n
@@ -968,11 +1187,11 @@ void quickSortPorValoracion(ListaSimple<T>& lista, int p, int r) {
 
 template <typename T>
 int particionPorAnio(ListaSimple<T>& lista, int p, int r) {
-    int anioPivote = extraerAnio(lista.getPorIndice(r).getFecha()); // Costo: n (getPorIndice) + 1 (.getFecha) + 1 (asignación) = n + 2
+    int anioPivote = extraerAnio(lista.getPorIndice(r).getFecha()); // Costo: n (getPorIndice) + 1 (.getFecha) + 1 (asignaciÃ³n) = n + 2
     int i = p - 1; // 2
 
     for (int j = p; j < r; ++j) { // ? 1 + (r - p)(1 + INTERNA + 2)
-        if (extraerAnio(lista.getPorIndice(j).getFecha()) <= anioPivote) { // ? n + 1 (Fecha) + 1 (comparación)
+        if (extraerAnio(lista.getPorIndice(j).getFecha()) <= anioPivote) { // ? n + 1 (Fecha) + 1 (comparaciÃ³n)
             i++; // 1
             T tempI = lista.getPorIndice(i);  //n
             T tempJ = lista.getPorIndice(j); //n
@@ -993,8 +1212,8 @@ int particionPorAnio(ListaSimple<T>& lista, int p, int r) {
 
 template <typename T>
 void quickSortPorAnio(ListaSimple<T>& lista, int p, int r) {
-    if (p < r) { // 1 comparación ? 1
-        int q = particionPorAnio(lista, p, r); // 1 asignación + llamada a función ? O(n*n) si getPorIndice = O(n)
+    if (p < r) { // 1 comparaciÃ³n ? 1
+        int q = particionPorAnio(lista, p, r); // 1 asignaciÃ³n + llamada a funciÃ³n ? O(n*n) si getPorIndice = O(n)
         quickSortPorAnio(lista, p, q - 1); 
         quickSortPorAnio(lista, q + 1, r);
     }
@@ -1016,7 +1235,7 @@ void merge(ListaSimple<T>& lista, int izq, int mid, int der) {
 
     int i = 0, j = 0, k = izq; // 3
     while (i < n1 && j < n2) { // 2
-        if (L[i].getValoracion() <= R[j].getValoracion()) { // 2 accesos + 2 llamadas + 1 comparación = 5
+        if (L[i].getValoracion() <= R[j].getValoracion()) { // 2 accesos + 2 llamadas + 1 comparaciÃ³n = 5
             lista.setPorIndice(k++, L[i++]); //  O(n) acceso + 2 incrementos = n + 2
         }
         else {
@@ -1036,15 +1255,41 @@ void merge(ListaSimple<T>& lista, int izq, int mid, int der) {
 
 template <typename T>
 void OrdenamientoMergeporValoracionRecursoBibliografico(ListaSimple<T>& lista, int izq, int der) {
-    if (izq < der) { // 1 comparación ? 1
-        int mid = (izq + der) / 2;  // 2 sumas + 1 división + 1 asignación = 4
+    if (izq < der) { // 1 comparaciÃ³n ? 1
+        int mid = (izq + der) / 2;  // 2 sumas + 1 divisiÃ³n + 1 asignaciÃ³n = 4
         OrdenamientoMergeporValoracionRecursoBibliografico(lista, izq, mid);
         OrdenamientoMergeporValoracionRecursoBibliografico(lista, mid + 1, der);
-        merge(lista, izq, mid, der); // llamada a merge ? O(n²)
+        merge(lista, izq, mid, der); // llamada a merge ? O(nÂ²)
     }
 }
 
-
+void gestionarUsuarios(const string& tipo, int opcion) {
+    if (opcion == 1) {
+        if (tipo == "lector") registrarLector();
+        else if (tipo == "bibliotecario") registrarBibliotecario();
+        else if (tipo == "administrador") registrarAdministrador();
+        else cout << "Tipo de usuario no valido.\n";
+    }
+    else if(opcion == 2){
+        if (tipo == "lector") mostrarLectores();
+        else if (tipo == "bibliotecario") mostrarBibliotecarios();
+        else if (tipo == "administrador") mostrarAdmins();
+        else cout << "Tipo de usuario no valido.\n";
+    }
+    else if (opcion == 3) {
+        if (tipo == "lector") elimnarLector();
+        else if (tipo == "bibliotecario") eliminarBibliotecario();
+        else if (tipo == "administrador") eliminarAdmin();
+        else cout << "Tipo de usuario no valido.\n";
+    }
+    else if (opcion == 4) {
+        if (tipo == "lector") modificarLector();
+        else if (tipo == "bibliotecario") modificarBibliotecario();
+        else if (tipo == "administrador") modificarAdmin();
+        else cout << "Tipo de usuario no valido.\n";
+    }
+    pausar();
+}
 
 
 
@@ -1121,104 +1366,7 @@ void gestionarRecursos(const string& tipo, int opcion) {
     pausar();
 }
 
-void insertarEnHashOrdenadoRec(NodoArbol<Prestamo>* nodo, HashTable<Prestamo>& tabla, int& indice, string& ultimaFecha) {
-    if (nodo != nullptr) {
-        insertarEnHashOrdenadoRec(nodo->izq, tabla, indice, ultimaFecha);
 
-        if (nodo->dato.getEstado() == "Confirmado") {
-            string fechaActual = nodo->dato.getFecha();  // formato: "04/07/2025"
-
-            if (fechaActual != ultimaFecha) {
-                ultimaFecha = fechaActual;
-                indice++;  // cambia de cubeta SOLO si cambia la fecha
-            }
-
-            tabla.insertarEnCubeta(nodo->dato, indice);
-        }
-
-        insertarEnHashOrdenadoRec(nodo->der, tabla, indice, ultimaFecha);
-    }
-}
-
-void insertarEnHashOrdenado(ArbolBinario<Prestamo>& arbol, HashTable<Prestamo>& tabla) {
-    int indice = -1;  
-    string ultimaFecha = "";
-    insertarEnHashOrdenadoRec(arbol.getRaiz(), tabla, indice, ultimaFecha);
-}
-
-
-void generarTablaVencimientos(Cola<Prestamo>& cola, HashTable<Prestamo>& tablaOrdenada) {
-    ArbolBinario<Prestamo> arbol;
-
-    // Insertar todos los préstamos del frente de la cola al árbol
-    Nodo<Prestamo>* actual = cola.getFrente();
-    while (actual != nullptr) {
-        arbol.insertar(actual->dato);
-        actual = actual->siguiente;
-    }
-
-    // Luego insertar en la hash table según orden del árbol
-    insertarEnHashOrdenado(arbol, tablaOrdenada);
-}
-
-void verTablaVencimientos(Cola<Prestamo>& colaPrestamos) {
-    HashTable<Prestamo> tablaOrdenada;
-    generarTablaVencimientos(colaPrestamos, tablaOrdenada);
-
-    cout << "\n==== Tabla de vencimientos ordenada ====\n";
-    tablaOrdenada.mostrar();  // Debes tener definida esta función
-
-    // Guardar solo préstamos confirmados
-    guardarPrestamosConfirmadosDesdeHashTable(tablaOrdenada);
-}
-
-
-
-void Ejectuar_menuAdministrador(const string& id, const string& nombre, const string& contrasenia) {
-    Administrador admin(id, nombre, contrasenia);
-    int opcionADMIN;
-    string tipo;
-
-    do {
-        system("cls");
-        cout << "Bienvenido " << nombre << "\n";
-        admin.menuAdministrador();
-        cout << "Ingrese una opcion: ";
-        cin >> opcionADMIN;
-        cin.ignore();
-
-        if (opcionADMIN >= 1 && opcionADMIN <= 7) {
-            cout << "Ingrese tipo de recurso (libro|revista|tesis): ";
-            cin >> tipo;
-            cin.ignore();
-        }
-
-        gestionarRecursos(tipo, opcionADMIN);
-
-    } while (opcionADMIN != 0);
-}
-
-
-void mostrarProximoVencimiento(Cola<Prestamo>& cola) {
-    ControlVencimientos heap;
-    Nodo<Prestamo>* actual = cola.getFrente();
-    while (actual != nullptr) {
-        if (actual->dato.getEstado() == "Confirmado")
-            heap.agregarPrestamo(&actual->dato);
-        actual = actual->siguiente;
-    }
-
-    Prestamo* p = heap.obtenerMasUrgente();
-    if (p) {
-        cout << "Próximo prestamo por vencer:\n";
-        cout << "ID: " << p->getId() << ", Lector: " << p->getSolicitante()->getNombre()
-            << ", Titulo: " << p->getRecurso()->getTitulo()
-            << ", Fecha de vencimiento: " << p->getFechaVencimiento().toString() << endl;
-    }
-    else {
-        cout << "No hay prestamos confirmados.\n";
-    }
-}
 
 
 void Ejecutar_menuLector(const string& id, const string& nombre, const string& contrasenia) {
@@ -1266,6 +1414,65 @@ void Ejecutar_menuLector(const string& id, const string& nombre, const string& c
     } while (opcionLECTOR != 0);
 }
 
+
+void Ejectuar_menuAdministrador(const string& id, const string& nombre, const string& contrasenia) {
+    Administrador admin(id, nombre, contrasenia);
+    int opcionADMIN;
+    string tipo;
+
+    do {
+        system("cls");
+        cout << "Bienvenido " << nombre << "\n";
+        admin.menuAdministrador();
+        cout << "Ingrese una opciÃ³n: ";
+        cin >> opcionADMIN;
+        cin.ignore();
+
+        switch (opcionADMIN)
+        {
+        case 1: {
+            int opcion;
+            string tipo;
+            do {
+                system("cls");
+                cout << "Bienvenido " << nombre << "\n";
+                admin.menuGestionUsuarios();
+                cout << "Ingrese una opcion: ";
+                cin >> opcion;
+                cin.ignore();
+
+                if (opcion >= 1 && opcion <= 4) {
+                    cout << "Ingrese tipo de recurso (lector|bibliotecario|administrador): ";
+                    cin >> tipo;
+                    cin.ignore();
+                }
+
+                gestionarRecursos(tipo, opcion);
+
+            } while (opcion != 0);
+            break;
+        }
+
+        case 2:
+            cout << "Arbol de Multas (por monto):" << endl;
+            if (arbolMultasSimuladas.getRaiz() == nullptr) {
+                cout << "No hay multas en el arbol.\n";
+            }
+            else {
+                dibujarArbol(arbolMultasSimuladas.getRaiz());
+            }
+            system("pause");
+            break;
+
+        default:
+            break;
+        }
+
+    } while (opcionADMIN != 0);
+
+}
+
+
 void Ejectuar_menuBibliotecario(const string& id, const string& nombre, const string& contrasenia) {
     Bibliotecario bibliotecario(id, nombre, contrasenia);
     int opcionBIBLIOTECARIO;
@@ -1283,19 +1490,108 @@ void Ejectuar_menuBibliotecario(const string& id, const string& nombre, const st
         case 2:
             administrarPrestamos();
             break;
-        case 3:
-            // Denegar prestamo
-            cout << "Funcionalidad no implementada.\n";
+        case 3: {
+            int opcion;
+            string tipo;
+            do {
+                system("cls");
+                cout << "Bienvenido " << nombre << "\n";
+                bibliotecario.menuGestionarRecursosBibliograficos();
+                cout << "Ingrese una opcion: ";
+                cin >> opcion;
+                cin.ignore();
+
+                if (opcion >= 1 && opcion <= 7) {
+                    cout << "Ingrese tipo de recurso (libro|revista|tesis): ";
+                    cin >> tipo;
+                    cin.ignore();
+                }
+
+                gestionarRecursos(tipo, opcion);
+
+            } while (opcion != 0);
             break;
-        case 4:
-            verTablaVencimientos(colaPrestamos);
+            }
+        case 4: {
+            HashTable<Prestamo> tablaPorFechaPrestamo;
+            generarTablaPorFechaPrestamo(colaPrestamos, tablaPorFechaPrestamo);
+
+            cout << "\n==== Tabla ordenada por fecha de prÃ©stamo ====\n";
+            tablaPorFechaPrestamo.mostrar();
+
+            guardarPrestamosConfirmadosDesdeHashTable(tablaPorFechaPrestamo);
+
+            int opcionSub;
+            do {
+                cout << "\nOpciones:\n";
+                cout << "1. Buscar prestamo por ID\n";
+                cout << "2. Salir\n";
+                cout << "Ingrese opcion: ";
+                cin >> opcionSub;
+                cin.ignore();
+
+                if (opcionSub == 1) {
+                    string idBuscado;
+                    cout << "Ingrese el ID del prÃ©stamo: ";
+                    getline(cin >> ws, idBuscado);
+
+                    Prestamo* encontrado = tablaPorFechaPrestamo.buscar(idBuscado);
+
+                    if (encontrado) {
+                        cout << "\nPrÃ©stamo encontrado:\n";
+                        encontrado->detallesPrestamo();
+                    }
+                    else {
+                        cout << "No se encontro un prÃ©stamo con ese ID.\n";
+                    }
+                }
+
+            } while (opcionSub != 2);
             break;
-        case 5:
+        }
+        case 5: {
+            HashTable<Prestamo> tablaPorFechaVencimiento;
+            generarTablaPorFechaVencimiento(colaPrestamos, tablaPorFechaVencimiento);
+
+            cout << "\n==== Tabla ordenada por fecha de vencimiento ====\n";
+            tablaPorFechaVencimiento.mostrar();
+                
+            guardarPrestamosConfirmadosDesdeHashTable(tablaPorFechaVencimiento);
+
+            int opcionSub;
+            do {
+                cout << "\nOpciones:\n";
+                cout << "1. Buscar prÃ©stamo por ID\n";
+                cout << "2. Salir\n";
+                cout << "Ingrese opciÃ³n: ";
+                cin >> opcionSub;
+                cin.ignore();
+
+                if (opcionSub == 1) {
+                    string idBuscado;
+                    cout << "Ingrese el ID del prÃ©stamo: ";
+                    getline(cin >> ws, idBuscado);
+
+                    Prestamo* encontrado = tablaPorFechaVencimiento.buscar(idBuscado);
+
+                    if (encontrado) {
+                        cout << "\nPrestamo encontrado:\n";
+                        encontrado->detallesPrestamo();
+                    }
+                    else {
+                        cout << "No se encontrÃ³ un prestamo con ese ID.\n";
+                    }
+                }
+
+            } while (opcionSub != 2);
+            break;
+        }
+
+        case 6: {
             mostrarProximoVencimiento(colaPrestamos);
             break;
-        case 6:
-            // metodo de ordenamiento Proximos en vencer 
-            break;
+        }
+
         case 0:
             cout << "Saliendo...\n";
             break;
