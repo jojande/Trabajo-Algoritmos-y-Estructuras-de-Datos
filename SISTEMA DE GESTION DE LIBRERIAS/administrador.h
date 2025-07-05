@@ -8,13 +8,18 @@ public:
 	
 	void menuAdministrador() {
 		cout << "Opciones de administrador:" << endl;
-		cout << "1. Agregar Recurso Bibliografico: " << endl;
-		cout << "2. Mostrar Recurso Bibliografico: " << endl;
-		cout << "3. Eliminar Recurso Bibliografico: " << endl;
-		cout << "4. Modificar Recurso Bibliografico: " << endl;
-		cout << "5. Ordenar Recurso Bibliografico por valoracion (Mergesort)" << endl;
-		cout << "6. Ordenar Recurso Bibliografico por valoracion (Quickshort)" << endl;
-		cout << "7. Ordenar Recurso Bibliografico por anio de publicacion (Quickshort)" << endl;
+		cout << "1. Gestionar Usuarios: " << endl;
+		cout << "2. Mostrar Arbol de Multas" << endl;
+		cout << "0. Salir: " << endl;
+	}
+
+
+	void menuGestionUsuarios() {
+		cout << "Gestion de Usuarios :" << endl;
+		cout << "1. Agregar Usuario: " << endl;
+		cout << "2. Mostrar Usuario: " << endl;
+		cout << "3. Eliminar Usuario: " << endl;
+		cout << "4. Modificar Usuario: " << endl;
 		cout << "0. Salir: " << endl;
 	}
 };

@@ -47,7 +47,6 @@ public:
 	}
 
 	void mostrarprestamo() const override {
-		cout << "Stock: " << stock << endl;
 		cout << "ID: " << id << endl;
 		cout << "Titulo: " << titulo << endl;
 		cout << "Autor: " << autor << endl;

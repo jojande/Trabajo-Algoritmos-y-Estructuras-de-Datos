@@ -6,6 +6,8 @@ using namespace std;
 
 
 int main() {
+    system("chcp 65001");
+
     HashTable<Prestamo> tablaOrdenada;
 
     cargarLibros("archivos_txt/libros.txt");
@@ -16,6 +18,7 @@ int main() {
 	cargarAdministrador("archivos_txt/admins.txt");
 	cargarPrestamo("archivos_txt/prestamos.txt");
     cargarTablaPrestamosConfirmados("archivos_txt/prestamostablahash.txt", tablaOrdenada);
+    cargarmultas("archivos_txt/multas.txt");
     char opcion;
     do {
         system("cls");

@@ -29,6 +29,10 @@ public:
 		this->fechaVencimiento.sumarDias(dias);   
 	}
 
+	bool operator<(const Prestamo& otro) const {
+		return this->fechaVencimiento < otro.fechaVencimiento;  
+	}
+
 	void detallesPrestamo() {
 		cout << "ID prestamo: " << id << "\n";
 		cout << "Solicitado por: " << solicitante->getId() << "\n";

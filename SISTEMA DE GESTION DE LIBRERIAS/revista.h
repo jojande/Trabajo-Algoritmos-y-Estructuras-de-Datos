@@ -42,6 +42,7 @@ public:
 		cout << "Valoracion: " << valoracion << "/5" << endl;
 		cout << "ISSN: " << ISSN << endl;
 		cout << "Clasificacion: " << clasificacion << endl;
+		cout << "Stock: " << stock << endl;
 		cout << "=====================" << endl;
 	}
 
