@@ -41,6 +41,23 @@ void construirGrafoDeLibrosPorGenero() {
     }
 }
 
+void construirGrafoDeLibrosPorAutor() {
+    Nodo<libro>* i = listaLibros.getCabeza();
+    while (i != nullptr) {
+        grafoRecursos.agregarNodo(i->dato.getId());
+
+        Nodo<libro>* j = i->siguiente;
+        while (j != nullptr) {
+            if (i->dato.getAutor() == j->dato.getAutor()) {
+                grafoRecursos.agregarNodo(j->dato.getId());
+                grafoRecursos.agregarArista(i->dato.getId(), j->dato.getId());
+            }
+            j = j->siguiente;
+        }
+        i = i->siguiente;
+    }
+}
+
 void mostrarRecursosRelacionados(const string& id) {
     cout << "Recursos relacionados con " << id << ":\n";
 
@@ -1461,6 +1478,12 @@ void Ejecutar_menuLector(const string& id, const string& nombre, const string& c
 			cout << "Grafo de libros por genero construido.\n";
             mostrarRecursosRelacionados(tipo);
             break;
+        case 5:
+            construirGrafoDeLibrosPorAutor();
+            cout << "Ingrese el ID de libros a consultar: ";
+            cin >> tipo;
+            cout << "Grafo de libros por autor construido.\n";
+            mostrarRecursosRelacionados(tipo);
         case 0:
             cout << "Saliendo...\n";
             break;

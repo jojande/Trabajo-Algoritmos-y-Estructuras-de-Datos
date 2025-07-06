@@ -11,7 +11,8 @@ public:
 		cout << "1. Buscar Recurso Bibliografico" << endl;
 		cout << "2. Solicitar Prestamo" << endl;
 		cout << "3. Ver Historial de Prestamos" << endl;
-		cout << "4. Ver Grafo de libros por genero" << endl;
+ 		cout << "4. Ver Grafo de libros por genero" << endl;
+		cout << "5. Ver Grafo de libros por autor" << endl;
 		cout << "0. Salir: " << endl;
 	}
 
