@@ -51,8 +51,6 @@ int main() {
         }	
         case '2':
             iniciarSesionLector();
-			
-
             break;
         case '3':
             iniciarSesionAdministrador();

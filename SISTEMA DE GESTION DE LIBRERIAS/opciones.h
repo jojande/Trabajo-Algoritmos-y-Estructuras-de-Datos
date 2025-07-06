@@ -22,6 +22,55 @@ ArbolBinario<Multa> arbolMultasSimuladas;
 
 ControlVencimientos heap;
 
+Grafo<string> grafoRecursos(100, false); // No dirigido
+
+void construirGrafoDeLibrosPorGenero() {
+    Nodo<libro>* i = listaLibros.getCabeza();
+    while (i != nullptr) {
+        grafoRecursos.agregarNodo(i->dato.getId());
+
+        Nodo<libro>* j = i->siguiente;
+        while (j != nullptr) {
+            if (i->dato.getGenero() == j->dato.getGenero()) {
+                grafoRecursos.agregarNodo(j->dato.getId());
+                grafoRecursos.agregarArista(i->dato.getId(), j->dato.getId());
+            }
+            j = j->siguiente;
+        }
+        i = i->siguiente;
+    }
+}
+
+void mostrarRecursosRelacionados(const string& id) {
+    cout << "Recursos relacionados con " << id << ":\n";
+
+    int idx = grafoRecursos.obtenerGrado(id);
+    if (idx == -1) {
+        cout << "Recurso no encontrado en el grafo.\n";
+        return;
+    }
+
+    // Mostrar desde la lista de adyacencia
+    Nodo<string>* actual = nullptr;
+    for (int i = 0; i < 100; ++i) {
+        if (grafoRecursos.getNodo(i) != nullptr && grafoRecursos.getNodo(i)->dato == id) {
+            actual = grafoRecursos.getNodo(i)->siguiente;
+            break;
+        }
+    }
+
+    if (actual == nullptr) {
+        cout << "Este recurso no tiene conexiones.\n";
+        return;
+    }
+
+    while (actual != nullptr) {
+        cout << "- " << actual->dato << endl;
+        actual = actual->siguiente;
+    }
+}
+
+
 int obtenerIDDisponible(const string& archivoNombre, const string& prefijo) {
     ifstream archivo(archivoNombre);
     if (!archivo.is_open()) {
@@ -1398,11 +1447,19 @@ void Ejecutar_menuLector(const string& id, const string& nombre, const string& c
 				cout << "Tipo de recurso no valido.\n";
 			}
             break;
-            case 2:
-                registrarPrestamo();
-                break;
+
+        case 2:
+            registrarPrestamo();
+            break;
         case 3:
             mostrarPrestamosPorLector(lector.getId());
+            break;
+        case 4:
+            construirGrafoDeLibrosPorGenero();
+			cout << "Ingrese el ID de libros a consultar: ";
+			cin >> tipo;
+			cout << "Grafo de libros por genero construido.\n";
+            mostrarRecursosRelacionados(tipo);
             break;
         case 0:
             cout << "Saliendo...\n";
@@ -1697,4 +1754,7 @@ void iniciarSesionBibliotecario() {
     cout << "Usuario o contrasena incorrectas\n";
 	archivo.close();
 }
+
+
+
 

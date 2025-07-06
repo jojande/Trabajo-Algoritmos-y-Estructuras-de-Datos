@@ -380,3 +380,114 @@ public:
         inOrden(raiz);
     }
 };
+
+template <typename T>
+class Grafo {
+private:
+    Nodo<T>** listaAdyacencia; // Array de punteros a nodos (lista de adyacencia)
+    int capacidad;             // Capacidad máxima del grafo
+    int numNodos;              // Número actual de nodos
+    bool dirigido;             // Tipo de grafo
+
+    // Método privado para encontrar el índice de un nodo
+    int encontrarIndice(const T& dato) {
+        for (int i = 0; i < numNodos; ++i) {
+            if (listaAdyacencia[i] != nullptr && listaAdyacencia[i]->dato == dato) {
+                return i;
+            }
+        }
+        return -1; // No encontrado
+    }
+
+public:
+    // Constructor
+    Grafo(int capacidad = 100, bool dirigido = false)
+        : capacidad(capacidad), numNodos(0), dirigido(dirigido) {
+        listaAdyacencia = new Nodo<T>*[capacidad];
+        for (int i = 0; i < capacidad; ++i) {
+            listaAdyacencia[i] = nullptr;
+        }
+    }
+
+    // Destructor
+    ~Grafo() {
+        for (int i = 0; i < numNodos; ++i) {
+            Nodo<T>* actual = listaAdyacencia[i];
+            while (actual != nullptr) {
+                Nodo<T>* temp = actual;
+                actual = actual->siguiente;
+                delete temp;
+            }
+        }
+        delete[] listaAdyacencia;
+    }
+
+    Nodo<T>* getNodo(int index) const {
+        if (index >= 0 && index < numNodos) {
+            return listaAdyacencia[index];
+        }
+        return nullptr;
+    }
+
+    // Agregar un nodo al grafo
+    bool agregarNodo(const T& dato) {
+        if (numNodos >= capacidad || encontrarIndice(dato) != -1) {
+            return false;
+        }
+        listaAdyacencia[numNodos] = new Nodo<T>(dato);
+        numNodos++;
+        return true;
+    }
+
+    // Agregar una arista entre dos nodos
+    bool agregarArista(const T& origen, const T& destino) {
+        int idxOrigen = encontrarIndice(origen);
+        int idxDestino = encontrarIndice(destino);
+
+        if (idxOrigen == -1 || idxDestino == -1) {
+            return false;
+        }
+
+        // Agregar a la lista de adyacencia del origen
+        Nodo<T>* nuevo = new Nodo<T>(destino);
+        nuevo->siguiente = listaAdyacencia[idxOrigen]->siguiente;
+        listaAdyacencia[idxOrigen]->siguiente = nuevo;
+
+        // Si no es dirigido, agregar arista inversa
+        if (!dirigido) {
+            Nodo<T>* nuevoInverso = new Nodo<T>(origen);
+            nuevoInverso->siguiente = listaAdyacencia[idxDestino]->siguiente;
+            listaAdyacencia[idxDestino]->siguiente = nuevoInverso;
+        }
+
+        return true;
+    }
+
+    // Mostrar el grafo
+    void imprimir() const {
+        cout << "Lista de adyacencia del grafo:" << endl;
+        for (int i = 0; i < numNodos; ++i) {
+            cout << listaAdyacencia[i]->dato << " -> ";
+            Nodo<T>* actual = listaAdyacencia[i]->siguiente;
+            while (actual != nullptr) {
+                cout << actual->dato << " -> ";
+                actual = actual->siguiente;
+            }
+            cout << "null" << endl;
+        }
+    }
+
+    // Obtener el grado de un nodo
+    int obtenerGrado(const T& dato) {
+        int idx = encontrarIndice(dato);
+        if (idx == -1) return -1;
+
+        int grado = 0;
+        Nodo<T>* actual = listaAdyacencia[idx]->siguiente;
+        while (actual != nullptr) {
+            grado++;
+            actual = actual->siguiente;
+        }
+        return grado;
+    }
+};
