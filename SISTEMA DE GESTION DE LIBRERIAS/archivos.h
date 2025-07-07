@@ -225,7 +225,7 @@ void guardarLectoresEnArchivo(const ListaSimple<Usuario*>& listaLectores) {
 
         archivo << lector->getId() << "|"
             << lector->getNombre() << "|"
-            << lector->getContrasenia() << "|\n";
+            << lector->getContrasenia() << "\n";
 
         actual = actual->siguiente;
     }
@@ -247,7 +247,7 @@ void guardarAdministradoresEnArchivo(const ListaSimple<Usuario*>& listaAdministr
 
         archivo << admin->getId() << "|"
             << admin->getNombre() << "|"
-            << admin->getContrasenia() << "|\n";
+            << admin->getContrasenia() << "\n";
 
         actual = actual->siguiente;
     }
@@ -270,7 +270,7 @@ void guardarBibliotecariosEnArchivo(const ListaSimple<Usuario*>& listaBiblioteca
 
         archivo << biblio->getId() << "|"
             << biblio->getNombre() << "|"
-            << biblio->getContrasenia() << "|\n";
+            << biblio->getContrasenia() << "\n";
 
         actual = actual->siguiente;
     }

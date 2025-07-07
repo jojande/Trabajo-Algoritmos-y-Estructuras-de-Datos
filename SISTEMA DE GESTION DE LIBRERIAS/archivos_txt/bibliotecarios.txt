@@ -1,2 +1,10 @@
-IDBI01|Edilia|1234
-IDBI02|Pepe|Botella
+IDBI01|Juan|pass410
+IDBI02|María|pass317
+IDBI13|Luis|pass277
+IDBI14|Ana|pass213
+IDBI15|Pedro|pass119
+IDBI16|Lucía|pass679
+IDBI17|Carlos|pass946
+IDBI18|Elena|pass751
+IDBI19|José|pass488
+IDBI20|Valeria|pass833

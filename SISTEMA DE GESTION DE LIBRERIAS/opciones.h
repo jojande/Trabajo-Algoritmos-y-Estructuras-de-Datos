@@ -2362,7 +2362,7 @@ void generarDatasetUsuariosConPrestamosYMultas(
         }
 
         if (idNum == -1) {
-            cout << "⚠️ IDs agotados para lectores\n";
+            cout << "⚠ IDs agotados para lectores\n";
             break;
         }
 
@@ -2399,5 +2399,5 @@ void generarDatasetUsuariosConPrestamosYMultas(
     guardarMultasEnArchivoRecursivo(arbolMultas.getRaiz(), archivoMultas);
     archivoMultas.close();
 
-    cout << "✅ Dataset de lectores, préstamos confirmados y multas generado y guardado exitosamente.\n";
+    cout << "Dataset de lectores, préstamos confirmados y multas generado y guardado exitosamente.\n";
 }

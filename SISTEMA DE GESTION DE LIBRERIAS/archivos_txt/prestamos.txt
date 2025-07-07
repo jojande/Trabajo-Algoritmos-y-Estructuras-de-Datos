@@ -1,49 +1,50 @@
-IDPR604|02/04/2022|IDLE04|Juan|IDRE01|Don Quijote|14/04/2022|Confirmado
-IDPR105|25/10/2020|IDLE05|María|IDLI01|Cien Años de Soledad|08/11/2020|Confirmado
-IDPR307|18/04/2025|IDLE06|Luis|IDTE15|Realidad Aumentada|29/04/2025|Confirmado
-IDPR894|14/06/2021|IDLE07|Ana|IDLI03|1984|19/06/2021|Confirmado
-IDPR329|08/09/2024|IDLE08|Pedro|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE09|Lucía|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE10|Carlos|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE11|Elena|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE12|José|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE13|Valeria|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE14|Miguel|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE15|Diana|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE16|Rafael|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE17|Patricia|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE18|Sergio|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE19|Andrea|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE20|Alonso|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE21|Camila|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE22|Víctor|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE23|Renata|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE71|César|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE72|Daniela|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE73|Hugo|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE74|Sofía|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE75|Esteban|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE76|Gabriela|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE77|Martín|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE78|Romina|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE79|Joaquín|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE80|Karla|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE81|Julio|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE82|Fabiola|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE83|Felipe|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE84|Natalia|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE85|Andrés|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE86|Mariela|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE87|Roberto|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE88|Alexa|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE89|Francisco|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE90|Milagros|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE91|Bruno|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE92|Fiorella|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE93|Iván|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE94|Celeste|IDRE06|Muy Interesante|16/12/2022|Confirmado
-IDPR329|08/09/2024|IDLE95|Mario|IDRE12|Ciencia Hoy|22/09/2024|Confirmado
-IDPR468|06/07/2023|IDLE96|Yuliana|IDRE20|Forbes|18/07/2023|Confirmado
-IDPR213|16/12/2022|IDLE97|Axel|IDTE05|Realidad Aumentada|29/12/2022|Confirmado
-IDPR349|14/08/2022|IDLE98|Melanie|IDRE32|Ciencia Hoy|24/08/2022|Confirmado
-IDPR511|03/12/2022|IDLE99|Kevin|IDRE06|Muy Interesante|16/12/2022|Confirmado
+IDPR477|10/12/2025|IDLE01|Juan|IDRE48|National Geographic|18/12/2025|Confirmado
+IDPR213|16/12/2024|IDLE02|María|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE03|Luis|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE24|Ana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE25|Pedro|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE26|Lucía|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE27|Carlos|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE28|Elena|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE29|José|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE30|Valeria|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE31|Miguel|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE32|Diana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE33|Rafael|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE34|Patricia|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE35|Sergio|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE36|Andrea|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE37|Alonso|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE38|Camila|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE39|Víctor|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE40|Renata|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE41|César|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE42|Daniela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE43|Hugo|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE44|Sofía|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE45|Esteban|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE46|Gabriela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE47|Martín|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE48|Romina|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE49|Joaquín|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE50|Karla|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE51|Julio|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE52|Fabiola|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE53|Felipe|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE54|Natalia|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE55|Andrés|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE56|Mariela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE57|Roberto|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE58|Alexa|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE59|Francisco|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE60|Milagros|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE61|Bruno|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE62|Fiorella|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE63|Iván|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE64|Celeste|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE65|Mario|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE66|Yuliana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE67|Axel|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE68|Melanie|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE69|Kevin|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR213|16/12/2024|IDLE70|Nicole|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
