@@ -1,50 +1,50 @@
-IDPR477|10/12/2025|IDLE01|Juan|IDRE48|National Geographic|18/12/2025|Confirmado
-IDPR213|16/12/2024|IDLE02|María|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE03|Luis|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE24|Ana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE25|Pedro|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE26|Lucía|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE27|Carlos|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE28|Elena|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE29|José|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE30|Valeria|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE31|Miguel|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE32|Diana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE33|Rafael|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE34|Patricia|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE35|Sergio|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE36|Andrea|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE37|Alonso|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE38|Camila|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE39|Víctor|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE40|Renata|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE41|César|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE42|Daniela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE43|Hugo|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE44|Sofía|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE45|Esteban|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE46|Gabriela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE47|Martín|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE48|Romina|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE49|Joaquín|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE50|Karla|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE51|Julio|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE52|Fabiola|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE53|Felipe|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE54|Natalia|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE55|Andrés|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE56|Mariela|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE57|Roberto|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE58|Alexa|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE59|Francisco|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE60|Milagros|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE61|Bruno|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE62|Fiorella|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE63|Iván|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE64|Celeste|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE65|Mario|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE66|Yuliana|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE67|Axel|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE68|Melanie|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE69|Kevin|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
-IDPR213|16/12/2024|IDLE70|Nicole|IDTE48|Sistemas Distribuidos|28/12/2024|Confirmado
+IDPR01|20/11/2021|IDLE08|Fernanda|IDTE01|Analisis de datos en la nube|04/12/2021|Confirmado
+IDPR02|19/02/2023|IDLE05|Andres|IDTE02|Inteligencia artificial en salud|05/03/2023|Confirmado
+IDPR03|11/09/2025|IDLE10|Ana|IDTE03|Blockchain y seguridad digital|25/09/2025|Pendiente
+IDPR04|13/06/2021|IDLE03|Javier|IDTE04|Algoritmos de compresion de imagenes|27/06/2021|Pendiente
+IDPR05|02/06/2024|IDLE05|Andres|IDTE05|Redes neuronales aplicadas a la educacion|16/06/2024|Confirmado
+IDPR06|22/01/2022|IDLE06|Natalia|IDTE06|Desarrollo de apps moviles para turismo|05/02/2022|Pendiente
+IDPR07|24/09/2023|IDLE07|Pedro|IDTE07|Sistemas embebidos en la industria automotriz|08/10/2023|Confirmado
+IDPR08|03/03/2025|IDLE13|Mateo|IDTE08|Reconocimiento facial con redes profundas|17/03/2025|Confirmado
+IDPR09|07/04/2023|IDLE02|Lucia|IDTE09|Analisis de sentimientos en redes sociales|21/04/2023|Confirmado
+IDPR10|25/07/2024|IDLE01|Carlos|IDTE10|Simulacion de trafico urbano con IA|08/08/2024|Pendiente
+IDPR11|18/06/2023|IDLE04|Maria|IDTE11|Realidad aumentada en educacion primaria|02/07/2023|Confirmado
+IDPR12|02/02/2022|IDLE14|Valeria|IDTE12|Sistemas expertos para diagnostico medico|16/02/2022|Confirmado
+IDPR13|29/10/2021|IDLE09|Luis|IDTE13|Big data en el sector bancario|12/11/2021|Pendiente
+IDPR14|14/05/2022|IDLE06|Natalia|IDTE14|Robotica educativa en zonas rurales|28/05/2022|Confirmado
+IDPR15|30/06/2025|IDLE11|Ricardo|IDTE15|Mineria de datos para prediccion electoral|14/07/2025|Confirmado
+IDPR16|04/09/2023|IDLE13|Mateo|IDTE16|Desarrollo sostenible con tecnologia IoT|18/09/2023|Pendiente
+IDPR17|12/08/2021|IDLE12|Camila|IDLI01|El enigma del faraon|26/08/2021|Confirmado
+IDPR18|28/02/2024|IDLE08|Fernanda|IDLI02|La sombra del bosque|13/03/2024|Confirmado
+IDPR19|23/05/2022|IDLE10|Ana|IDLI03|Caminos del alma|06/06/2022|Pendiente
+IDPR20|09/07/2025|IDLE15|Diego|IDLI04|Codigo asesino|23/07/2025|Confirmado
+IDPR21|11/12/2023|IDLE04|Maria|IDLI05|El viaje de los suenos|25/12/2023|Confirmado
+IDPR22|06/06/2024|IDLE02|Lucia|IDLI06|Universo paralelo|20/06/2024|Pendiente
+IDPR23|15/01/2021|IDLE14|Valeria|IDLI07|Secretos del abismo|29/01/2021|Confirmado
+IDPR24|03/08/2023|IDLE07|Pedro|IDLI08|Los ultimos dias|17/08/2023|Confirmado
+IDPR25|17/05/2022|IDLE03|Javier|IDLI09|Tierra prometida|31/05/2022|Pendiente
+IDPR26|26/11/2023|IDLE09|Luis|IDLI10|Al filo del manana|10/12/2023|Confirmado
+IDPR27|13/03/2024|IDLE01|Carlos|IDLI11|Recuerdos de cristal|27/03/2024|Confirmado
+IDPR28|22/10/2022|IDLE06|Natalia|IDLI12|Cazadores del tiempo|05/11/2022|Pendiente
+IDPR29|18/01/2022|IDLE13|Mateo|IDLI13|Huellas en la arena|01/02/2022|Confirmado
+IDPR30|19/09/2023|IDLE05|Andres|IDLI14|Eco de los antiguos|03/10/2023|Confirmado
+IDPR31|21/06/2025|IDLE11|Ricardo|IDLI15|En nombre del viento|05/07/2025|Pendiente
+IDPR32|09/02/2023|IDLE03|Javier|IDLI16|Ciudad de sombras|23/02/2023|Confirmado
+IDPR33|27/07/2021|IDLE15|Diego|IDLI17|Fragmentos de luz|10/08/2021|Confirmado
+IDPR34|07/01/2024|IDLE12|Camila|IDRE01|Ciencia Moderna|21/01/2024|Confirmado
+IDPR35|30/05/2023|IDLE10|Ana|IDRE02|Tecnologia Hoy|13/06/2023|Pendiente
+IDPR36|16/10/2022|IDLE02|Lucia|IDRE03|Salud Integral|30/10/2022|Confirmado
+IDPR37|04/04/2025|IDLE08|Fernanda|IDRE04|Historia Viva|18/04/2025|Confirmado
+IDPR38|25/08/2021|IDLE06|Natalia|IDRE05|Naturaleza Global|08/09/2021|Confirmado
+IDPR39|12/03/2024|IDLE09|Luis|IDRE06|Arte y Sociedad|26/03/2024|Pendiente
+IDPR40|10/06/2022|IDLE07|Pedro|IDRE07|Matematica Facil|24/06/2022|Confirmado
+IDPR41|03/05/2023|IDLE01|Carlos|IDRE08|Fisica para Todos|17/05/2023|Confirmado
+IDPR42|14/02/2025|IDLE05|Andres|IDRE09|Economia Actual|28/02/2025|Pendiente
+IDPR43|22/11/2023|IDLE04|Maria|IDRE10|Psicologia Hoy|06/12/2023|Confirmado
+IDPR44|18/08/2021|IDLE11|Ricardo|IDRE11|Geografia Visual|01/09/2021|Confirmado
+IDPR45|01/12/2024|IDLE03|Javier|IDRE12|Innovacion y Futuro|15/12/2024|Confirmado
+IDPR46|10/05/2022|IDLE11|Ricardo|IDRE13|Antropologia Urbana|24/05/2022|Confirmado
+IDPR47|07/02/2025|IDLE03|Javier|IDRE14|Revista Escolar|21/02/2025|Confirmado
+IDPR48|02/03/2025|IDLE02|Lucia|IDRE15|Computacion Simple|16/03/2025|Confirmado
+IDPR49|13/11/2023|IDLE06|Natalia|IDRE16|Filosofia Contemporanea|27/11/2023|Confirmado
+IDPR50|03/11/2023|IDLE04|Maria|IDRE17|Microbiologia Aplicada|17/11/2023|Pendiente

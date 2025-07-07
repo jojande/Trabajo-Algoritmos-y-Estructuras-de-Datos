@@ -1,0 +1,37 @@
+IDMU01|IDPR01|Fernanda|Analisis de datos en la nube|12.5|04/12/2021
+IDMU02|IDPR02|Andres|Inteligencia artificial en salud|10.0|05/03/2023
+IDMU03|IDPR03|Camila|Blockchain y seguridad digital|7.5|26/04/2022
+IDMU04|IDPR05|Andres|Redes neuronales aplicadas a la educacion|5.0|16/06/2024
+IDMU05|IDPR06|Maria|Desarrollo de apps moviles para turismo|15.0|01/08/2024
+IDMU06|IDPR07|Pedro|Sistemas embebidos en la industria automotriz|7.5|08/10/2023
+IDMU07|IDPR08|Mateo|Reconocimiento facial con redes profundas|10.0|17/03/2025
+IDMU08|IDPR09|Lucia|Analisis de sentimientos en redes sociales|12.5|21/04/2023
+IDMU09|IDPR11|Maria|Realidad aumentada en educacion primaria|7.5|02/07/2023
+IDMU10|IDPR12|Valeria|Sistemas expertos para diagnostico medico|5.0|16/02/2022
+IDMU11|IDPR13|Carlos|Big data en el sector bancario|10.0|19/01/2025
+IDMU12|IDPR14|Natalia|Robotica educativa en zonas rurales|7.5|28/05/2022
+IDMU13|IDPR15|Ricardo|Mineria de datos para prediccion electoral|15.0|14/07/2025
+IDMU14|IDPR16|Juliana|Desarrollo sostenible con tecnologia IoT|10.0|05/10/2024
+IDMU15|IDPR17|Camila|El enigma del faraon|12.5|26/08/2021
+IDMU16|IDPR18|Fernanda|La sombra del bosque|7.5|13/03/2024
+IDMU17|IDPR19|Jose|Caminos del alma|10.0|06/06/2023
+IDMU18|IDPR20|Diego|Codigo asesino|15.0|23/07/2025
+IDMU19|IDPR21|Maria|El viaje de los suenos|10.0|25/12/2023
+IDMU20|IDPR22|Rodrigo|Universo paralelo|5.0|16/03/2022
+IDMU21|IDPR23|Valeria|Secretos del abismo|12.5|29/01/2021
+IDMU22|IDPR24|Pedro|Los ultimos dias|10.0|17/08/2023
+IDMU23|IDPR25|Angela|Tierra prometida|7.5|22/11/2021
+IDMU24|IDPR26|Luis|Al filo del manana|10.0|10/12/2023
+IDMU25|IDPR27|Carlos|Recuerdos de cristal|5.0|27/03/2024
+IDMU26|IDPR28|Lucia|Cazadores del tiempo|15.0|14/02/2025
+IDMU27|IDPR29|Mateo|Huellas en la arena|7.5|01/02/2022
+IDMU28|IDPR30|Andres|Eco de los antiguos|10.0|03/10/2023
+IDMU29|IDPR31|Valeria|En nombre del viento|5.0|12/06/2024
+IDMU30|IDPR32|Camila|Ciudad de sombras|7.5|09/09/2022
+IDMU31|IDPR33|Miguel|Fragmentos de luz|10.0|18/01/2023
+IDMU32|IDPR34|Samuel|La red invisible|12.5|30/10/2023
+IDMU33|IDPR35|Juliana|Rumbo al norte|5.0|11/08/2021
+IDMU34|IDPR36|Lucia|Bajo cero|7.5|04/03/2023
+IDMU35|IDPR37|Alonso|Sombras del pasado|10.0|01/01/2024
+IDMU36|IDPR38|Jose|El legado perdido|12.5|19/04/2023
+IDMU37|IDPR39|Sofia|Mares de fuego|7.5|27/09/2022

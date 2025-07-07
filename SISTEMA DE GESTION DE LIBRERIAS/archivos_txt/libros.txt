@@ -1,5 +1,50 @@
-IDLI01|Cien Años de Soledad|García Márquez|1967|5|Novela|Planeta|6
-IDLI02|El Principito|Saint-Exupéry|1943|4|Fábula|Penguin|6
-IDLI03|1984|Orwell|1949|1|Distopía|Alianza|6
-IDLI04|Don Quijote|Cervantes|1605|2|Clásico|SM|6
-IDLI05|Rayuela|Cortázar|1963|2|Experimental|Random House|6
+IDLI01|El enigma del faraon|Carlos Martinez|2021-03-12|4|Historia|Alfa Editorial|5
+IDLI02|La sombra del bosque|Ana Ramirez|2020-11-25|3|Suspenso|Ediciones Sol|8
+IDLI03|Caminos del alma|Luis Paredes|2022-06-01|5|Autoayuda|Letra Viva|4
+IDLI04|Codigo asesino|Patricia Gomez|2019-09-17|4|Policial|Verbo Libre|6
+IDLI05|El viaje de los suenos|Diego Torres|2023-01-30|5|Aventura|Mundo Libro|10
+IDLI06|Universo paralelo|Sofia Rojas|2021-12-10|3|Ciencia ficcion|Editorial Cosmos|7
+IDLI07|Secretos del abismo|Hector Valdez|2018-08-04|4|Misterio|Lectura Total|3
+IDLI08|Los ultimos dias|Mario Luna|2022-10-20|3|Drama|Pluma Editorial|6
+IDLI09|Tierra prometida|Gabriela Silva|2020-07-19|4|Ficcion historica|Sol de Papel|9
+IDLI10|Al filo del manana|Jose Antonio Diaz|2023-02-14|5|Accion|Ediciones Impacto|5
+IDLI11|Recuerdos de cristal|Natalia Perez|2021-06-28|3|Romance|Palabra Abierta|7
+IDLI12|Cazadores del tiempo|Ricardo Soto|2019-11-03|4|Aventura|Editorial Nexo|2
+IDLI13|Huellas en la arena|Laura Torres|2022-05-16|4|Reflexion|Lectura Sana|6
+IDLI14|Eco de los antiguos|Federico Casas|2020-03-22|3|Mitologia|Libro y Saber|4
+IDLI15|En nombre del viento|Cecilia Moreno|2023-04-10|5|Fantasia|Imaginaria|5
+IDLI16|Ciudad de sombras|Ernesto Benitez|2021-08-09|4|Thriller|Editorial Prisma|3
+IDLI17|Fragmentos de luz|Daniela Ruiz|2020-02-02|4|Inspiracion|Cielo Editorial|6
+IDLI18|La red invisible|Jorge Vargas|2022-09-13|3|Tecnologia|Codigo Abierto|8
+IDLI19|Rumbo al norte|Isabel Mendoza|2018-05-27|4|Viajes|Horizonte Libro|4
+IDLI20|Bajo cero|Cristian Nunez|2021-10-21|4|Aventura|Ediciones Glaciares|5
+IDLI21|Sombras del pasado|Rosa Cano|2023-03-29|4|Drama|Nueva Pagina|7
+IDLI22|El legado perdido|Martin Caballero|2022-07-04|5|Ficcion|Editorial Elipse|3
+IDLI23|Mares de fuego|Paula Herrera|2019-12-19|3|Accion|Luz y Tinta|6
+IDLI24|Cartas del olvido|Elena Rios|2020-04-06|4|Epistolar|Palabra Viva|2
+IDLI25|Viaje estelar|Nicolas Fuentes|2021-09-15|3|Ciencia ficcion|Galaxia Sur|5
+IDLI26|Noche perpetua|Alejandra Chavez|2018-11-11|4|Suspenso|Eclipse Editorial|4
+IDLI27|El camino inverso|Carlos Medina|2022-08-20|4|Drama|Editorial Tiempo|6
+IDLI28|Memoria de sombras|Fernanda Lozano|2020-06-03|3|Terror|Sombras y Letras|3
+IDLI29|Tiempos rotos|Alonso Reyes|2023-01-05|4|Ficcion|Editorial Uno|5
+IDLI30|Desde el abismo|Marina Salazar|2021-07-22|3|Misterio|Lecturas Finales|2
+IDLI31|Estacion perdida|Gerardo Campos|2022-10-30|4|Viajes|Editorial Surco|4
+IDLI32|Reloj de arena|Andrea Leon|2020-01-09|5|Reflexion|Ideas Claras|6
+IDLI33|El guardian eterno|Pablo Herrera|2019-03-18|4|Fantasia|Editorial Leyenda|5
+IDLI34|Horizontes lejanos|Valeria Romero|2023-05-26|5|Viajes|Camino Editorial|7
+IDLI35|Naufragio interior|Samuel Ortiz|2021-11-12|3|Drama|Silencio Editorial|3
+IDLI36|Bosque rojo|Luisa Blanco|2020-08-15|4|Suspenso|Libro Feroz|5
+IDLI37|Diario de un forastero|Miguel Arce|2022-02-27|4|Aventura|Editorial Caminante|6
+IDLI38|Bruma eterna|Camila Guevara|2018-10-07|3|Misterio|Letra y Niebla|2
+IDLI39|Destino cruzado|Javier Molina|2020-12-01|4|Romance|Corazon Abierto|4
+IDLI40|Origen secreto|Silvia Navarro|2023-06-18|5|Ciencia ficcion|Universo Editores|5
+IDLI41|La espera del tiempo|Esteban Cortes|2019-05-08|3|Reflexion|Tiempo Editorial|3
+IDLI42|Rios de tinta|Angela Vega|2021-04-19|4|Poesia|Verso Vivo|6
+IDLI43|Laberinto de espejos|Oscar Salinas|2022-11-09|4|Thriller|Reflejo Editorial|4
+IDLI44|Cielo fragmentado|Noelia Andrade|2020-09-27|3|Fantasia|Editorial Celeste|5
+IDLI45|La otra cara del sol|Renato Ponce|2023-02-03|4|Ficcion|Luz del Sur|3
+IDLI46|Ecos del silencio|Victoria Galvez|2021-01-31|4|Drama|Editorial Alba|7
+IDLI47|Travesia eterna|Tomas Delgado|2022-06-23|4|Aventura|Rumbo Norte|4
+IDLI48|El faro de la memoria|Juliana Rojas|2018-07-06|3|Drama|Ediciones Horizonte|6
+IDLI49|Sombras en el cielo|Rodrigo Calle|2020-10-10|4|Ciencia ficcion|Editorial Nova|5
+IDLI50|Rastro de cenizas|Emilia Torres|2023-03-12|5|Suspenso|Fenix Editorial|2

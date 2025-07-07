@@ -28,7 +28,7 @@ int main() {
     cargarTesis("archivos_txt/tesis.txt");
 	cargarLector("archivos_txt/lectores.txt");
 	cargarBibliotecario("archivos_txt/bibliotecarios.txt");
-	cargarAdministrador("archivos_txt/admins.txt");
+    cargarAdministrador("archivos_txt/administradores.txt");
 	cargarPrestamo("archivos_txt/prestamos.txt");
     cargarTablaPrestamosConfirmados("archivos_txt/prestamostablahash.txt", tablaOrdenada);
     cargarmultas("archivos_txt/multas.txt");
@@ -38,7 +38,7 @@ int main() {
         mostrarMenuPrincipal();
         cin >> opcion;
         cin.ignore();
-
+        
         switch (opcion) {
         case '1':{
             cout << "Seleccione el tipo de usuario a registrar:\n";
