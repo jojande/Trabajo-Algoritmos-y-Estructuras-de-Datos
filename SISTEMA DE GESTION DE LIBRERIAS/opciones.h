@@ -1531,7 +1531,7 @@ void Ejectuar_menuAdministrador(const string& id, const string& nombre, const st
                     cin.ignore();
                 }
 
-                gestionarRecursos(tipo, opcion);
+                gestionarUsuarios(tipo, opcion);
 
             } while (opcion != 0);
             break;
@@ -1727,7 +1727,7 @@ void iniciarSesionAdministrador() {
 	cin >> nombre;
 	cout << "Ingrese su contrasenia: ";
 	cin >> contrasenia;
-	ifstream archivo("archivos_txt/admins.txt");
+	ifstream archivo("archivos_txt/administradores.txt");
 	if (!archivo.is_open()) {
 		cout << "No se pudo abrir el archivo de administradores.\n";
 		return ;
@@ -1895,7 +1895,7 @@ void generarDatasetLibros(int cantidad, ListaSimple<libro>& listaLibros) {
                 listaLibros.insertarAlFinal(l);
             }
             catch (const std::exception& e) {
-                cout << "❌ Error al procesar línea: " << linea << " (" << e.what() << ")\n";
+                cout << "Error al procesar línea: " << linea << " (" << e.what() << ")\n";
             }
         }
         archivo.close();
@@ -2269,7 +2269,7 @@ void generarDatasetUsuarios(const string& tipo, int cantidad, ListaSimple<Usuari
         prefijo = "IDAD";
     }
     else {
-        cout << "❌ Tipo de usuario no válido.\n";
+        cout << "Tipo de usuario no válido.\n";
         return;
     }
 
@@ -2308,7 +2308,7 @@ void generarDatasetUsuarios(const string& tipo, int cantidad, ListaSimple<Usuari
             nuevo = new Lector(idGenerado, nombre, contrasenia);
         else if (tipo == "bibliotecario")
             nuevo = new Bibliotecario(idGenerado, nombre, contrasenia);
-        else
+        else if(tipo == "administrador")
             nuevo = new Administrador(idGenerado, nombre, contrasenia);
 
         listaUsuarios.insertarAlFinal(nuevo);
@@ -2362,7 +2362,7 @@ void generarDatasetUsuariosConPrestamosYMultas(
         }
 
         if (idNum == -1) {
-            cout << "⚠ IDs agotados para lectores\n";
+            cout << " IDs agotados para lectores\n";
             break;
         }
 

@@ -109,7 +109,7 @@ void guardarLector(const Lector& lector) {
 void guardarAdmin(const Administrador& admin) {
     stringstream ss;
     ss << admin.getId() << "|" << admin.getNombre() << "|" << admin.getContrasenia();
-    escribirLineaEnArchivo("archivos_txt/admins.txt", ss.str());
+    escribirLineaEnArchivo("archivos_txt/administradores.txt", ss.str());
 }
 
 void guardarBibliotecario(const Bibliotecario& bibliotecario) {

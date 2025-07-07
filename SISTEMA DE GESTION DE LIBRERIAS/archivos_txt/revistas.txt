@@ -1,104 +1,50 @@
-IDRE01|El Principito|Saint-Exupéry|1943|5|||0
-IDRE01|1984|Orwell|1949|4|||0
-IDRE01|Don Quijote|Cervantes|1605|1|||0
-IDRE01|Rayuela|Cortázar|1963|3|||0
-IDRE01|Cien Años de Soledad|García Márquez|1967|3|||0
-IDRE01|El Principito|Saint-Exupéry|1943|1|||0
-IDRE02|Ciencia Hoy|Equipo Editorial|2020|4|||0
-IDRE03|National Geographic|Expertos|2021|3|||0
-IDRE04|Nature|Investigadores|2022|5|||0
-IDRE05|Forbes|Redacción|2023|2|||0
-IDRE06|Muy Interesante|Colaboradores|2024|1|||0
-IDRE07|Ciencia Hoy|Equipo Editorial|2020|1|||0
-IDRE08|National Geographic|Expertos|2021|2|||0
-IDRE09|Nature|Investigadores|2022|3|||0
-IDRE10|Forbes|Redacción|2023|5|||0
-IDRE11|Muy Interesante|Colaboradores|2024|4|||0
-IDRE12|Ciencia Hoy|Equipo Editorial|2020|3|||0
-IDRE13|National Geographic|Expertos|2021|3|||0
-IDRE14|Nature|Investigadores|2022|3|||0
-IDRE15|Forbes|Redacción|2023|4|||0
-IDRE16|Muy Interesante|Colaboradores|2024|4|||0
-IDRE17|Ciencia Hoy|Equipo Editorial|2020|4|||0
-IDRE18|National Geographic|Expertos|2021|4|||0
-IDRE19|Nature|Investigadores|2022|1|||0
-IDRE20|Forbes|Redacción|2023|1|||0
-IDRE21|Muy Interesante|Colaboradores|2024|3|||0
-IDRE22|Ciencia Hoy|Equipo Editorial|2020|3|||0
-IDRE23|National Geographic|Expertos|2021|5|||0
-IDRE24|Nature|Investigadores|2022|5|||0
-IDRE25|Forbes|Redacción|2023|5|||0
-IDRE26|Muy Interesante|Colaboradores|2024|4|||0
-IDRE27|Ciencia Hoy|Equipo Editorial|2020|1|||0
-IDRE28|National Geographic|Expertos|2021|2|||0
-IDRE29|Nature|Investigadores|2022|2|||0
-IDRE30|Forbes|Redacción|2023|2|||0
-IDRE31|Muy Interesante|Colaboradores|2024|3|||0
-IDRE32|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE33|National Geographic|Expertos|2021|3|||0
-IDRE34|Nature|Investigadores|2022|4|||0
-IDRE35|Forbes|Redacción|2023|1|||0
-IDRE36|Muy Interesante|Colaboradores|2024|4|||0
-IDRE37|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE38|National Geographic|Expertos|2021|3|||0
-IDRE39|Nature|Investigadores|2022|5|||0
-IDRE40|Forbes|Redacción|2023|3|||0
-IDRE41|Muy Interesante|Colaboradores|2024|4|||0
-IDRE42|Ciencia Hoy|Equipo Editorial|2020|2|||0
-IDRE43|National Geographic|Expertos|2021|2|||0
-IDRE44|Nature|Investigadores|2022|3|||0
-IDRE45|Forbes|Redacción|2023|5|||0
-IDRE46|Muy Interesante|Colaboradores|2024|2|||0
-IDRE47|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE48|National Geographic|Expertos|2021|4|||0
-IDRE49|Nature|Investigadores|2022|3|||0
-IDRE50|Forbes|Redacción|2023|3|||0
-IDRE51|Muy Interesante|Colaboradores|2024|1|||0
-IDRE52|Ciencia Hoy|Equipo Editorial|2020|3|||0
-IDRE53|National Geographic|Expertos|2021|1|||0
-IDRE54|Nature|Investigadores|2022|3|||0
-IDRE55|Forbes|Redacción|2023|1|||0
-IDRE56|Muy Interesante|Colaboradores|2024|2|||0
-IDRE57|Ciencia Hoy|Equipo Editorial|2020|3|||0
-IDRE58|National Geographic|Expertos|2021|3|||0
-IDRE59|Nature|Investigadores|2022|2|||0
-IDRE60|Forbes|Redacción|2023|5|||0
-IDRE61|Muy Interesante|Colaboradores|2024|2|||0
-IDRE62|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE63|National Geographic|Expertos|2021|2|||0
-IDRE64|Nature|Investigadores|2022|3|||0
-IDRE65|Forbes|Redacción|2023|5|||0
-IDRE66|Muy Interesante|Colaboradores|2024|5|||0
-IDRE67|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE68|National Geographic|Expertos|2021|2|||0
-IDRE69|Nature|Investigadores|2022|3|||0
-IDRE70|Forbes|Redacción|2023|2|||0
-IDRE71|Muy Interesante|Colaboradores|2024|5|||0
-IDRE72|Ciencia Hoy|Equipo Editorial|2020|1|||0
-IDRE73|National Geographic|Expertos|2021|4|||0
-IDRE74|Nature|Investigadores|2022|3|||0
-IDRE75|Forbes|Redacción|2023|2|||0
-IDRE76|Muy Interesante|Colaboradores|2024|1|||0
-IDRE77|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE78|National Geographic|Expertos|2021|5|||0
-IDRE79|Nature|Investigadores|2022|2|||0
-IDRE80|Forbes|Redacción|2023|3|||0
-IDRE81|Muy Interesante|Colaboradores|2024|3|||0
-IDRE82|Ciencia Hoy|Equipo Editorial|2020|4|||0
-IDRE83|National Geographic|Expertos|2021|5|||0
-IDRE84|Nature|Investigadores|2022|5|||0
-IDRE85|Forbes|Redacción|2023|5|||0
-IDRE86|Muy Interesante|Colaboradores|2024|3|||0
-IDRE87|Ciencia Hoy|Equipo Editorial|2020|3|||0
-IDRE88|National Geographic|Expertos|2021|1|||0
-IDRE89|Nature|Investigadores|2022|1|||0
-IDRE90|Forbes|Redacción|2023|4|||0
-IDRE91|Muy Interesante|Colaboradores|2024|1|||0
-IDRE92|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE93|National Geographic|Expertos|2021|4|||0
-IDRE94|Nature|Investigadores|2022|4|||0
-IDRE95|Forbes|Redacción|2023|1|||0
-IDRE96|Muy Interesante|Colaboradores|2024|2|||0
-IDRE97|Ciencia Hoy|Equipo Editorial|2020|5|||0
-IDRE98|National Geographic|Expertos|2021|4|||0
-IDRE99|Nature|Investigadores|2022|5|||0
+IDRE01|Ciencia Moderna|Juan Perez|2022-01-15|4|1234-5678|Divulgacion|10
+IDRE02|Tecnologia Hoy|Maria Lopez|2023-02-20|5|2345-6789|Tecnologia|8
+IDRE03|Salud Integral|Carlos Sanchez|2021-03-18|3|3456-7890|Medicina|5
+IDRE04|Historia Viva|Laura Garcia|2020-07-10|4|4567-8901|Historia|7
+IDRE05|Naturaleza Global|Pedro Ruiz|2022-09-12|5|5678-9012|Ecologia|9
+IDRE06|Arte y Sociedad|Ana Torres|2023-01-08|4|6789-0123|Arte|6
+IDRE07|Matematica Facil|Luis Diaz|2021-11-23|5|7890-1234|Educacion|12
+IDRE08|Fisica para Todos|Patricia Vargas|2022-06-17|4|8901-2345|Ciencia|10
+IDRE09|Economia Actual|Daniel Herrera|2023-03-29|3|9012-3456|Economia|11
+IDRE10|Psicologia Hoy|Sofia Castro|2020-12-04|4|0123-4567|Psicologia|4
+IDRE11|Geografia Visual|Ricardo Silva|2021-04-11|3|1324-5678|Educacion|6
+IDRE12|Innovacion y Futuro|Paula Ramos|2023-05-01|5|2435-6789|Tecnologia|9
+IDRE13|Antropologia Urbana|Carmen Medina|2022-08-13|4|3546-7890|Sociologia|5
+IDRE14|Revista Escolar|Manuel Rojas|2020-10-30|3|4657-8901|Educacion|7
+IDRE15|Computacion Simple|Luisa Flores|2021-01-20|5|5768-9012|Tecnologia|8
+IDRE16|Filosofia Contemporanea|Jorge Gutierrez|2022-02-25|4|6879-0123|Filosofia|6
+IDRE17|Microbiologia Aplicada|Natalia Salas|2021-06-09|4|7980-1234|Biologia|5
+IDRE18|Ingenieria y Desarrollo|Hector Quispe|2023-07-03|5|8091-2345|Ingenieria|10
+IDRE19|Derecho y Sociedad|Gloria Jimenez|2020-03-12|3|9102-3456|Derecho|4
+IDRE20|Cultura Latina|Alfredo Paredes|2022-12-07|4|0213-4567|Cultura|7
+IDRE21|Bioetica Global|Rebeca Soto|2021-09-15|4|1324-5679|Medicina|6
+IDRE22|Robotica Infantil|Miguel Chavez|2023-06-01|5|2435-6780|Tecnologia|9
+IDRE23|Astronomia Popular|Andrea Leon|2022-04-20|5|3546-7891|Ciencia|8
+IDRE24|Agricultura Moderna|Esteban Valdez|2020-05-11|4|4657-8902|Agricultura|10
+IDRE25|Revista Juvenil|Valeria Montes|2021-10-25|3|5768-9013|Cultura|6
+IDRE26|Arqueologia Peruana|Julio Navarro|2022-07-08|5|6879-0124|Historia|7
+IDRE27|Nanotecnologia|Angela Rivas|2023-09-14|5|7980-1235|Tecnologia|12
+IDRE28|Quimica en la Vida|Jose Vilchez|2021-02-06|4|8091-2346|Ciencia|5
+IDRE29|Deporte y Ciencia|Camila Bravo|2022-03-30|4|9102-3457|Deporte|9
+IDRE30|Energia Sostenible|Oscar Melendez|2020-11-19|5|0213-4568|Ingenieria|8
+IDRE31|Sociedad y Cultura|Elena Benitez|2021-12-10|3|1324-5680|Sociologia|5
+IDRE32|Lengua y Comunicacion|Ivan Romero|2022-05-13|4|2435-6781|Educacion|6
+IDRE33|Patrimonio Vivo|Tamara Herrera|2023-08-28|5|3546-7892|Cultura|10
+IDRE34|Musica y Ciencia|Fernando Risco|2021-07-16|4|4657-8903|Arte|7
+IDRE35|Turismo Consciente|Gabriela Mena|2022-01-02|4|5768-9014|Turismo|9
+IDRE36|Geologia del Mundo|Rafael Iglesias|2023-02-21|3|6879-0125|Ciencia|5
+IDRE37|Educacion Ambiental|Marina Lazo|2020-09-09|5|7980-1236|Educacion|6
+IDRE38|Literatura Joven|Sandro Cabrera|2021-05-27|4|8091-2347|Literatura|8
+IDRE39|Tecnicas Forenses|Adriana Ruiz|2022-06-30|5|9102-3458|Criminalistica|7
+IDRE40|Cosmologia Basica|Victor Acosta|2023-03-05|4|0213-4569|Astronomia|5
+IDRE41|Energia Nuclear|Liliana Ortega|2021-08-22|4|1324-5681|Fisica|6
+IDRE42|Psicologia Infantil|Matias Segura|2022-10-01|3|2435-6782|Psicologia|9
+IDRE43|Diseno y Creatividad|Lucia Prado|2023-04-15|5|3546-7893|Arte|8
+IDRE44|Biologia Celular|Edgar Valverde|2021-03-03|4|4657-8904|Biologia|6
+IDRE45|Cambio Climatico|Diana Aguilar|2022-11-06|5|5768-9015|Ecologia|10
+IDRE46|Fisica Cuantica|Pablo Soria|2023-07-20|5|6879-0126|Ciencia|7
+IDRE47|Estadistica Practica|Andrea Marquez|2020-04-14|3|7980-1237|Matematica|5
+IDRE48|Desarrollo Humano|Enrique Chavez|2021-06-18|4|8091-2348|Sociologia|6
+IDRE49|Educacion Digital|Karina Suarez|2022-08-23|5|9102-3459|Tecnologia|9
+IDRE50|Paleontologia Viva|Diego Zuniga|2023-10-10|4|0213-4570|Historia|7

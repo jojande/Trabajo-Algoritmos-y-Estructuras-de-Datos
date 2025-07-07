@@ -1,104 +1,50 @@
-IDTE01|1984|Orwell|1949|5|UNMSM||0
-IDTE01|Don Quijote|Cervantes|1605|4|PUCP||0
-IDTE01|Rayuela|Cortázar|1963|3|UNI||0
-IDTE01|Cien Años de Soledad|García Márquez|1967|5|UPC||0
-IDTE01|El Principito|Saint-Exupéry|1943|5|USIL||0
-IDTE01|1984|Orwell|1949|5|UNMSM||0
-IDTE02|Redes Neuronales|Ana Rojas|2019|4|PUCP||0
-IDTE03|Sistemas Distribuidos|Luis Salas|2020|3|UNI||0
-IDTE04|Criptografía Cuántica|María Díaz|2021|5|UNMSM||0
-IDTE05|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE06|Big Data|Jorge Fernández|2023|1|UPCH||0
-IDTE07|Redes Neuronales|Ana Rojas|2019|1|PUCP||0
-IDTE08|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
-IDTE09|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE10|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE11|Big Data|Jorge Fernández|2023|4|UPCH||0
-IDTE12|Redes Neuronales|Ana Rojas|2019|3|PUCP||0
-IDTE13|Sistemas Distribuidos|Luis Salas|2020|3|UNI||0
-IDTE14|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE15|Realidad Aumentada|Pedro Castillo|2022|4|UPC||0
-IDTE16|Big Data|Jorge Fernández|2023|4|UPCH||0
-IDTE17|Redes Neuronales|Ana Rojas|2019|3|PUCP||0
-IDTE18|Sistemas Distribuidos|Luis Salas|2020|5|UNI||0
-IDTE19|Criptografía Cuántica|María Díaz|2021|5|UNMSM||0
-IDTE20|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE21|Big Data|Jorge Fernández|2023|4|UPCH||0
-IDTE22|Redes Neuronales|Ana Rojas|2019|1|PUCP||0
-IDTE23|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
-IDTE24|Criptografía Cuántica|María Díaz|2021|2|UNMSM||0
-IDTE25|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE26|Big Data|Jorge Fernández|2023|3|UPCH||0
-IDTE27|Redes Neuronales|Ana Rojas|2019|5|PUCP||0
-IDTE28|Sistemas Distribuidos|Luis Salas|2020|3|UNI||0
-IDTE29|Criptografía Cuántica|María Díaz|2021|4|UNMSM||0
-IDTE30|Realidad Aumentada|Pedro Castillo|2022|1|UPC||0
-IDTE31|Big Data|Jorge Fernández|2023|4|UPCH||0
-IDTE32|Redes Neuronales|Ana Rojas|2019|2|PUCP||0
-IDTE33|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
-IDTE34|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE35|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE36|Big Data|Jorge Fernández|2023|2|UPCH||0
-IDTE37|Redes Neuronales|Ana Rojas|2019|5|PUCP||0
-IDTE38|Sistemas Distribuidos|Luis Salas|2020|4|UNI||0
-IDTE39|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE40|Realidad Aumentada|Pedro Castillo|2022|3|UPC||0
-IDTE41|Big Data|Jorge Fernández|2023|1|UPCH||0
-IDTE42|Redes Neuronales|Ana Rojas|2019|3|PUCP||0
-IDTE43|Sistemas Distribuidos|Luis Salas|2020|1|UNI||0
-IDTE44|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE45|Realidad Aumentada|Pedro Castillo|2022|1|UPC||0
-IDTE46|Big Data|Jorge Fernández|2023|2|UPCH||0
-IDTE47|Redes Neuronales|Ana Rojas|2019|5|PUCP||0
-IDTE48|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
-IDTE49|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE50|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE51|Big Data|Jorge Fernández|2023|5|UPCH||0
-IDTE52|Redes Neuronales|Ana Rojas|2019|5|PUCP||0
-IDTE53|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
-IDTE54|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE55|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE56|Big Data|Jorge Fernández|2023|5|UPCH||0
-IDTE57|Redes Neuronales|Ana Rojas|2019|1|PUCP||0
-IDTE58|Sistemas Distribuidos|Luis Salas|2020|4|UNI||0
-IDTE59|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
-IDTE60|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE61|Big Data|Jorge Fernández|2023|1|UPCH||0
-IDTE62|Redes Neuronales|Ana Rojas|2019|4|PUCP||0
-IDTE63|Sistemas Distribuidos|Luis Salas|2020|5|UNI||0
-IDTE64|Criptografía Cuántica|María Díaz|2021|5|UNMSM||0
-IDTE65|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE66|Big Data|Jorge Fernández|2023|3|UPCH||0
-IDTE67|Redes Neuronales|Ana Rojas|2019|3|PUCP||0
-IDTE68|Sistemas Distribuidos|Luis Salas|2020|1|UNI||0
-IDTE69|Criptografía Cuántica|María Díaz|2021|1|UNMSM||0
-IDTE70|Realidad Aumentada|Pedro Castillo|2022|4|UPC||0
-IDTE71|Big Data|Jorge Fernández|2023|1|UPCH||0
-IDTE72|Redes Neuronales|Ana Rojas|2019|5|PUCP||0
-IDTE73|Sistemas Distribuidos|Luis Salas|2020|4|UNI||0
-IDTE74|Criptografía Cuántica|María Díaz|2021|4|UNMSM||0
-IDTE75|Realidad Aumentada|Pedro Castillo|2022|1|UPC||0
-IDTE76|Big Data|Jorge Fernández|2023|2|UPCH||0
-IDTE77|Redes Neuronales|Ana Rojas|2019|4|PUCP||0
-IDTE78|Sistemas Distribuidos|Luis Salas|2020|4|UNI||0
-IDTE79|Criptografía Cuántica|María Díaz|2021|4|UNMSM||0
-IDTE80|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE81|Big Data|Jorge Fernández|2023|3|UPCH||0
-IDTE82|Redes Neuronales|Ana Rojas|2019|4|PUCP||0
-IDTE83|Sistemas Distribuidos|Luis Salas|2020|1|UNI||0
-IDTE84|Criptografía Cuántica|María Díaz|2021|2|UNMSM||0
-IDTE85|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
-IDTE86|Big Data|Jorge Fernández|2023|5|UPCH||0
-IDTE87|Redes Neuronales|Ana Rojas|2019|2|PUCP||0
-IDTE88|Sistemas Distribuidos|Luis Salas|2020|1|UNI||0
-IDTE89|Criptografía Cuántica|María Díaz|2021|4|UNMSM||0
-IDTE90|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
-IDTE91|Big Data|Jorge Fernández|2023|3|UPCH||0
-IDTE92|Redes Neuronales|Ana Rojas|2019|1|PUCP||1
-IDTE93|Sistemas Distribuidos|Luis Salas|2020|3|UNI||1
-IDTE94|Criptografía Cuántica|María Díaz|2021|3|UNMSM||1
-IDTE95|Realidad Aumentada|Pedro Castillo|2022|4|UPC||1
-IDTE96|Big Data|Jorge Fernández|2023|5|UPCH||1
-IDTE97|Redes Neuronales|Ana Rojas|2019|5|PUCP||1
-IDTE98|Sistemas Distribuidos|Luis Salas|2020|2|UNI||1
-IDTE99|Criptografía Cuántica|María Díaz|2021|2|UNMSM||1
+IDTE01|Analisis de datos en la nube|Luis Ramirez|2019|8|Universidad Nacional de Ingenieria|Peru|4
+IDTE02|Inteligencia artificial en salud|Maria Lopez|2020|9|Universidad de Buenos Aires|Argentina|3
+IDTE03|Blockchain y seguridad digital|Carlos Mendoza|2021|7|Universidad de Chile|Chile|5
+IDTE04|Algoritmos de compresion de imagenes|Sofia Torres|2018|6|Universidad Nacional de Colombia|Colombia|2
+IDTE05|Redes neuronales aplicadas a la educacion|Andres Perez|2022|10|Universidad de Sao Paulo|Brasil|3
+IDTE06|Desarrollo de apps moviles para turismo|Lucia Vargas|2020|7|Universidad de Costa Rica|Costa Rica|4
+IDTE07|Sistemas embebidos en la industria automotriz|Diego Castro|2019|8|Pontificia Universidad Catolica del Peru|Peru|3
+IDTE08|Reconocimiento facial con redes profundas|Paula Salinas|2021|9|Universidad Tecnologica Nacional|Argentina|4
+IDTE09|Analisis de sentimientos en redes sociales|Jorge Rojas|2020|7|Universidad Central de Venezuela|Venezuela|2
+IDTE10|Simulacion de trafico urbano con IA|Ana Cabrera|2019|8|Universidad de Antioquia|Colombia|3
+IDTE11|Realidad aumentada en educacion primaria|Esteban Ruiz|2022|9|Universidad Nacional de San Marcos|Peru|2
+IDTE12|Sistemas expertos para diagnostico medico|Marta Herrera|2018|6|Universidad de Guadalajara|Mexico|5
+IDTE13|Big data en el sector bancario|Fernando Quispe|2021|7|Universidad del Valle|Bolivia|3
+IDTE14|Robotica educativa en zonas rurales|Camila Guzman|2020|10|Universidad Nacional de Asuncion|Paraguay|4
+IDTE15|Mineria de datos para prediccion electoral|Raul Miranda|2019|8|Universidad Tecnica Particular de Loja|Ecuador|3
+IDTE16|Desarrollo sostenible con tecnologia IoT|Daniela Rivas|2021|9|Universidad Nacional del Altiplano|Peru|4
+IDTE17|Gamificacion en el aprendizaje de matematicas|Oscar Nunez|2022|8|Universidad Autonoma de Madrid|España|2
+IDTE18|Analisis forense digital en delitos informaticos|Karina Silva|2018|7|Universidad de la Republica|Uruguay|3
+IDTE19|Implementacion de CRM en PYMEs|Javier Morales|2020|6|Universidad del Pacifico|Peru|4
+IDTE20|Procesamiento de lenguaje natural para chatbots|Andrea Zamora|2021|9|Universidad de San Carlos|Guatemala|3
+IDTE21|Evaluacion de accesibilidad web|Pedro Alfaro|2019|7|Universidad Nacional del Litoral|Argentina|2
+IDTE22|Energia renovable y eficiencia energetica|Silvia Ortega|2020|8|Universidad de los Andes|Colombia|5
+IDTE23|Plataformas de aprendizaje virtual|Manuel Cardenas|2022|10|Universidad de El Salvador|El Salvador|4
+IDTE24|Diseño de videojuegos educativos|Valeria Paredes|2018|9|Universidad Nacional de Trujillo|Peru|3
+IDTE25|Internet de las cosas en agricultura|Cristian Ayala|2021|7|Universidad Nacional de Rosario|Argentina|2
+IDTE26|Desarrollo de software inclusivo|Elsa Fernandez|2019|8|Universidad del Norte|Colombia|3
+IDTE27|Ciberseguridad en la era digital|Renzo Contreras|2020|9|Universidad Nacional Mayor de San Marcos|Peru|4
+IDTE28|Aplicaciones inteligentes para transporte|Juliana Soto|2022|8|Universidad Tecnologica de Panama|Panama|2
+IDTE29|Transformacion digital en la educacion|Nicolas Benitez|2020|7|Universidad Catolica Boliviana|Bolivia|4
+IDTE30|Analisis visual de datos cientificos|Carmen Vera|2021|6|Universidad Nacional de Ingenieria|Peru|3
+IDTE31|Control de drones por voz|Ivan Chavez|2019|8|Universidad Peruana de Ciencias Aplicadas|Peru|5
+IDTE32|Aplicaciones de IA en arqueologia|Diana Meza|2021|9|Universidad Catolica de Valparaiso|Chile|3
+IDTE33|Sistemas de alerta temprana ante desastres|Eduardo Molina|2018|7|Universidad de Piura|Peru|4
+IDTE34|Monitoreo ambiental con sensores inteligentes|Laura Rios|2020|8|Universidad Nacional de la Amazonia Peruana|Peru|2
+IDTE35|Interfaces cerebro-computadora|Victor Ponce|2021|10|Universidad Nacional de San Agustin|Peru|4
+IDTE36|Estudio de algoritmos geneticos|Angela Gutierrez|2022|7|Universidad del Zulia|Venezuela|3
+IDTE37|Analisis de patrones de consumo online|Cristian Medina|2019|8|Universidad de Santiago de Chile|Chile|3
+IDTE38|Aplicaciones moviles para personas con discapacidad|Flor Aguilar|2020|9|Universidad Nacional Federico Villarreal|Peru|2
+IDTE39|Vision computacional para control de calidad|Mauricio Leon|2021|6|Universidad Nacional de Colombia|Colombia|4
+IDTE40|Reconocimiento de voz en español latino|Samantha Delgado|2022|7|Universidad de Puerto Rico|Puerto Rico|3
+IDTE41|Seguridad en redes inalambricas|Adrian Tapia|2020|8|Universidad Nacional de Ingenieria|Peru|2
+IDTE42|Prediccion de epidemias con machine learning|Isabel Carranza|2021|9|Universidad de Panama|Panama|4
+IDTE43|Digitalizacion del patrimonio cultural|Victor Lujan|2018|7|Universidad de San Martin de Porres|Peru|3
+IDTE44|Estudio de modelos predictivos en educacion|Melissa Campos|2020|8|Universidad Andina del Cusco|Peru|2
+IDTE45|Robotica para asistencia de adultos mayores|Rodrigo Herrera|2021|10|Universidad Nacional de Cuyo|Argentina|3
+IDTE46|Modelado 3D en arquitectura antigua|Fatima Rosales|2019|6|Universidad Ricardo Palma|Peru|4
+IDTE47|Aplicaciones del deep learning en finanzas|Luis Becerra|2022|8|Universidad Tecnica de Ambato|Ecuador|3
+IDTE48|IA para clasificacion de textos legales|Daniel Salas|2020|9|Universidad Peruana Union|Peru|2
+IDTE49|Tecnologias para inclusion digital|Tatiana Valdez|2021|8|Universidad Nacional del Este|Paraguay|4
+IDTE50|Plataformas para comercio electronico en MIPYMES|Jose Gutierrez|2022|7|Universidad Nacional Jorge Basadre Grohmann|Peru|3
