@@ -28,10 +28,25 @@ public:
         }
     }
 
+    void limpiar() {
+        Nodo<T>* actual = cabeza;
+        while (actual != nullptr) {
+            Nodo<T>* temp = actual;
+            actual = actual->siguiente;
+
+            delete temp->dato; 
+            delete temp;      
+        }
+        cabeza = nullptr;
+    }
     Nodo<T>* getCabeza() {
         return cabeza;
     }
 
+    Nodo<T>* getCabezas() const {
+        return cabeza;
+
+    }
     bool buscarporID(const string& idBuscado) {
         Nodo<T>* actual = cabeza;
         while (actual != nullptr) {

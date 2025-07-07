@@ -9,6 +9,7 @@ void mostrarMenuPrincipal() {
     cout << "|    2. INGRESAR COMO LECTOR                    |\n";
     cout << "|    3. INGRESAR COMO ADMINISTRADOR             |\n";
 	cout << "|    4. INGRESAR COMO BIBLIOTECARIO             |\n";
+    cout << "|    5. GENERAR DATA SET RECURSOS BIBLIOGRAFICOS|\n";
     cout << "|    0. SALIR                                   |\n";
     cout << "|===============================================|\n";
     cout << "Ingrese una opcion: ";

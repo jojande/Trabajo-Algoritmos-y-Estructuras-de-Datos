@@ -18,6 +18,10 @@ public:
 		this->clasificacion = clasificacion;
 	}
 
+	revista(const revista& r)
+		: RecursoBibliografico(r.getId(), r.getTitulo(), r.getAutor(), r.getFecha(), r.getValoracion()) {
+		this->setStock(r.getStock());
+	}
 
 	revista() : RecursoBibliografico() {
 		this->ISSN = "";
@@ -27,6 +31,16 @@ public:
 	string getId() const {
 		return id;
 	}
+	bool esIgualContenido(const revista& otra) const {
+		return titulo == otra.titulo &&
+			autor == otra.autor &&
+			fecha == otra.fecha &&
+			valoracion == otra.valoracion &&
+			ISSN == otra.ISSN &&
+			clasificacion == otra.clasificacion;
+	}
+
+
 
 	string getISSN() const { return ISSN; }
 	string getClasificacion() const { return clasificacion; }

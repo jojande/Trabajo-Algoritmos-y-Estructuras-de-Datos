@@ -24,9 +24,27 @@ public:
 		this->editorial = "";
 	}
 
+	libro(const libro& l)
+		: RecursoBibliografico(l.getId(), l.getTitulo(), l.getAutor(), l.getFecha(), l.getValoracion()) {
+		this->genero = l.genero;
+		this->editorial = l.editorial;
+		this->setStock(l.getStock());
+	}
+
 	string getId() const {
 		return id;
 	}
+
+
+	bool esIgualContenido(const libro& otro) const {
+		return titulo == otro.titulo &&
+			autor == otro.autor &&
+			fecha == otro.fecha &&
+			genero == otro.genero &&
+			editorial == otro.editorial;
+
+	}
+
 
 	string getGenero() const { return genero; }
 	string getEditorial() const { return editorial; }	
