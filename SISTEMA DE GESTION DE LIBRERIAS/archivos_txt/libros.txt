@@ -1,6 +1,5 @@
-IDLI02|Python|Djin|28|4|Computacion|Microsoft|10
-IDLI03|Java|Notch|20|4|Minecraft|Rubius|1
-IDLI04|La ladrona de libros|Marcus Zusak|2005|4|Drama|Picador Alfred A. KNOPF|6
-IDLI01|Harry Potter|Lucas|1992|4|Ficcion|Disney|0
-IDLI05|Star Wars|Lucas|1992|5|Ficcion|Disney|0
-IDLI06|Indiana Jones|Pedro|2005|4|Ficcion|Warner|0
+IDLI01|Cien Años de Soledad|García Márquez|1967|5|Novela|Planeta|6
+IDLI02|El Principito|Saint-Exupéry|1943|4|Fábula|Penguin|6
+IDLI03|1984|Orwell|1949|1|Distopía|Alianza|6
+IDLI04|Don Quijote|Cervantes|1605|2|Clásico|SM|6
+IDLI05|Rayuela|Cortázar|1963|2|Experimental|Random House|6

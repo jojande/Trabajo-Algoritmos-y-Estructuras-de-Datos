@@ -12,11 +12,18 @@ private:
     int dia, mes, anio;
 
 public:
-    Fecha() : dia(0), mes(0), anio(0) {}
+ 
 
     Fecha(const string& fechaStr) {
         sscanf_s(fechaStr.c_str(), "%d/%d/%d", &dia, &mes, &anio);
     }
+
+    Fecha() {
+        dia = rand() % 28 + 1;      
+        mes = rand() % 12 + 1;        
+        anio = 2020 + rand() % 6;     
+    }
+
 
     void sumarDias(int n) {
         struct tm t = {};

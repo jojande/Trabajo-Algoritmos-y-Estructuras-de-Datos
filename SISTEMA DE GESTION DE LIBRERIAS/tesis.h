@@ -23,11 +23,27 @@ public:
 		this->pais = "";
 	}
 
+	tesis(const tesis& t)
+		: RecursoBibliografico(t.getId(), t.getTitulo(), t.getAutor(), t.getFecha(), t.getValoracion()) {
+		this->universidad = t.getUniversidad(); 
+		this->setStock(t.getStock());
+	}
+
 	string getUniversidad() const { return universidad; }
 	string getPais() const { return pais; }
 	
     void setUniversidad(string universidad) { this->universidad = universidad; }
 	void setPais(string pais) { this->pais = pais; }
+
+	bool esIgualContenido(const tesis& otra) const {
+		return titulo == otra.titulo &&
+			autor == otra.autor &&
+			fecha == otra.fecha &&
+			valoracion == otra.valoracion &&
+			universidad == otra.universidad &&
+			pais == otra.pais;
+	}
+
 
 	void mostrar() const override {
 		cout << "=== TESIS ===" << endl;

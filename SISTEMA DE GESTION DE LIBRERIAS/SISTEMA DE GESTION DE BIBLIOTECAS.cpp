@@ -2,13 +2,24 @@
 #include <conio.h>
 #include "Usuario.h"
 #include "utils.h"
+
 using namespace std;
+
 
 
 int main() {
     system("chcp 65001");
 
-    HashTable<Prestamo> tablaOrdenada;
+    ListaSimple<Usuario*> listaLectores;
+    ListaSimple<RecursoBibliografico*> listaRecursos;
+
+    ListaSimple<libro> listaLibros;
+    ListaSimple<revista> listaRevistas;
+    ListaSimple<tesis> listaTesis;
+
+    Cola<Prestamo> colaPrestamos;
+    HashTable<Prestamo> hashPrestamos;
+    ArbolBinario<Multa> arbolMultas;
 
     cargarLibros("archivos_txt/libros.txt");
     cargarRevistas("archivos_txt/revistas.txt");
@@ -58,6 +69,43 @@ int main() {
         case '4':
             iniciarSesionBibliotecario();
             break;
+        case '5': {
+            generarDatasetLibros(30, listaLibros);
+            generarDatasetRevistas(20, listaRevistas);
+            generarDatasetTesis(15, listaTesis);
+
+            listaRecursos.limpiar();
+
+            Nodo<libro>* actL = listaLibros.getCabeza();
+            while (actL) {
+                listaRecursos.insertarAlFinal(new libro(actL->dato));
+                actL = actL->siguiente;
+            }
+
+            Nodo<revista>* actR = listaRevistas.getCabeza();
+            while (actR) {
+                listaRecursos.insertarAlFinal(new revista(actR->dato));
+                actR = actR->siguiente;
+            }
+
+            Nodo<tesis>* actT = listaTesis.getCabeza();
+            while (actT) {
+                listaRecursos.insertarAlFinal(new tesis(actT->dato));
+                actT = actT->siguiente;
+            }
+
+            int cantidadLectores = 50;
+            generarDatasetUsuariosConPrestamosYMultas(
+                cantidadLectores,
+                listaLectores,
+                listaRecursos,
+                colaPrestamos,
+                hashPrestamos,
+                arbolMultas
+            );
+
+            break;
+        }
         case '0':
             cout << "Saliendo del programa...\n";
             break;

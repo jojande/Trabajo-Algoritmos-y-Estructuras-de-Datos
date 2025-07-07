@@ -1,0 +1,46 @@
+IDRE01|El Principito|Saint-Exupéry|1943|5|||0
+IDRE01|1984|Orwell|1949|4|||0
+IDRE01|Don Quijote|Cervantes|1605|1|||0
+IDRE01|Rayuela|Cortázar|1963|3|||0
+IDRE01|Cien Años de Soledad|García Márquez|1967|3|||0
+IDRE01|El Principito|Saint-Exupéry|1943|1|||0
+IDRE02|Ciencia Hoy|Equipo Editorial|2020|4|||0
+IDRE03|National Geographic|Expertos|2021|3|||0
+IDRE04|Nature|Investigadores|2022|5|||0
+IDRE05|Forbes|Redacción|2023|2|||0
+IDRE06|Muy Interesante|Colaboradores|2024|1|||0
+IDRE07|Ciencia Hoy|Equipo Editorial|2020|1|||0
+IDRE08|National Geographic|Expertos|2021|2|||0
+IDRE09|Nature|Investigadores|2022|3|||0
+IDRE10|Forbes|Redacción|2023|5|||0
+IDRE11|Muy Interesante|Colaboradores|2024|4|||0
+IDRE12|Ciencia Hoy|Equipo Editorial|2020|3|||0
+IDRE13|National Geographic|Expertos|2021|3|||0
+IDRE14|Nature|Investigadores|2022|3|||0
+IDRE15|Forbes|Redacción|2023|4|||0
+IDRE16|Muy Interesante|Colaboradores|2024|4|||0
+IDRE17|Ciencia Hoy|Equipo Editorial|2020|4|||0
+IDRE18|National Geographic|Expertos|2021|4|||0
+IDRE19|Nature|Investigadores|2022|1|||0
+IDRE20|Forbes|Redacción|2023|1|||0
+IDRE21|Muy Interesante|Colaboradores|2024|3|||0
+IDRE22|Ciencia Hoy|Equipo Editorial|2020|3|||1
+IDRE23|National Geographic|Expertos|2021|5|||1
+IDRE24|Nature|Investigadores|2022|5|||1
+IDRE25|Forbes|Redacción|2023|5|||1
+IDRE26|Muy Interesante|Colaboradores|2024|4|||1
+IDRE27|Ciencia Hoy|Equipo Editorial|2020|1|||1
+IDRE28|National Geographic|Expertos|2021|2|||1
+IDRE29|Nature|Investigadores|2022|2|||1
+IDRE30|Forbes|Redacción|2023|2|||1
+IDRE31|Muy Interesante|Colaboradores|2024|3|||1
+IDRE32|Ciencia Hoy|Equipo Editorial|2020|5|||1
+IDRE33|National Geographic|Expertos|2021|3|||1
+IDRE34|Nature|Investigadores|2022|4|||1
+IDRE35|Forbes|Redacción|2023|1|||1
+IDRE36|Muy Interesante|Colaboradores|2024|4|||1
+IDRE37|Ciencia Hoy|Equipo Editorial|2020|5|||1
+IDRE38|National Geographic|Expertos|2021|3|||1
+IDRE39|Nature|Investigadores|2022|5|||1
+IDRE40|Forbes|Redacción|2023|3|||1
+IDRE41|Muy Interesante|Colaboradores|2024|4|||1

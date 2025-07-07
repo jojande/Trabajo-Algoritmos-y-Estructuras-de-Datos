@@ -20,6 +20,8 @@ void escribirLineaEnArchivo(const string& nombreArchivo, const string& linea) {
     }
 }
 
+
+
 void guardarLibrosEnArchivo(ListaSimple<libro>& lista) {
     ofstream archivo("archivos_txt/libros.txt", ios::trunc);  // Borra contenido anterior
 
@@ -207,4 +209,72 @@ void guardarMultasEnArchivo(ArbolBinario<Multa>& arbol) {
 
     guardarMultasEnArchivoRecursivo(arbol.getRaiz(), archivo);
     archivo.close();
+}
+
+void guardarLectoresEnArchivo(const ListaSimple<Usuario*>& listaLectores) {
+    ofstream archivo("archivos_txt/lectores.txt");
+    if (!archivo.is_open()) {
+        cout << " No se pudo abrir el archivo de lectores.\n";
+        return;
+    }
+
+    Nodo<Usuario*>* actual = listaLectores.getCabezas();
+    while (actual != nullptr) {
+        // Se asume que todos los elementos en la lista son Lector*
+        Lector* lector = static_cast<Lector*>(actual->dato);  // ⬅️ reemplazo hecho aquí
+
+        archivo << lector->getId() << "|"
+            << lector->getNombre() << "|"
+            << lector->getContrasenia() << "|\n";
+
+        actual = actual->siguiente;
+    }
+
+    archivo.close();
+    cout << " Lectores guardados en archivo.\n";
+}
+
+void guardarAdministradoresEnArchivo(const ListaSimple<Usuario*>& listaAdministradores) {
+    ofstream archivo("archivos_txt/administradores.txt");
+    if (!archivo.is_open()) {
+        cout << " No se pudo abrir el archivo de administradores.\n";
+        return;
+    }
+
+    Nodo<Usuario*>* actual = listaAdministradores.getCabezas();
+    while (actual != nullptr) {
+        Administrador* admin = static_cast<Administrador*>(actual->dato);
+
+        archivo << admin->getId() << "|"
+            << admin->getNombre() << "|"
+            << admin->getContrasenia() << "|\n";
+
+        actual = actual->siguiente;
+    }
+
+    archivo.close();
+    cout << " Administradores guardados en archivo.\n";
+}
+
+
+void guardarBibliotecariosEnArchivo(const ListaSimple<Usuario*>& listaBibliotecarios) {
+    ofstream archivo("archivos_txt/bibliotecarios.txt");
+    if (!archivo.is_open()) {
+        cout << " No se pudo abrir el archivo de bibliotecarios.\n";
+        return;
+    }
+
+    Nodo<Usuario*>* actual = listaBibliotecarios.getCabezas();
+    while (actual != nullptr) {
+        Bibliotecario* biblio = static_cast<Bibliotecario*>(actual->dato);
+
+        archivo << biblio->getId() << "|"
+            << biblio->getNombre() << "|"
+            << biblio->getContrasenia() << "|\n";
+
+        actual = actual->siguiente;
+    }
+
+    archivo.close();
+    cout << "Bibliotecarios guardados en archivo.\n";
 }

@@ -1,0 +1,36 @@
+IDTE01|1984|Orwell|1949|5|UNMSM||0
+IDTE01|Don Quijote|Cervantes|1605|4|PUCP||0
+IDTE01|Rayuela|Cortázar|1963|3|UNI||0
+IDTE01|Cien Años de Soledad|García Márquez|1967|5|UPC||0
+IDTE01|El Principito|Saint-Exupéry|1943|5|USIL||0
+IDTE01|1984|Orwell|1949|5|UNMSM||0
+IDTE02|Redes Neuronales|Ana Rojas|2019|4|PUCP||0
+IDTE03|Sistemas Distribuidos|Luis Salas|2020|3|UNI||0
+IDTE04|Criptografía Cuántica|María Díaz|2021|5|UNMSM||0
+IDTE05|Realidad Aumentada|Pedro Castillo|2022|2|UPC||0
+IDTE06|Big Data|Jorge Fernández|2023|1|UPCH||0
+IDTE07|Redes Neuronales|Ana Rojas|2019|1|PUCP||0
+IDTE08|Sistemas Distribuidos|Luis Salas|2020|2|UNI||0
+IDTE09|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
+IDTE10|Realidad Aumentada|Pedro Castillo|2022|5|UPC||0
+IDTE11|Big Data|Jorge Fernández|2023|4|UPCH||0
+IDTE12|Redes Neuronales|Ana Rojas|2019|3|PUCP||0
+IDTE13|Sistemas Distribuidos|Luis Salas|2020|3|UNI||0
+IDTE14|Criptografía Cuántica|María Díaz|2021|3|UNMSM||0
+IDTE15|Realidad Aumentada|Pedro Castillo|2022|4|UPC||0
+IDTE16|Big Data|Jorge Fernández|2023|4|UPCH||0
+IDTE17|Redes Neuronales|Ana Rojas|2019|3|PUCP||1
+IDTE18|Sistemas Distribuidos|Luis Salas|2020|5|UNI||1
+IDTE19|Criptografía Cuántica|María Díaz|2021|5|UNMSM||1
+IDTE20|Realidad Aumentada|Pedro Castillo|2022|5|UPC||1
+IDTE21|Big Data|Jorge Fernández|2023|4|UPCH||1
+IDTE22|Redes Neuronales|Ana Rojas|2019|1|PUCP||1
+IDTE23|Sistemas Distribuidos|Luis Salas|2020|2|UNI||1
+IDTE24|Criptografía Cuántica|María Díaz|2021|2|UNMSM||1
+IDTE25|Realidad Aumentada|Pedro Castillo|2022|2|UPC||1
+IDTE26|Big Data|Jorge Fernández|2023|3|UPCH||1
+IDTE27|Redes Neuronales|Ana Rojas|2019|5|PUCP||1
+IDTE28|Sistemas Distribuidos|Luis Salas|2020|3|UNI||1
+IDTE29|Criptografía Cuántica|María Díaz|2021|4|UNMSM||1
+IDTE30|Realidad Aumentada|Pedro Castillo|2022|1|UPC||1
+IDTE31|Big Data|Jorge Fernández|2023|4|UPCH||1

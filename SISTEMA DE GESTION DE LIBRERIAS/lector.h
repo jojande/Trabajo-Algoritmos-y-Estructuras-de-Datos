@@ -3,6 +3,8 @@
 
 class Lector : public Usuario {
 private:
+        
+
 public:
 	Lector(const string id, const string nombre, const string contrasenia) : Usuario( id, nombre, contrasenia) {}
 
@@ -15,6 +17,7 @@ public:
 		cout << "5. Ver Grafo de libros por autor" << endl;
 		cout << "0. Salir: " << endl;
 	}
+
 
 	
 };

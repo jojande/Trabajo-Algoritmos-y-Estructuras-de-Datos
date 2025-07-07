@@ -24,6 +24,10 @@ ControlVencimientos heap;
 
 Grafo<string> grafoRecursos(100, false); // No dirigido
 
+
+
+
+
 void construirGrafoDeLibrosPorGenero() {
     Nodo<libro>* i = listaLibros.getCabeza();
     while (i != nullptr) {
@@ -1779,5 +1783,621 @@ void iniciarSesionBibliotecario() {
 }
 
 
+void marcarIDsUsados(bool usados[100], const string& archivoNombre, const string& prefijo) {
+    ifstream archivo(archivoNombre);
+    string linea;
+    while (getline(archivo, linea)) {
+        if (linea.substr(0, prefijo.size()) == prefijo) {
+            string numStr = linea.substr(prefijo.size(), 2);
+            try {
+                int num = stoi(numStr);
+                if (num >= 1 && num <= 99)
+                    usados[num] = true;
+            }
+            catch (...) {}
+        }
+    }
+    archivo.close();
+}
+
+void generarDatasetLibros(int cantidad, ListaSimple<libro>& listaLibros) {
+    srand(time(0));
+    bool usados[100] = { false };
+    marcarIDsUsados(usados, "archivos_txt/libros.txt", "IDLI");
+
+    // Datos base
+    string titulos[] = {
+        "Cien Años de Soledad", "El Principito", "1984", "Don Quijote", "Rayuela",
+        "La Odisea", "Fahrenheit 451", "Crimen y Castigo", "Ulises", "Orgullo y Prejuicio",
+        "El Gran Gatsby", "Matar a un Ruiseñor", "Lolita", "La Metamorfosis", "La Iliada",
+        "El Retrato de Dorian Gray", "La Sombra del Viento", "Los Miserables", "Drácula", "El Hobbit",
+        "Hamlet", "Macbeth", "Romeo y Julieta", "El Viejo y el Mar", "En el Camino",
+        "Pedro Páramo", "La Tregua", "Travesuras de la Niña Mala", "El Aleph", "El Perfume",
+        "Tokio Blues", "Kafka en la orilla", "La insoportable levedad del ser", "La Carretera", "Ensayo sobre la ceguera",
+        "2666", "Patria", "Los Pilares de la Tierra", "Juego de Tronos", "Dune",
+        "Solaris", "Neuromante", "Un Mundo Feliz", "La Máquina del Tiempo", "Fundación",
+        "El Nombre del Viento", "It", "Carrie", "Cementerio de Animales", "Misery"
+    };
+
+    string autores[] = {
+        "García Márquez", "Saint-Exupéry", "Orwell", "Cervantes", "Cortázar",
+        "Homero", "Bradbury", "Dostoyevski", "Joyce", "Austen",
+        "Fitzgerald", "Harper Lee", "Nabokov", "Kafka", "Homero",
+        "Wilde", "Ruiz Zafón", "Hugo", "Stoker", "Tolkien",
+        "Shakespeare", "Shakespeare", "Shakespeare", "Hemingway", "Kerouac",
+        "Juan Rulfo", "Mario Benedetti", "Vargas Llosa", "Borges", "Süskind",
+        "Murakami", "Murakami", "Kundera", "McCarthy", "Saramago",
+        "Bolaño", "Aramburu", "Follett", "George R. R. Martin", "Herbert",
+        "Lem", "Gibson", "Huxley", "Wells", "Asimov",
+        "Rothfuss", "Stephen King", "Stephen King", "Stephen King", "Stephen King"
+    };
+
+    string fechas[] = {
+        "1967", "1943", "1949", "1605", "1963",
+        "800 a.C.", "1953", "1866", "1922", "1813",
+        "1925", "1960", "1955", "1915", "750 a.C.",
+        "1890", "2001", "1862", "1897", "1937",
+        "1603", "1606", "1597", "1952", "1957",
+        "1955", "1960", "2006", "1949", "1985",
+        "2000", "2002", "1984", "2006", "1995",
+        "2004", "2016", "1989", "1996", "1965",
+        "1961", "1984", "1932", "1895", "1951",
+        "2007", "1986", "1974", "1983", "1987"
+    };
+
+    string generos[] = {
+        "Novela", "Fábula", "Distopía", "Clásico", "Experimental",
+        "Épico", "Ciencia Ficción", "Drama", "Modernismo", "Romance",
+        "Contemporáneo", "Juvenil", "Psicológico", "Fantasía", "Tragedia",
+        "Histórico", "Policíaco", "Suspenso", "Terror", "Ensayo",
+        "Autobiografía", "Aventura", "Satírico", "Misterio", "Literatura femenina",
+        "Narrativa", "Mitología", "Utopía", "Biografía", "Humor",
+        "Romántico", "Sociología", "Filosofía", "Ciberpunk", "Thriller",
+        "Político", "Viajes", "Guerra", "Tecnología", "Realismo mágico",
+        "Gótico", "Drama histórico", "Teatro", "Crónica", "Didáctico",
+        "Parodia", "Ético", "Cultural", "Lenguaje", "Neorrealismo"
+    };
+
+    string editoriales[] = {
+        "Planeta", "Penguin", "Alianza", "SM", "Random House",
+        "Anagrama", "Siruela", "Debolsillo", "Tusquets", "Espasa",
+        "Salamandra", "Alfaguara", "RBA", "Gredos", "Edelvives",
+        "Larousse", "Oxford", "Cambridge", "Norma", "Ediciones B",
+        "Ariel", "Páginas de Espuma", "Taurus", "Crítica", "Paidós",
+        "McGraw-Hill", "Siglo XXI", "Minotauro", "Destino", "Austral",
+        "Grijalbo", "Acantilado", "Océano", "Emece", "Trotalibros",
+        "Zig-Zag", "Kapelusz", "Pearson", "Loqueleo", "Hachette",
+        "Kairós", "Morata", "Trillas", "Marcombo", "Montena",
+        "Noguer", "Herder", "Lumen", "Galaxia Gutenberg", "Editorial FCE"
+    };
+
+    ifstream archivo("archivos_txt/libros.txt");
+    if (archivo.is_open()) {
+        string linea;
+        while (getline(archivo, linea)) {
+            stringstream ss(linea);
+            string id, titulo, autor, fecha, valStr, genero, editorial, stockStr;
+
+            getline(ss, id, '|');
+            getline(ss, titulo, '|');
+            getline(ss, autor, '|');
+            getline(ss, fecha, '|');
+            getline(ss, valStr, '|');
+            getline(ss, genero, '|');
+            getline(ss, editorial, '|');
+            getline(ss, stockStr, '|');
+
+            try {
+                int valoracion = stoi(valStr);
+                int stock = stoi(stockStr);
+
+                libro l(id, titulo, autor, fecha, valoracion, genero, editorial, stock);
+                listaLibros.insertarAlFinal(l);
+            }
+            catch (const std::exception& e) {
+                cout << "❌ Error al procesar línea: " << linea << " (" << e.what() << ")\n";
+            }
+        }
+        archivo.close();
+    }
+
+    for (int i = 0; i < cantidad; ++i) {
+        string titulo = titulos[i % 5];
+        string autor = autores[i % 5];
+        string fecha = fechas[i % 5];
+        string genero = generos[i % 5];
+        string editorial = editoriales[i % 5];
+        int valoracion = 1 + rand() % 5;
+
+        libro nuevoLibro;
+        nuevoLibro.setTitulo(titulo);
+        nuevoLibro.setAutor(autor);
+        nuevoLibro.setFecha(fecha);
+        nuevoLibro.setValoracion(valoracion); 
+        nuevoLibro.setGenero(genero);
+        nuevoLibro.setEditorial(editorial);
+        nuevoLibro.setStock(1);
+
+        bool encontrado = false;
+        Nodo<libro>* actual = listaLibros.getCabeza();
+
+        while (actual != nullptr) {
+            if (actual->dato.esIgualContenido(nuevoLibro)) {
+                actual->dato.setStock(actual->dato.getStock() + 1);
+                encontrado = true;
+                break;
+            }
+            actual = actual->siguiente;
+        }
+
+        if (!encontrado) {
+            int idNum = -1;
+            for (int j = 1; j <= 99; ++j) {
+                if (!usados[j]) {
+                    usados[j] = true;
+                    idNum = j;
+                    break;
+                }
+            }
+
+            if (idNum == -1) {
+                cout << "IDs agotados para libros\n";
+                break;
+            }
+
+            string nuevoID = generarID("libro", idNum);
+            nuevoLibro.setId(nuevoID);
+            listaLibros.insertarAlFinal(nuevoLibro);
+        }
+    }
+
+    guardarLibrosEnArchivo(listaLibros);
+    cout << "Libros generados y stock actualizado correctamente.\n";
+}
+
+void generarDatasetRevistas(int cantidad, ListaSimple<revista>& listaRevistas) {
+    srand(time(0));
+    bool usados[100] = { false };
+    marcarIDsUsados(usados, "archivos_txt/revistas.txt", "IDRE");
+
+    string titulos[] = {
+       "Ciencia Hoy", "National Geographic", "Nature", "Forbes", "Muy Interesante",
+       "Scientific American", "Time", "The Economist", "Popular Science", "PC World",
+       "Wired", "IEEE Spectrum", "New Scientist", "Harvard Business Review", "MIT Technology Review",
+       "Quo", "Discovery", "Astronomy", "Ecología y Medio Ambiente", "Investigación y Ciencia",
+       "Revista de Historia", "Salud Total", "Mente y Cerebro", "Psicología Hoy", "Cultura Científica",
+       "Geo", "Cosmos", "Tec Review", "Semana Económica", "Caretas",
+       "The Lancet", "BMJ", "Computer Hoy", "Linux Magazine", "Historia National",
+       "Revista de Ciencias Sociales", "Estudios Filosóficos", "Revista Andina", "Agronomía Peruana", "Medicina UNMSM",
+       "Comunicación y Sociedad", "Revista Digital UDEP", "Boletín Estadístico", "Contabilidad Global", "Marketing Actual",
+       "Gestión Empresarial", "Revista del Consumidor", "Derecho Público", "Jurídica", "Ingeniería Hoy", "Arquitectura Viva"
+    };
+
+    string autores[] = {
+        "Equipo Editorial", "Expertos", "Investigadores", "Redacción", "Colaboradores",
+        "Analistas", "Científicos", "Docentes", "Periodistas", "Académicos",
+        "Estudiantes", "Miembros IEEE", "Psicólogos", "Economistas", "Ingenieros",
+        "Editorial Forbes", "Biólogos", "Historiadores", "Astrónomos", "Educadores",
+        "Físicos", "Sociólogos", "Filósofos", "Médicos", "Psicoanalistas",
+        "Tecnólogos", "Especialistas", "Químicos", "Ecologistas", "Matemáticos",
+        "Jueces", "Abogados", "Politólogos", "Lingüistas", "Antropólogos",
+        "Pedagogos", "Neurólogos", "Epidemiólogos", "Contadores", "Publicistas",
+        "Diseñadores", "Constructores", "Investigadores PUCP", "Investigadores UNI", "UNSA",
+        "UDEP", "UCSUR", "ULIMA", "USMP", "UIGV"
+    };
+
+    string fechas[] = {
+        "2020", "2021", "2022", "2023", "2024",
+        "2019", "2018", "2017", "2016", "2015",
+        "2014", "2013", "2012", "2011", "2010",
+        "2009", "2008", "2007", "2006", "2005",
+        "2004", "2003", "2002", "2001", "2000",
+        "1999", "1998", "1997", "1996", "1995",
+        "1994", "1993", "1992", "1991", "1990",
+        "1989", "1988", "1987", "1986", "1985",
+        "1984", "1983", "1982", "1981", "1980",
+        "1979", "1978", "1977", "1976", "1975"
+    };
+
+    string ISSNs[] = {
+        "1234-5678", "2345-6789", "3456-7890", "4567-8901", "5678-9012",
+        "6789-0123", "7890-1234", "8901-2345", "9012-3456", "0123-4567",
+        "1122-3344", "2233-4455", "3344-5566", "4455-6677", "5566-7788",
+        "6677-8899", "7788-9900", "8899-0011", "9900-1122", "0011-2233",
+        "ABCD-1234", "EFGH-5678", "IJKL-9012", "MNOP-3456", "QRST-7890",
+        "UVWX-2345", "YZAB-6789", "CDEF-0123", "GHIJ-4567", "KLMN-8901",
+        "OPQR-2345", "STUV-6789", "WXYZ-0123", "PQRS-4567", "LMNO-8901",
+        "ZXCV-1234", "ASDF-5678", "QWER-9012", "TYUI-3456", "GHJK-7890",
+        "BNMQ-2345", "VCAZ-6789", "LOPM-0123", "IKUJ-4567", "UHYN-8901",
+        "OLKD-2345", "POIU-6789", "MLKJ-0123", "NJHB-4567", "BQWE-8901"
+    };
+
+    string clasificaciones[] = {
+        "Divulgación", "Científica", "Tecnología", "Economía", "Educativa",
+        "Cultura", "Historia", "Salud", "Psicología", "Ecología",
+        "Astronomía", "Física", "Química", "Matemáticas", "Ingeniería",
+        "Derecho", "Contabilidad", "Empresarial", "Marketing", "Literatura",
+        "Lingüística", "Social", "Antropología", "Política", "Medicina",
+        "Filosofía", "Educación", "Sociología", "Arte", "Cómic",
+        "Robótica", "Programación", "Ciberseguridad", "Criminalística", "Forense",
+        "Veterinaria", "Nutrición", "Odontología", "Enfermería", "Bioética",
+        "Fotografía", "Diseño", "Arquitectura", "Urbanismo", "Religión",
+        "Turismo", "Transporte", "Geografía", "Geología", "Ingeniería Civil"
+    };
 
 
+    // Leer archivo existente
+    ifstream archivo("archivos_txt/revistas.txt");
+    if (archivo.is_open()) {
+        string linea;
+        while (getline(archivo, linea)) {
+            stringstream ss(linea);
+            string id, titulo, autor, fecha, valStr, issn, clasif, stockStr;
+
+            getline(ss, id, '|');
+            getline(ss, titulo, '|');
+            getline(ss, autor, '|');
+            getline(ss, fecha, '|');
+            getline(ss, valStr, '|');
+            getline(ss, issn, '|');
+            getline(ss, clasif, '|');
+            getline(ss, stockStr, '|');
+
+            try {
+                int val = stoi(valStr);
+                int stock = stoi(stockStr);
+
+                revista r(id, titulo, autor, fecha, val, issn, clasif, stock);
+                listaRevistas.insertarAlFinal(r);
+            }
+            catch (...) {
+                cout << "Error al procesar línea de revista: " << linea << "\n";
+            }
+        }
+        archivo.close();
+    }
+
+    for (int i = 0; i < cantidad; ++i) {
+        revista nueva;
+        nueva.setTitulo(titulos[i % 5]);
+        nueva.setAutor(autores[i % 5]);
+        nueva.setFecha(fechas[i % 5]);
+        nueva.setValoracion(1 + rand() % 5);
+        nueva.setISSN(ISSNs[i % 5]);
+        nueva.setClasificacion(clasificaciones[i % 5]);
+        nueva.setStock(1);
+
+        bool encontrado = false;
+        Nodo<revista>* actual = listaRevistas.getCabeza();
+        while (actual) {
+            if (actual->dato.esIgualContenido(nueva)) {
+                actual->dato.setStock(actual->dato.getStock() + 1);
+                encontrado = true;
+                break;
+            }
+            actual = actual->siguiente;
+        }
+
+        if (!encontrado) {
+            int idNum = -1;
+            for (int j = 1; j <= 99; ++j) {
+                if (!usados[j]) {
+                    usados[j] = true;
+                    idNum = j;
+                    break;
+                }
+            }
+            if (idNum == -1) {
+                cout << "IDs agotados para revistas\n";
+                break;
+            }
+
+            nueva.setId(generarID("revista", idNum));
+            listaRevistas.insertarAlFinal(nueva);
+        }
+    }
+
+    guardarRevistasEnArchivo(listaRevistas);
+    cout << "Revistas generadas y stock actualizado correctamente.\n";
+}
+
+
+void generarDatasetTesis(int cantidad, ListaSimple<tesis>& listaTesis) {
+    srand(time(0));
+    bool usados[100] = { false };
+    marcarIDsUsados(usados, "archivos_txt/tesis.txt", "IDTE");
+
+    string titulos[] = {
+        "Redes Neuronales", "Sistemas Distribuidos", "Criptografía Cuántica", "Realidad Aumentada", "Big Data",
+        "Deep Learning", "Internet de las Cosas", "Blockchain", "Reconocimiento Facial", "Cómputo en la Nube",
+        "Seguridad Informática", "Bases de Datos NoSQL", "Bioinformática", "Energías Renovables", "Análisis de Imágenes",
+        "Inteligencia Artificial", "Minería de Datos", "Aprendizaje Automático", "Teoría de Grafos", "Simulación Molecular",
+        "Control de Robots", "Algoritmos Evolutivos", "Computación Cuántica", "Mecatrónica", "Visión Computacional",
+        "Lenguajes Formales", "Compiladores", "Videojuegos Educativos", "Realidad Virtual", "Sistemas Expertos",
+        "Data Science", "Ingeniería Genética", "Procesamiento de Lenguaje Natural", "Finanzas Computacionales", "Matemática Discreta",
+        "Electrónica Digital", "Telemedicina", "E-learning", "Ciberdefensa", "Criptografía Post-Cuántica",
+        "Economía Digital", "Transformación Digital", "Neurociencia Computacional", "Bioingeniería", "Robótica Educativa",
+        "Ingeniería del Software", "Sistemas Embebidos", "Inteligencia Ambiental", "Analítica Predictiva", "Ética en IA"
+    };
+
+    string autores[] = {
+        "Ana Rojas", "Luis Salas", "María Díaz", "Pedro Castillo", "Jorge Fernández",
+        "Lucía Gómez", "Carlos Herrera", "Patricia Méndez", "David Ruiz", "Andrea Salinas",
+        "Renzo Torres", "Martina Paredes", "Sebastián Alva", "Fabiola Márquez", "Eduardo Chumpitaz",
+        "Javier Lazo", "Melany Chávez", "Cristian Rosas", "Elena Zárate", "Rafael Gamboa",
+        "Daniela Tello", "Iván Camargo", "Tatiana Mendoza", "Gustavo León", "Rocío Barrera",
+        "Bruno Aguilar", "Celeste Velásquez", "Joaquín Rivas", "Noelia Farfán", "Oscar Mejía",
+        "Alexandra Cubas", "Camilo Bravo", "Jimena Reátegui", "Valeria Llosa", "Martín Yauri",
+        "Silvia Torres", "Enzo Poma", "Karina Quispe", "Luis Palma", "Paola Gutierrez",
+        "Violeta Neyra", "Ximena Tuesta", "Cristian Delgado", "Irene Sotomayor", "Mateo Gonzales",
+        "Victoria López", "Franco Vega", "Natalia Infante", "Luciano Vera", "Samantha Hoyos"
+    };
+
+    string fechas[] = {
+        "2019", "2020", "2021", "2022", "2023",
+        "2018", "2017", "2016", "2015", "2014",
+        "2013", "2012", "2011", "2010", "2009",
+        "2008", "2007", "2006", "2005", "2004",
+        "2003", "2002", "2001", "2000", "1999",
+        "1998", "1997", "1996", "1995", "1994",
+        "1993", "1992", "1991", "1990", "1989",
+        "1988", "1987", "1986", "1985", "1984",
+        "1983", "1982", "1981", "1980", "1979",
+        "1978", "1977", "1976", "1975", "1974"
+    };
+
+    string universidades[] = {
+        "PUCP", "UNI", "UNMSM", "UPC", "UPCH",
+        "USIL", "UDEP", "UCSUR", "USMP", "UIGV",
+        "UNFV", "URP", "ULIMA", "UPN", "UTEC",
+        "USAT", "UNSA", "UNPRG", "UNT", "UNAC",
+        "UANCV", "UNHEVAL", "UNAJMA", "UNTRM", "UNJBG",
+        "UNAP", "UNCP", "UNALM", "UCB", "UNIA",
+        "UCSM", "ULADECH", "UNICA", "UMCH", "UCSP",
+        "UAP", "UPSJB", "UPAO", "UCAL", "TECSUP",
+        "ESAN", "UTP", "UTM", "UNAM", "UDEM",
+        "ITAM", "ITESM", "UCA", "USAC", "UADY"
+    };
+
+    string paises[] = {
+        "Perú", "Chile", "Argentina", "México", "Colombia",
+        "Ecuador", "Bolivia", "Venezuela", "Paraguay", "Uruguay",
+        "Brasil", "España", "Italia", "Alemania", "Francia",
+        "Canadá", "Estados Unidos", "Portugal", "Reino Unido", "Suecia",
+        "Noruega", "Finlandia", "Dinamarca", "Holanda", "Bélgica",
+        "Austria", "Suiza", "Polonia", "Rusia", "China",
+        "Japón", "India", "Australia", "Nueva Zelanda", "Sudáfrica",
+        "Egipto", "Marruecos", "Nigeria", "Kenia", "Corea del Sur",
+        "Tailandia", "Malasia", "Vietnam", "Indonesia", "Filipinas",
+        "Irlanda", "Grecia", "Turquía", "Irán", "Israel"
+    };
+
+
+    // Leer archivo existente
+    ifstream archivo("archivos_txt/tesis.txt");
+    if (archivo.is_open()) {
+        string linea;
+        while (getline(archivo, linea)) {
+            stringstream ss(linea);
+            string id, titulo, autor, fecha, valStr, universidad, pais, stockStr;
+
+            getline(ss, id, '|');
+            getline(ss, titulo, '|');
+            getline(ss, autor, '|');
+            getline(ss, fecha, '|');
+            getline(ss, valStr, '|');
+            getline(ss, universidad, '|');
+            getline(ss, pais, '|');
+            getline(ss, stockStr, '|');
+
+            try {
+                int val = stoi(valStr);
+                int stock = stoi(stockStr);
+
+                tesis t(id, titulo, autor, fecha, val, universidad, pais, stock);
+                listaTesis.insertarAlFinal(t);
+            }
+            catch (...) {
+                cout << "Error al procesar línea de tesis: " << linea << "\n";
+            }
+        }
+        archivo.close();
+    }
+
+    for (int i = 0; i < cantidad; ++i) {
+        tesis nueva;
+        nueva.setTitulo(titulos[i % 5]);
+        nueva.setAutor(autores[i % 5]);
+        nueva.setFecha(fechas[i % 5]);
+        nueva.setValoracion(1 + rand() % 5);
+        nueva.setUniversidad(universidades[i % 5]);
+        nueva.setPais(paises[i % 5]);
+        nueva.setStock(1);
+
+        bool encontrado = false;
+        Nodo<tesis>* actual = listaTesis.getCabeza();
+        while (actual) {
+            if (actual->dato.esIgualContenido(nueva)) {
+                actual->dato.setStock(actual->dato.getStock() + 1);
+                encontrado = true;
+                break;
+            }
+            actual = actual->siguiente;
+        }
+
+        if (!encontrado) {
+            int idNum = -1;
+            for (int j = 1; j <= 99; ++j) {
+                if (!usados[j]) {
+                    usados[j] = true;
+                    idNum = j;
+                    break;
+                }
+            }
+            if (idNum == -1) {
+                cout << "IDs agotados para tesis\n";
+                break;
+            }
+
+            nueva.setId(generarID("tesis", idNum));
+            listaTesis.insertarAlFinal(nueva);
+        }
+    }
+
+    guardarTesisEnArchivo(listaTesis);
+    cout << "Tesis generadas y stock actualizado correctamente.\n";
+}
+
+
+void generarDatasetUsuarios(const string& tipo, int cantidad, ListaSimple<Usuario*>& listaUsuarios) {
+    srand(time(0));
+    bool usados[100] = { false };
+
+    string archivoRuta;
+    string prefijo;
+
+    if (tipo == "lector") {
+        archivoRuta = "archivos_txt/lectores.txt";
+        prefijo = "IDLE";
+    }
+    else if (tipo == "bibliotecario") {
+        archivoRuta = "archivos_txt/bibliotecarios.txt";
+        prefijo = "IDBI";
+    }
+    else if (tipo == "administrador") {
+        archivoRuta = "archivos_txt/administradores.txt";
+        prefijo = "IDAD";
+    }
+    else {
+        cout << "❌ Tipo de usuario no válido.\n";
+        return;
+    }
+
+    marcarIDsUsados(usados, archivoRuta, prefijo);
+
+    string nombres[] = {
+        "Juan", "María", "Luis", "Ana", "Pedro", "Lucía", "Carlos", "Elena", "José", "Valeria",
+        "Miguel", "Diana", "Rafael", "Patricia", "Sergio", "Andrea", "Alonso", "Camila", "Víctor", "Renata",
+        "César", "Daniela", "Hugo", "Sofía", "Esteban", "Gabriela", "Martín", "Romina", "Joaquín", "Karla",
+        "Julio", "Fabiola", "Felipe", "Natalia", "Andrés", "Mariela", "Roberto", "Alexa", "Francisco", "Milagros",
+        "Bruno", "Fiorella", "Iván", "Celeste", "Mario", "Yuliana", "Axel", "Melanie", "Kevin", "Nicole"
+    };
+
+    for (int i = 0; i < cantidad; ++i) {
+        string nombre = nombres[i % 50];
+        string contrasenia = "pass" + to_string(rand() % 1000);
+
+        int idNum = -1;
+        for (int j = 1; j <= 99; ++j) {
+            if (!usados[j]) {
+                usados[j] = true;
+                idNum = j;
+                break;
+            }
+        }
+
+        if (idNum == -1) {
+            cout << "IDs agotados para " << tipo << "s\n";
+            break;
+        }
+
+        string idGenerado = generarID(tipo, idNum);
+        Usuario* nuevo;
+
+        if (tipo == "lector")
+            nuevo = new Lector(idGenerado, nombre, contrasenia);
+        else if (tipo == "bibliotecario")
+            nuevo = new Bibliotecario(idGenerado, nombre, contrasenia);
+        else
+            nuevo = new Administrador(idGenerado, nombre, contrasenia);
+
+        listaUsuarios.insertarAlFinal(nuevo);
+    }   
+
+    if (tipo == "lector") {
+        guardarLectoresEnArchivo(listaUsuarios);
+    }
+    else if (tipo == "bibliotecario") {
+       guardarBibliotecariosEnArchivo(listaUsuarios);
+    }
+    else if (tipo == "administrador") {
+       guardarAdministradoresEnArchivo(listaUsuarios);
+    }
+
+    cout << "Se creo" << cantidad << " usuarios (" << tipo << "s) generados correctamente.\n";
+}
+
+void generarDatasetUsuariosConPrestamosYMultas(
+    int cantidadUsuarios,
+    ListaSimple<Usuario*>& listaUsuarios,
+    ListaSimple<RecursoBibliografico*>& recursos,
+    Cola<Prestamo>& colaPrestamos,
+    HashTable<Prestamo>& hashPrestamosConfirmados,
+    ArbolBinario<Multa>& arbolMultas
+) {
+    srand(time(0));
+    bool usados[100] = { false };
+    marcarIDsUsados(usados, "archivos_txt/lectores.txt", "IDLE");
+
+    string nombres[] = {
+        "Juan", "María", "Luis", "Ana", "Pedro", "Lucía", "Carlos", "Elena", "José", "Valeria",
+        "Miguel", "Diana", "Rafael", "Patricia", "Sergio", "Andrea", "Alonso", "Camila", "Víctor", "Renata",
+        "César", "Daniela", "Hugo", "Sofía", "Esteban", "Gabriela", "Martín", "Romina", "Joaquín", "Karla",
+        "Julio", "Fabiola", "Felipe", "Natalia", "Andrés", "Mariela", "Roberto", "Alexa", "Francisco", "Milagros",
+        "Bruno", "Fiorella", "Iván", "Celeste", "Mario", "Yuliana", "Axel", "Melanie", "Kevin", "Nicole"
+    };
+
+    for (int i = 0; i < cantidadUsuarios; ++i) {
+        // Crear lector
+        string nombre = nombres[i % 50];
+        string contrasenia = "pass" + to_string(rand() % 1000);
+
+        int idNum = -1;
+        for (int j = 1; j <= 99; ++j) {
+            if (!usados[j]) {
+                usados[j] = true;
+                idNum = j;
+                break;
+            }
+        }
+
+        if (idNum == -1) {
+            cout << "⚠️ IDs agotados para lectores\n";
+            break;
+        }
+
+        string idGenerado = generarID("lector", idNum);
+        Lector* lector = new Lector(idGenerado, nombre, contrasenia);
+        listaUsuarios.insertarAlFinal(lector);
+
+        // Crear préstamo si hay recursos disponibles
+        if (recursos.tamano() == 0) continue;
+
+        RecursoBibliografico* recurso = recursos.getPorIndice(rand() % recursos.tamano());
+        string idPrestamo = generarID("prestamo", 100 + rand() % 900);
+        string fecha = Fecha().toString();
+
+        Prestamo* prestamo = new Prestamo(idPrestamo, fecha, lector, recurso, "Confirmado");
+
+        colaPrestamos.encolar(*prestamo);
+        hashPrestamosConfirmados.insertar(*prestamo);
+
+        // 33% probabilidad de multa
+        if (rand() % 3 == 0) {
+            string idMulta = generarID("multa", 100 + rand() % 900);
+            Multa* multa = new Multa(idMulta, prestamo);  // <== CORREGIDO
+            arbolMultas.insertar(*multa);
+        }
+    }
+
+    // Guardado en archivos
+    guardarLectoresEnArchivo(listaUsuarios);
+    guardarTodosLosPrestamosEnArchivo(colaPrestamos);
+    guardarPrestamosConfirmadosDesdeHashTable(hashPrestamosConfirmados);
+
+    ofstream archivoMultas("archivos_txt/multas.txt");
+    guardarMultasEnArchivoRecursivo(arbolMultas.getRaiz(), archivoMultas);
+    archivoMultas.close();
+
+    cout << "✅ Dataset de lectores, préstamos confirmados y multas generado y guardado exitosamente.\n";
+}
