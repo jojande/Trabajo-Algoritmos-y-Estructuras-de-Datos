@@ -12,6 +12,8 @@ int main() {
 
     ListaSimple<Usuario*> listaLectores;
     ListaSimple<RecursoBibliografico*> listaRecursos;
+    ListaSimple<Usuario*> listaAdmi;
+    ListaSimple<Usuario*> listaBibliotecario;
 
     ListaSimple<libro> listaLibros;
     ListaSimple<revista> listaRevistas;
@@ -73,6 +75,9 @@ int main() {
             generarDatasetLibros(30, listaLibros);
             generarDatasetRevistas(20, listaRevistas);
             generarDatasetTesis(15, listaTesis);
+            generarDatasetUsuarios("administrador", 10, listaAdmi);
+            generarDatasetUsuarios("bibliotecario", 10, listaBibliotecario);
+            
 
             listaRecursos.limpiar();
 
@@ -95,6 +100,7 @@ int main() {
             }
 
             int cantidadLectores = 50;
+
             generarDatasetUsuariosConPrestamosYMultas(
                 cantidadLectores,
                 listaLectores,

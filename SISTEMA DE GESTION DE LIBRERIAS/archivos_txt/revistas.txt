@@ -24,23 +24,81 @@ IDRE18|National Geographic|Expertos|2021|4|||0
 IDRE19|Nature|Investigadores|2022|1|||0
 IDRE20|Forbes|Redacción|2023|1|||0
 IDRE21|Muy Interesante|Colaboradores|2024|3|||0
-IDRE22|Ciencia Hoy|Equipo Editorial|2020|3|||1
-IDRE23|National Geographic|Expertos|2021|5|||1
-IDRE24|Nature|Investigadores|2022|5|||1
-IDRE25|Forbes|Redacción|2023|5|||1
-IDRE26|Muy Interesante|Colaboradores|2024|4|||1
-IDRE27|Ciencia Hoy|Equipo Editorial|2020|1|||1
-IDRE28|National Geographic|Expertos|2021|2|||1
-IDRE29|Nature|Investigadores|2022|2|||1
-IDRE30|Forbes|Redacción|2023|2|||1
-IDRE31|Muy Interesante|Colaboradores|2024|3|||1
-IDRE32|Ciencia Hoy|Equipo Editorial|2020|5|||1
-IDRE33|National Geographic|Expertos|2021|3|||1
-IDRE34|Nature|Investigadores|2022|4|||1
-IDRE35|Forbes|Redacción|2023|1|||1
-IDRE36|Muy Interesante|Colaboradores|2024|4|||1
-IDRE37|Ciencia Hoy|Equipo Editorial|2020|5|||1
-IDRE38|National Geographic|Expertos|2021|3|||1
-IDRE39|Nature|Investigadores|2022|5|||1
-IDRE40|Forbes|Redacción|2023|3|||1
-IDRE41|Muy Interesante|Colaboradores|2024|4|||1
+IDRE22|Ciencia Hoy|Equipo Editorial|2020|3|||0
+IDRE23|National Geographic|Expertos|2021|5|||0
+IDRE24|Nature|Investigadores|2022|5|||0
+IDRE25|Forbes|Redacción|2023|5|||0
+IDRE26|Muy Interesante|Colaboradores|2024|4|||0
+IDRE27|Ciencia Hoy|Equipo Editorial|2020|1|||0
+IDRE28|National Geographic|Expertos|2021|2|||0
+IDRE29|Nature|Investigadores|2022|2|||0
+IDRE30|Forbes|Redacción|2023|2|||0
+IDRE31|Muy Interesante|Colaboradores|2024|3|||0
+IDRE32|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE33|National Geographic|Expertos|2021|3|||0
+IDRE34|Nature|Investigadores|2022|4|||0
+IDRE35|Forbes|Redacción|2023|1|||0
+IDRE36|Muy Interesante|Colaboradores|2024|4|||0
+IDRE37|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE38|National Geographic|Expertos|2021|3|||0
+IDRE39|Nature|Investigadores|2022|5|||0
+IDRE40|Forbes|Redacción|2023|3|||0
+IDRE41|Muy Interesante|Colaboradores|2024|4|||0
+IDRE42|Ciencia Hoy|Equipo Editorial|2020|2|||0
+IDRE43|National Geographic|Expertos|2021|2|||0
+IDRE44|Nature|Investigadores|2022|3|||0
+IDRE45|Forbes|Redacción|2023|5|||0
+IDRE46|Muy Interesante|Colaboradores|2024|2|||0
+IDRE47|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE48|National Geographic|Expertos|2021|4|||0
+IDRE49|Nature|Investigadores|2022|3|||0
+IDRE50|Forbes|Redacción|2023|3|||0
+IDRE51|Muy Interesante|Colaboradores|2024|1|||0
+IDRE52|Ciencia Hoy|Equipo Editorial|2020|3|||0
+IDRE53|National Geographic|Expertos|2021|1|||0
+IDRE54|Nature|Investigadores|2022|3|||0
+IDRE55|Forbes|Redacción|2023|1|||0
+IDRE56|Muy Interesante|Colaboradores|2024|2|||0
+IDRE57|Ciencia Hoy|Equipo Editorial|2020|3|||0
+IDRE58|National Geographic|Expertos|2021|3|||0
+IDRE59|Nature|Investigadores|2022|2|||0
+IDRE60|Forbes|Redacción|2023|5|||0
+IDRE61|Muy Interesante|Colaboradores|2024|2|||0
+IDRE62|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE63|National Geographic|Expertos|2021|2|||0
+IDRE64|Nature|Investigadores|2022|3|||0
+IDRE65|Forbes|Redacción|2023|5|||0
+IDRE66|Muy Interesante|Colaboradores|2024|5|||0
+IDRE67|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE68|National Geographic|Expertos|2021|2|||0
+IDRE69|Nature|Investigadores|2022|3|||0
+IDRE70|Forbes|Redacción|2023|2|||0
+IDRE71|Muy Interesante|Colaboradores|2024|5|||0
+IDRE72|Ciencia Hoy|Equipo Editorial|2020|1|||0
+IDRE73|National Geographic|Expertos|2021|4|||0
+IDRE74|Nature|Investigadores|2022|3|||0
+IDRE75|Forbes|Redacción|2023|2|||0
+IDRE76|Muy Interesante|Colaboradores|2024|1|||0
+IDRE77|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE78|National Geographic|Expertos|2021|5|||0
+IDRE79|Nature|Investigadores|2022|2|||0
+IDRE80|Forbes|Redacción|2023|3|||0
+IDRE81|Muy Interesante|Colaboradores|2024|3|||0
+IDRE82|Ciencia Hoy|Equipo Editorial|2020|4|||0
+IDRE83|National Geographic|Expertos|2021|5|||0
+IDRE84|Nature|Investigadores|2022|5|||0
+IDRE85|Forbes|Redacción|2023|5|||0
+IDRE86|Muy Interesante|Colaboradores|2024|3|||0
+IDRE87|Ciencia Hoy|Equipo Editorial|2020|3|||0
+IDRE88|National Geographic|Expertos|2021|1|||0
+IDRE89|Nature|Investigadores|2022|1|||0
+IDRE90|Forbes|Redacción|2023|4|||0
+IDRE91|Muy Interesante|Colaboradores|2024|1|||0
+IDRE92|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE93|National Geographic|Expertos|2021|4|||0
+IDRE94|Nature|Investigadores|2022|4|||0
+IDRE95|Forbes|Redacción|2023|1|||0
+IDRE96|Muy Interesante|Colaboradores|2024|2|||0
+IDRE97|Ciencia Hoy|Equipo Editorial|2020|5|||0
+IDRE98|National Geographic|Expertos|2021|4|||0
+IDRE99|Nature|Investigadores|2022|5|||0
